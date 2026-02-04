@@ -1,8 +1,9 @@
 import { useSlideshow } from "@/hooks/useSlideshow";
-import { LogoSlide } from "./slides/LogoSlide";
-import { MissionSlide } from "./slides/MissionSlide";
-import { ValuesSlide } from "./slides/ValuesSlide";
-import { TeamSlide } from "./slides/TeamSlide";
+import { HeroSlide } from "./slides/HeroSlide";
+import { InfoSlide } from "./slides/InfoSlide";
+import { FeaturesSlide } from "./slides/FeaturesSlide";
+import { CharactersSlide } from "./slides/CharactersSlide";
+import { CallToActionSlide } from "./slides/CallToActionSlide";
 import { SlideProgress } from "./SlideProgress";
 import { PresentationControls } from "./PresentationControls";
 
@@ -10,10 +11,11 @@ const SLIDE_DURATION = 8000; // 8 seconds per slide
 
 export const Presentation = () => {
   const slides = [
-    { id: "logo", component: LogoSlide },
-    { id: "mission", component: MissionSlide },
-    { id: "values", component: ValuesSlide },
-    { id: "team", component: TeamSlide },
+    { id: "hero", component: HeroSlide },
+    { id: "info", component: InfoSlide },
+    { id: "features", component: FeaturesSlide },
+    { id: "characters", component: CharactersSlide },
+    { id: "cta", component: CallToActionSlide },
   ];
 
   const {
@@ -31,7 +33,7 @@ export const Presentation = () => {
   });
 
   return (
-    <div className="relative w-full h-screen overflow-hidden hide-scrollbar cursor-none hover:cursor-auto">
+    <div className="relative w-full h-screen overflow-hidden hide-scrollbar cursor-none hover:cursor-auto bg-black">
       {/* Slides */}
       {slides.map((slide, index) => {
         const SlideComponent = slide.component;
@@ -62,8 +64,8 @@ export const Presentation = () => {
       />
 
       {/* Instructions overlay (fades out) */}
-      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 text-white/40 text-sm font-light z-20 animate-fade-out pointer-events-none">
-        Pressione F para tela cheia • Espaço para avançar • P para pausar
+      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 text-white/30 text-sm font-light z-20 animate-fade-out pointer-events-none font-display tracking-wider">
+        F = Tela cheia • Espaço = Avançar • P = Pausar
       </div>
       <style>{`
         @keyframes fadeOut {

@@ -24,7 +24,7 @@ export const PresentationControls = ({
         variant="ghost"
         size="icon"
         onClick={onPrevSlide}
-        className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white"
+        className="bg-black/50 backdrop-blur-sm hover:bg-primary/20 text-white border border-primary/30"
       >
         <ChevronLeft className="h-5 w-5" />
       </Button>
@@ -32,7 +32,7 @@ export const PresentationControls = ({
         variant="ghost"
         size="icon"
         onClick={onTogglePause}
-        className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white"
+        className="bg-black/50 backdrop-blur-sm hover:bg-primary/20 text-white border border-primary/30"
       >
         {isPaused ? <Play className="h-5 w-5" /> : <Pause className="h-5 w-5" />}
       </Button>
@@ -40,7 +40,7 @@ export const PresentationControls = ({
         variant="ghost"
         size="icon"
         onClick={onNextSlide}
-        className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white"
+        className="bg-black/50 backdrop-blur-sm hover:bg-primary/20 text-white border border-primary/30"
       >
         <ChevronRight className="h-5 w-5" />
       </Button>
@@ -48,7 +48,7 @@ export const PresentationControls = ({
         variant="ghost"
         size="icon"
         onClick={onToggleFullscreen}
-        className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white"
+        className="bg-black/50 backdrop-blur-sm hover:bg-primary/20 text-white border border-primary/30"
       >
         {isFullscreen ? <Minimize className="h-5 w-5" /> : <Maximize className="h-5 w-5" />}
       </Button>
