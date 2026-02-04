@@ -7,7 +7,7 @@ interface HeroSlideProps {
 
 export const HeroSlide = ({ isActive }: HeroSlideProps) => {
   return (
-    <Slide isActive={isActive} showGrid={false} className="!bg-[#7C5CBF]">
+    <Slide isActive={isActive} showGrid={false} className="!bg-[#5B4B9E]">
       <div className="flex flex-col items-center justify-center text-center space-y-6">
         <img 
           src={qgMainImage} 
