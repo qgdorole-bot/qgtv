@@ -16,13 +16,13 @@ const values = [
     icon: Sparkles, 
     title: "Liberdade", 
     description: "Inovação com foco em resultados",
-    color: "text-secondary border-secondary/50"
+    color: "text-purple-300 border-purple-300/50"
   },
   { 
     icon: Eye, 
     title: "Transparência", 
     description: "Falamos a verdade, sempre",
-    color: "text-accent border-accent/50"
+    color: "text-secondary border-secondary/50"
   },
   { 
     icon: TrendingUp, 
@@ -34,7 +34,7 @@ const values = [
     icon: Compass, 
     title: "Vida Real", 
     description: "Explorar o mundo",
-    color: "text-green-400 border-green-400/50"
+    color: "text-violet-300 border-violet-300/50"
   },
 ];
 
@@ -44,7 +44,7 @@ export const ValuesSlide = ({ isActive }: ValuesSlideProps) => {
       <div className="flex flex-col items-center justify-center text-center space-y-10">
         <div className="flex items-center gap-3">
           <span className={`text-3xl md:text-4xl ${isActive ? 'scale-in' : ''}`}>🌱</span>
-          <h2 className={`text-3xl md:text-5xl lg:text-6xl font-display font-bold tracking-wide bg-cyber-gradient bg-clip-text text-transparent ${isActive ? 'fade-in-up' : ''}`}>
+          <h2 className={`text-3xl md:text-5xl lg:text-6xl font-display font-bold tracking-wide text-primary text-glow-purple ${isActive ? 'fade-in-up' : ''}`}>
             Valores
           </h2>
         </div>
@@ -54,7 +54,7 @@ export const ValuesSlide = ({ isActive }: ValuesSlideProps) => {
             return (
               <div 
                 key={value.title}
-                className={`flex flex-col items-center space-y-3 p-4 md:p-5 rounded-2xl cyber-border backdrop-blur-sm ${isActive ? 'fade-in-up' : ''}`}
+                className={`flex flex-col items-center space-y-3 p-4 md:p-5 rounded-2xl cyber-border-purple backdrop-blur-sm ${isActive ? 'fade-in-up' : ''}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className={`p-3 rounded-xl border ${value.color} bg-black/50`}>

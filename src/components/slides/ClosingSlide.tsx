@@ -16,13 +16,13 @@ export const ClosingSlide = ({ isActive }: ClosingSlideProps) => {
         />
         <div className={`space-y-4 ${isActive ? 'fade-in-up' : ''}`}>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-display font-bold">
-            <span className="text-primary">Realizamos sonhos</span>
+            <span className="text-primary text-glow-purple">Realizamos sonhos</span>
           </h2>
           <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground font-light">
             ensinando habilidades pra lidar com o mundo
           </p>
         </div>
-        <div className={`mt-6 p-4 md:p-6 rounded-2xl cyber-border ${isActive ? 'fade-in-delayed' : ''}`}>
+        <div className={`mt-6 p-4 md:p-6 rounded-2xl cyber-border-purple ${isActive ? 'fade-in-delayed' : ''}`}>
           <p className="text-lg md:text-xl font-display font-medium bg-cyber-gradient bg-clip-text text-transparent">
             #QGdoRolê #IA #Temporada1
           </p>
