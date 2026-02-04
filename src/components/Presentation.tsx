@@ -13,12 +13,12 @@ const SLIDE_DURATION = 8000; // 8 seconds per slide
 
 export const Presentation = () => {
   const slides = [
-    { id: "hero", component: HeroSlide, showLogo: false },
-    { id: "purpose", component: PurposeSlide, showLogo: true },
-    { id: "mission", component: MissionSlide, showLogo: true },
-    { id: "vision", component: VisionSlide, showLogo: true },
-    { id: "values", component: ValuesSlide, showLogo: true },
-    { id: "closing", component: ClosingSlide, showLogo: false },
+    { id: "hero", component: HeroSlide, showWatermark: false },
+    { id: "purpose", component: PurposeSlide, showWatermark: true },
+    { id: "mission", component: MissionSlide, showWatermark: true },
+    { id: "vision", component: VisionSlide, showWatermark: true },
+    { id: "values", component: ValuesSlide, showWatermark: true },
+    { id: "closing", component: ClosingSlide, showWatermark: true },
   ];
 
   const {
@@ -35,12 +35,12 @@ export const Presentation = () => {
     autoPlay: true,
   });
 
-  const showCornerLogo = slides[currentSlide]?.showLogo ?? false;
+  const showWatermark = slides[currentSlide]?.showWatermark ?? false;
 
   return (
     <div className="relative w-full h-screen overflow-hidden hide-scrollbar cursor-none hover:cursor-auto bg-black">
-      {/* Corner Logo (hidden on hero and closing slides) */}
-      {showCornerLogo && <CornerLogo />}
+      {/* Watermark Logo (hidden on hero slide) */}
+      {showWatermark && <CornerLogo />}
 
       {/* Slides */}
       {slides.map((slide, index) => {
