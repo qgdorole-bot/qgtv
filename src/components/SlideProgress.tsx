@@ -11,14 +11,14 @@ export const SlideProgress = ({ currentSlide, totalSlides, duration, isPaused }:
       {Array.from({ length: totalSlides }).map((_, index) => (
         <div
           key={index}
-          className="w-12 md:w-16 h-1 rounded-full bg-white/10 overflow-hidden cyber-border"
+          className="w-12 md:w-16 h-1 rounded-full bg-white/10 overflow-hidden"
         >
           <div
             className={`h-full rounded-full ${
               index < currentSlide 
-                ? 'w-full bg-gradient-to-r from-primary to-secondary' 
+                ? 'w-full bg-gradient-to-r from-purple-400 to-primary' 
                 : index === currentSlide 
-                  ? `${isPaused ? '' : 'animate-progress'} bg-gradient-to-r from-primary to-secondary` 
+                  ? `${isPaused ? '' : 'animate-progress'} bg-gradient-to-r from-purple-400 to-primary` 
                   : 'w-0'
             }`}
             style={{

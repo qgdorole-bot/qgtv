@@ -7,17 +7,18 @@ import { ValuesSlide } from "./slides/ValuesSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
 import { SlideProgress } from "./SlideProgress";
 import { PresentationControls } from "./PresentationControls";
+import { CornerLogo } from "./CornerLogo";
 
 const SLIDE_DURATION = 8000; // 8 seconds per slide
 
 export const Presentation = () => {
   const slides = [
-    { id: "hero", component: HeroSlide },
-    { id: "purpose", component: PurposeSlide },
-    { id: "mission", component: MissionSlide },
-    { id: "vision", component: VisionSlide },
-    { id: "values", component: ValuesSlide },
-    { id: "closing", component: ClosingSlide },
+    { id: "hero", component: HeroSlide, showLogo: false },
+    { id: "purpose", component: PurposeSlide, showLogo: true },
+    { id: "mission", component: MissionSlide, showLogo: true },
+    { id: "vision", component: VisionSlide, showLogo: true },
+    { id: "values", component: ValuesSlide, showLogo: true },
+    { id: "closing", component: ClosingSlide, showLogo: false },
   ];
 
   const {
@@ -34,8 +35,13 @@ export const Presentation = () => {
     autoPlay: true,
   });
 
+  const showCornerLogo = slides[currentSlide]?.showLogo ?? false;
+
   return (
     <div className="relative w-full h-screen overflow-hidden hide-scrollbar cursor-none hover:cursor-auto bg-black">
+      {/* Corner Logo (hidden on hero and closing slides) */}
+      {showCornerLogo && <CornerLogo />}
+
       {/* Slides */}
       {slides.map((slide, index) => {
         const SlideComponent = slide.component;
