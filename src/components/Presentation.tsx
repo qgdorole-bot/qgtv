@@ -1,9 +1,10 @@
 import { useSlideshow } from "@/hooks/useSlideshow";
 import { HeroSlide } from "./slides/HeroSlide";
-import { InfoSlide } from "./slides/InfoSlide";
-import { FeaturesSlide } from "./slides/FeaturesSlide";
-import { CharactersSlide } from "./slides/CharactersSlide";
-import { CallToActionSlide } from "./slides/CallToActionSlide";
+import { PurposeSlide } from "./slides/PurposeSlide";
+import { MissionSlide } from "./slides/MissionSlide";
+import { VisionSlide } from "./slides/VisionSlide";
+import { ValuesSlide } from "./slides/ValuesSlide";
+import { ClosingSlide } from "./slides/ClosingSlide";
 import { SlideProgress } from "./SlideProgress";
 import { PresentationControls } from "./PresentationControls";
 
@@ -12,10 +13,11 @@ const SLIDE_DURATION = 8000; // 8 seconds per slide
 export const Presentation = () => {
   const slides = [
     { id: "hero", component: HeroSlide },
-    { id: "info", component: InfoSlide },
-    { id: "features", component: FeaturesSlide },
-    { id: "characters", component: CharactersSlide },
-    { id: "cta", component: CallToActionSlide },
+    { id: "purpose", component: PurposeSlide },
+    { id: "mission", component: MissionSlide },
+    { id: "vision", component: VisionSlide },
+    { id: "values", component: ValuesSlide },
+    { id: "closing", component: ClosingSlide },
   ];
 
   const {
