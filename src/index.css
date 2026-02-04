@@ -19,6 +19,9 @@
     --primary: 270 70% 60%;
     --primary-foreground: 0 0% 100%;
 
+    /* Hero (exact match to artwork) - #350583 */
+    --hero: 263 93% 27%;
+
     --secondary: 190 100% 50%;
     --secondary-foreground: 0 0% 0%;
 
