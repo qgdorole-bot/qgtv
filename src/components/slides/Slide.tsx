@@ -6,9 +6,16 @@ interface SlideProps {
   className?: string;
   isActive?: boolean;
   showGrid?: boolean;
+  showScanlines?: boolean;
 }
 
-export const Slide = ({ children, className, isActive = true, showGrid = true }: SlideProps) => {
+export const Slide = ({
+  children,
+  className,
+  isActive = true,
+  showGrid = true,
+  showScanlines = true,
+}: SlideProps) => {
   return (
     <div
       className={cn(
@@ -20,7 +27,9 @@ export const Slide = ({ children, className, isActive = true, showGrid = true }:
       )}
     >
       {showGrid && <div className="absolute inset-0 grid-pattern opacity-30" />}
-      <div className="absolute inset-0 scanlines pointer-events-none opacity-20" />
+      {showScanlines && (
+        <div className="absolute inset-0 scanlines pointer-events-none opacity-20" />
+      )}
       <div className={cn("relative w-full max-w-6xl mx-auto z-10", isActive && "fade-in")}>
         {children}
       </div>
