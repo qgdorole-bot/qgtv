@@ -9,7 +9,7 @@ export const HeroSlide = ({ isActive }: HeroSlideProps) => {
   return (
     <div
       className={cn(
-        "absolute inset-0 flex items-center justify-center",
+        "absolute inset-0 flex items-center justify-center overflow-hidden",
         "transition-opacity duration-1000 ease-in-out",
         "bg-hero",
         isActive ? "opacity-100 z-10" : "opacity-0 z-0"
@@ -22,7 +22,8 @@ export const HeroSlide = ({ isActive }: HeroSlideProps) => {
         fetchPriority="high"
         decoding="async"
         className={cn(
-          "w-full h-full object-contain",
+          // Fill the screen and hide any mismatch between image/background purples
+          "w-full h-full object-cover scale-[1.02]",
           isActive && "animate-float"
         )}
       />
