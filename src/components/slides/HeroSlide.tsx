@@ -1,5 +1,5 @@
-import { Slide } from "./Slide";
-import qgMainImage from "@/assets/qg-role-main-purple-seamless.png";
+import { cn } from "@/lib/utils";
+import qgMainImage from "@/assets/qg-role-main-purple.png";
 
 interface HeroSlideProps {
   isActive: boolean;
@@ -7,23 +7,25 @@ interface HeroSlideProps {
 
 export const HeroSlide = ({ isActive }: HeroSlideProps) => {
   return (
-    <Slide
-      isActive={isActive}
-      showGrid={false}
-      showScanlines={false}
-      className="!bg-[#3D1A73]"
+    <div
+      className={cn(
+        "absolute inset-0 flex items-center justify-center",
+        "transition-opacity duration-1000 ease-in-out",
+        "bg-[#3D1A73]",
+        isActive ? "opacity-100 z-10" : "opacity-0 z-0"
+      )}
     >
-      <div className="flex flex-col items-center justify-center text-center space-y-6">
-        <img 
-          src={qgMainImage} 
-          alt="QG do Rolê - Temporada 1/2026" 
-          width={896}
-          height={896}
-          fetchPriority="high"
-          decoding="async"
-          className={`w-full max-w-2xl md:max-w-3xl lg:max-w-4xl object-contain animate-float ${isActive ? 'scale-in' : ''}`}
-        />
-      </div>
-    </Slide>
+      {/* Image fills entire screen */}
+      <img 
+        src={qgMainImage} 
+        alt="QG do Rolê - Temporada 1/2026" 
+        fetchPriority="high"
+        decoding="async"
+        className={cn(
+          "w-full h-full object-contain",
+          isActive && "animate-float"
+        )}
+      />
+    </div>
   );
 };
