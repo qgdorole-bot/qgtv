@@ -1,8 +1,9 @@
+import { forwardRef } from "react";
 import logoWatermark from "@/assets/logo-qg-watermark.png";
 
-export const CornerLogo = () => {
+export const CornerLogo = forwardRef<HTMLDivElement>((_, ref) => {
   return (
-    <div className="absolute top-6 left-6 z-30">
+    <div ref={ref} className="absolute top-6 left-6 z-30">
       <img 
         src={logoWatermark} 
         alt="QG do Rolê" 
@@ -10,4 +11,6 @@ export const CornerLogo = () => {
       />
     </div>
   );
-};
+});
+
+CornerLogo.displayName = "CornerLogo";

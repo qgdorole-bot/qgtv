@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { Pause, Play, ChevronLeft, ChevronRight, Maximize, Minimize } from "lucide-react";
 import { Button } from "./ui/button";
 
@@ -10,16 +11,16 @@ interface PresentationControlsProps {
   onToggleFullscreen: () => void;
 }
 
-export const PresentationControls = ({
+export const PresentationControls = forwardRef<HTMLDivElement, PresentationControlsProps>(({
   isPaused,
   isFullscreen,
   onTogglePause,
   onPrevSlide,
   onNextSlide,
   onToggleFullscreen,
-}: PresentationControlsProps) => {
+}, ref) => {
   return (
-    <div className="absolute top-6 right-6 flex items-center gap-2 z-20 opacity-0 hover:opacity-100 focus-within:opacity-100 transition-opacity duration-300">
+    <div ref={ref} className="absolute top-6 right-6 flex items-center gap-2 z-20 opacity-0 hover:opacity-100 focus-within:opacity-100 transition-opacity duration-300">
       <Button
         variant="ghost"
         size="icon"
@@ -54,4 +55,6 @@ export const PresentationControls = ({
       </Button>
     </div>
   );
-};
+});
+
+PresentationControls.displayName = "PresentationControls";

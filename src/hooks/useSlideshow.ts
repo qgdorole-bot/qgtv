@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 interface UseSlideshowProps {
   totalSlides: number;
@@ -14,6 +14,7 @@ export const useSlideshow = ({
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(!autoPlay);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const timerRef = useRef<number | null>(null);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % totalSlides);
@@ -41,13 +42,45 @@ export const useSlideshow = ({
     }
   }, []);
 
-  // Auto-advance slides
-  useEffect(() => {
-    if (isPaused) return;
+  // Clear any existing timer
+  const clearTimer = useCallback(() => {
+    if (timerRef.current !== null) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+  }, []);
 
-    const timer = setInterval(nextSlide, intervalMs);
-    return () => clearInterval(timer);
-  }, [isPaused, intervalMs, nextSlide]);
+  // Start timer
+  const startTimer = useCallback(() => {
+    clearTimer();
+    timerRef.current = window.setInterval(nextSlide, intervalMs);
+  }, [clearTimer, nextSlide, intervalMs]);
+
+  // Auto-advance slides with visibility handling
+  useEffect(() => {
+    if (isPaused) {
+      clearTimer();
+      return;
+    }
+
+    startTimer();
+
+    // Handle tab visibility changes to prevent freezing
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        clearTimer();
+      } else if (!isPaused) {
+        startTimer();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      clearTimer();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [isPaused, startTimer, clearTimer]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -55,15 +88,19 @@ export const useSlideshow = ({
       switch (e.key) {
         case "ArrowRight":
         case " ":
+          e.preventDefault();
           nextSlide();
           break;
         case "ArrowLeft":
+          e.preventDefault();
           prevSlide();
           break;
         case "p":
+        case "P":
           togglePause();
           break;
         case "f":
+        case "F":
           toggleFullscreen();
           break;
       }
