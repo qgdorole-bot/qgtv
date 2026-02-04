@@ -1,5 +1,5 @@
 import { Slide } from "./Slide";
-import qgMainImage from "@/assets/qg-role-main.png";
+import qgMainImage from "@/assets/qg-role-main-optimized.jpg";
 
 interface ClosingSlideProps {
   isActive: boolean;
@@ -12,6 +12,10 @@ export const ClosingSlide = ({ isActive }: ClosingSlideProps) => {
         <img 
           src={qgMainImage} 
           alt="QG do Rolê" 
+          width={320}
+          height={320}
+          loading="lazy"
+          decoding="async"
           className={`w-48 md:w-64 lg:w-80 object-contain ${isActive ? 'scale-in' : ''}`}
         />
         <div className={`space-y-4 ${isActive ? 'fade-in-up' : ''}`}>
