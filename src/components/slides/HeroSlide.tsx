@@ -11,7 +11,7 @@ export const HeroSlide = ({ isActive }: HeroSlideProps) => {
       className={cn(
         "absolute inset-0 flex items-center justify-center",
         "transition-opacity duration-1000 ease-in-out",
-        "bg-[#3D1A73]",
+        "bg-[#4A2B91]",
         isActive ? "opacity-100 z-10" : "opacity-0 z-0"
       )}
     >
