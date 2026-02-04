@@ -1,5 +1,5 @@
 import { Slide } from "./Slide";
-import qgMainImage from "@/assets/qg-role-main.png";
+import qgMainImage from "@/assets/qg-role-main-optimized.jpg";
 
 interface HeroSlideProps {
   isActive: boolean;
@@ -12,6 +12,10 @@ export const HeroSlide = ({ isActive }: HeroSlideProps) => {
         <img 
           src={qgMainImage} 
           alt="QG do Rolê - Temporada 1/2026" 
+          width={896}
+          height={896}
+          fetchPriority="high"
+          decoding="async"
           className={`w-full max-w-2xl md:max-w-3xl lg:max-w-4xl object-contain animate-float ${isActive ? 'scale-in' : ''}`}
         />
         <div className={`flex items-center gap-4 ${isActive ? 'fade-in-delayed' : ''}`}>
