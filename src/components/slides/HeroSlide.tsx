@@ -1,5 +1,5 @@
 import { Slide } from "./Slide";
-import qgMainImage from "@/assets/qg-role-main-purple.png";
+import qgMainImage from "@/assets/qg-role-main-purple-seamless.png";
 
 interface HeroSlideProps {
   isActive: boolean;
@@ -7,7 +7,7 @@ interface HeroSlideProps {
 
 export const HeroSlide = ({ isActive }: HeroSlideProps) => {
   return (
-    <Slide isActive={isActive} showGrid={false} className="!bg-[#5B4B9E]">
+    <Slide isActive={isActive} showGrid={false} className="!bg-[#4B1F8C]">
       <div className="flex flex-col items-center justify-center text-center space-y-6">
         <img 
           src={qgMainImage} 
