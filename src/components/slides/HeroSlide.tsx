@@ -1,5 +1,5 @@
 import { Slide } from "./Slide";
-import qgMainImage from "@/assets/qg-role-main-optimized.jpg";
+import qgMainImage from "@/assets/qg-role-main-purple.png";
 
 interface HeroSlideProps {
   isActive: boolean;
