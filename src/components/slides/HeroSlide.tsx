@@ -7,7 +7,7 @@ interface HeroSlideProps {
 
 export const HeroSlide = ({ isActive }: HeroSlideProps) => {
   return (
-    <Slide isActive={isActive} showGrid={false}>
+    <Slide isActive={isActive} showGrid={false} className="!bg-[#4a2c7a]">
       <div className="flex flex-col items-center justify-center text-center space-y-6">
         <img 
           src={qgMainImage} 
@@ -18,11 +18,6 @@ export const HeroSlide = ({ isActive }: HeroSlideProps) => {
           decoding="async"
           className={`w-full max-w-2xl md:max-w-3xl lg:max-w-4xl object-contain animate-float ${isActive ? 'scale-in' : ''}`}
         />
-        <div className={`flex items-center gap-4 ${isActive ? 'fade-in-delayed' : ''}`}>
-          <div className="h-px w-16 md:w-32 bg-gradient-to-r from-transparent via-primary to-transparent" />
-          <span className="text-primary text-lg md:text-xl font-display tracking-widest">IA</span>
-          <div className="h-px w-16 md:w-32 bg-gradient-to-r from-transparent via-primary to-transparent" />
-        </div>
       </div>
     </Slide>
   );
