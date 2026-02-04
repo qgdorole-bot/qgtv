@@ -1,5 +1,6 @@
 import { Slide } from "./Slide";
 import groupTrainingImage from "@/assets/group-therapy-training.jpg";
+import qrcodeApp from "@/assets/qrcode-app.png";
 import { Instagram } from "lucide-react";
 
 interface ClosingSlideProps {
@@ -39,27 +40,16 @@ export const ClosingSlide = ({ isActive }: ClosingSlideProps) => {
 
           {/* QR Code for App */}
           <div className="flex flex-col items-center space-y-3">
-            <div className="bg-white rounded-xl p-4 cyber-border-purple">
-              <div className="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <div className="grid grid-cols-5 gap-1">
-                    {/* QR Code visual placeholder */}
-                    {Array.from({ length: 25 }).map((_, i) => (
-                      <div 
-                        key={i} 
-                        className={`w-5 h-5 md:w-6 md:h-6 rounded-sm ${
-                          [0,1,2,4,5,6,10,12,14,18,19,20,22,23,24].includes(i) 
-                            ? 'bg-primary' 
-                            : 'bg-primary/30'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
+            <div className="bg-white rounded-xl p-3 md:p-4 cyber-border-purple">
+              <img 
+                src={qrcodeApp} 
+                alt="QR Code para baixar o app QG do Rolê" 
+                className="w-32 h-32 md:w-40 md:h-40 object-contain"
+                loading="lazy"
+              />
             </div>
             <p className="text-sm md:text-base text-muted-foreground">
-              Baixe nosso APP
+              Baixe nosso APP na App Store
             </p>
           </div>
         </div>
