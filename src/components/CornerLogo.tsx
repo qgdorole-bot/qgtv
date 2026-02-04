@@ -1,12 +1,12 @@
-import qgMainImage from "@/assets/qg-role-main.png";
+import logoWatermark from "@/assets/logo-qg-watermark.png";
 
 export const CornerLogo = () => {
   return (
     <div className="absolute top-6 left-6 z-30">
       <img 
-        src={qgMainImage} 
+        src={logoWatermark} 
         alt="QG do Rolê" 
-        className="w-16 h-16 md:w-20 md:h-20 object-contain opacity-80 hover:opacity-100 transition-opacity"
+        className="w-20 h-auto md:w-24 lg:w-28 object-contain opacity-20"
       />
     </div>
   );
