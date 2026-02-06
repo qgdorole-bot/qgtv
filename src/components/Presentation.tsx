@@ -1,5 +1,6 @@
 import { useSlideshow } from "@/hooks/useSlideshow";
 import { HeroSlide } from "./slides/HeroSlide";
+import { CardsSlide } from "./slides/CardsSlide";
 import { PurposeSlide } from "./slides/PurposeSlide";
 import { MissionSlide } from "./slides/MissionSlide";
 import { VisionSlide } from "./slides/VisionSlide";
@@ -14,6 +15,7 @@ const SLIDE_DURATION = 8000; // 8 seconds per slide
 export const Presentation = () => {
   const slides = [
     { id: "hero", component: HeroSlide, showWatermark: false },
+    { id: "cards", component: CardsSlide, showWatermark: true },
     { id: "purpose", component: PurposeSlide, showWatermark: true },
     { id: "mission", component: MissionSlide, showWatermark: true },
     { id: "vision", component: VisionSlide, showWatermark: true },
