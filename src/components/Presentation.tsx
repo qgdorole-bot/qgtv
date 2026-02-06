@@ -4,10 +4,7 @@ import { CardsSlide } from "./slides/CardsSlide";
 import { GamificationIntroSlide } from "./slides/GamificationIntroSlide";
 import { GamificationShopSlide } from "./slides/GamificationShopSlide";
 import { GamificationRanksSlide } from "./slides/GamificationRanksSlide";
-import { PurposeSlide } from "./slides/PurposeSlide";
-import { MissionSlide } from "./slides/MissionSlide";
-import { VisionSlide } from "./slides/VisionSlide";
-import { ValuesSlide } from "./slides/ValuesSlide";
+import { InstitutionalSlide } from "./slides/InstitutionalSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
 import { SlideProgress } from "./SlideProgress";
 import { PresentationControls } from "./PresentationControls";
@@ -22,10 +19,7 @@ export const Presentation = () => {
     { id: "gamification-intro", component: GamificationIntroSlide, showWatermark: true },
     { id: "gamification-shop", component: GamificationShopSlide, showWatermark: true },
     { id: "gamification-ranks", component: GamificationRanksSlide, showWatermark: true },
-    { id: "purpose", component: PurposeSlide, showWatermark: true },
-    { id: "mission", component: MissionSlide, showWatermark: true },
-    { id: "vision", component: VisionSlide, showWatermark: true },
-    { id: "values", component: ValuesSlide, showWatermark: true },
+    { id: "institutional", component: InstitutionalSlide, showWatermark: true },
     { id: "closing", component: ClosingSlide, showWatermark: true },
   ];
 
