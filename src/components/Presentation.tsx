@@ -15,8 +15,8 @@ const SLIDE_DURATION = 14000; // 14 seconds per slide (more time to read)
 
 export const Presentation = () => {
   const slides = [
-    { id: "hero", component: HeroSlide, showWatermark: false },
     { id: "welcome", component: WelcomeSlide, showWatermark: true },
+    { id: "hero", component: HeroSlide, showWatermark: false },
     { id: "cards", component: CardsSlide, showWatermark: true },
     { id: "gamification-intro", component: GamificationIntroSlide, showWatermark: true },
     { id: "gamification-shop", component: GamificationShopSlide, showWatermark: true },
