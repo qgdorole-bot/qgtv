@@ -1,5 +1,6 @@
 import { useSlideshow } from "@/hooks/useSlideshow";
 import { HeroSlide } from "./slides/HeroSlide";
+import { WelcomeSlide } from "./slides/WelcomeSlide";
 import { CardsSlide } from "./slides/CardsSlide";
 import { GamificationIntroSlide } from "./slides/GamificationIntroSlide";
 import { GamificationShopSlide } from "./slides/GamificationShopSlide";
@@ -10,11 +11,12 @@ import { SlideProgress } from "./SlideProgress";
 import { PresentationControls } from "./PresentationControls";
 import { CornerLogo } from "./CornerLogo";
 
-const SLIDE_DURATION = 8000; // 8 seconds per slide
+const SLIDE_DURATION = 14000; // 14 seconds per slide (more time to read)
 
 export const Presentation = () => {
   const slides = [
     { id: "hero", component: HeroSlide, showWatermark: false },
+    { id: "welcome", component: WelcomeSlide, showWatermark: true },
     { id: "cards", component: CardsSlide, showWatermark: true },
     { id: "gamification-intro", component: GamificationIntroSlide, showWatermark: true },
     { id: "gamification-shop", component: GamificationShopSlide, showWatermark: true },
