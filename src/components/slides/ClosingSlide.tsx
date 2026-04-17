@@ -1,7 +1,8 @@
 import { Slide } from "./Slide";
 import groupSessionImage from "@/assets/group-session.jpg";
-import qrcodeApp from "@/assets/qrcode-app.png";
-import { Instagram } from "lucide-react";
+import qrcodeAppStore from "@/assets/qrcode-appstore.png";
+import qrcodePlayStore from "@/assets/qrcode-playstore.png";
+import { Instagram, Apple, Play } from "lucide-react";
 
 interface ClosingSlideProps {
   isActive: boolean;
@@ -22,13 +23,13 @@ export const ClosingSlide = ({ isActive }: ClosingSlideProps) => {
         </div>
 
         {/* Content Row */}
-        <div className={`flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 w-full max-w-5xl ${isActive ? 'fade-in-delayed' : ''}`}>
+        <div className={`flex flex-col md:flex-row items-center justify-center gap-8 md:gap-10 w-full max-w-6xl ${isActive ? 'fade-in-delayed' : ''}`}>
           {/* Group Image */}
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/20">
-            <img 
-              src={groupSessionImage} 
-              alt="Grupos treinando habilidades sociais" 
-              className="w-72 md:w-96 h-48 md:h-64 object-cover"
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/20 shrink-0">
+            <img
+              src={groupSessionImage}
+              alt="Grupos treinando habilidades sociais"
+              className="w-64 md:w-80 h-44 md:h-56 object-cover"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
@@ -37,19 +38,44 @@ export const ClosingSlide = ({ isActive }: ClosingSlideProps) => {
             </p>
           </div>
 
-          {/* QR Code */}
-          <div className="flex flex-col items-center space-y-4">
-            <div className="bg-white rounded-2xl p-4 shadow-2xl shadow-primary/20">
-              <img 
-                src={qrcodeApp} 
-                alt="QR Code - App QG do Rolê" 
-                className="w-36 h-36 md:w-44 md:h-44 object-contain"
-                loading="lazy"
-              />
-            </div>
-            <p className="text-base md:text-lg text-muted-foreground font-medium">
+          {/* QR Codes */}
+          <div className="flex flex-col items-center space-y-3">
+            <p className="text-base md:text-lg text-muted-foreground font-medium font-display tracking-wider uppercase">
               Baixe o App
             </p>
+            <div className="flex items-center gap-5 md:gap-6">
+              {/* App Store */}
+              <div className="flex flex-col items-center gap-2">
+                <div className="bg-white rounded-2xl p-3 shadow-2xl shadow-primary/20">
+                  <img
+                    src={qrcodeAppStore}
+                    alt="QR Code App Store - QG do Rolê"
+                    className="w-28 h-28 md:w-36 md:h-36 object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex items-center gap-1.5 text-white/90">
+                  <Apple className="w-4 h-4 md:w-5 md:h-5" />
+                  <span className="text-xs md:text-sm font-display tracking-wider">App Store</span>
+                </div>
+              </div>
+
+              {/* Play Store */}
+              <div className="flex flex-col items-center gap-2">
+                <div className="bg-white rounded-2xl p-3 shadow-2xl shadow-primary/20">
+                  <img
+                    src={qrcodePlayStore}
+                    alt="QR Code Google Play - QG do Rolê"
+                    className="w-28 h-28 md:w-36 md:h-36 object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex items-center gap-1.5 text-white/90">
+                  <Play className="w-4 h-4 md:w-5 md:h-5" />
+                  <span className="text-xs md:text-sm font-display tracking-wider">Google Play</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
