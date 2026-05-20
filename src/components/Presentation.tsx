@@ -1,5 +1,5 @@
 import { useSlideshow } from "@/hooks/useSlideshow";
-import { HeroSlide } from "./slides/HeroSlide";
+import { CharadaSlide } from "./slides/CharadaSlide";
 import { WelcomeSlide } from "./slides/WelcomeSlide";
 import { CardsSlide } from "./slides/CardsSlide";
 import { GamificationIntroSlide } from "./slides/GamificationIntroSlide";
@@ -18,7 +18,7 @@ const SLIDE_DURATION = 14000; // 14 seconds per slide (more time to read)
 export const Presentation = () => {
   const slides = [
     { id: "welcome", component: WelcomeSlide, showWatermark: true },
-    { id: "hero", component: HeroSlide, showWatermark: false },
+    { id: "charada", component: CharadaSlide, showWatermark: true },
     { id: "cards", component: CardsSlide, showWatermark: true },
     { id: "gamification-intro", component: GamificationIntroSlide, showWatermark: true },
     { id: "gamification-shop", component: GamificationShopSlide, showWatermark: true },
