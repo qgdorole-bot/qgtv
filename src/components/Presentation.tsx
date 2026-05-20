@@ -2,9 +2,7 @@ import { useSlideshow } from "@/hooks/useSlideshow";
 import { CharadaSlide } from "./slides/CharadaSlide";
 import { WelcomeSlide } from "./slides/WelcomeSlide";
 import { CardsSlide } from "./slides/CardsSlide";
-import { GamificationIntroSlide } from "./slides/GamificationIntroSlide";
-import { GamificationShopSlide } from "./slides/GamificationShopSlide";
-import { GamificationRanksSlide } from "./slides/GamificationRanksSlide";
+import { GamificationOverviewSlide } from "./slides/GamificationOverviewSlide";
 import { InstitutionalSlide } from "./slides/InstitutionalSlide";
 import { StarWarsEventSlide } from "./slides/StarWarsEventSlide";
 import { QGDateSlide } from "./slides/QGDateSlide";
@@ -20,9 +18,7 @@ export const Presentation = () => {
     { id: "welcome", component: WelcomeSlide, showWatermark: true },
     { id: "charada", component: CharadaSlide, showWatermark: true },
     { id: "cards", component: CardsSlide, showWatermark: true },
-    { id: "gamification-intro", component: GamificationIntroSlide, showWatermark: true },
-    { id: "gamification-shop", component: GamificationShopSlide, showWatermark: true },
-    { id: "gamification-ranks", component: GamificationRanksSlide, showWatermark: true },
+    { id: "gamification", component: GamificationOverviewSlide, showWatermark: true },
     { id: "institutional", component: InstitutionalSlide, showWatermark: true },
     { id: "starwars", component: StarWarsEventSlide, showWatermark: true },
     { id: "qgdate", component: QGDateSlide, showWatermark: true },
