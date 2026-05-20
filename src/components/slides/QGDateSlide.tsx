@@ -113,15 +113,6 @@ export const QGDateSlide = ({ isActive }: Props) => {
                 <Heart className="w-5 h-5 fill-current" />
                 Garanta sua vaga
               </div>
-              <div
-                className="inline-flex items-center gap-2 px-6 py-4 rounded-full font-display tracking-wider text-sm md:text-base"
-                style={{
-                  border: "1px solid rgba(236, 72, 153, 0.5)",
-                  color: "#fbcfe8",
-                }}
-              >
-                Fale com a equipe do QG
-              </div>
             </div>
           </div>
         </div>
