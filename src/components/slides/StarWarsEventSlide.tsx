@@ -93,20 +93,19 @@ export const StarWarsEventSlide = ({ isActive }: Props) => {
 
             <div className="space-y-3 pt-2">
               <InfoRow icon={<Calendar className="w-5 h-5" />} text="Domingo · 24/05/2026" />
-              <InfoRow icon={<Clock className="w-5 h-5" />} text="14:20 às 17:20" />
               <InfoRow icon={<MapPin className="w-5 h-5" />} text="Shopping Eldorado · Pinheiros" />
-              <InfoRow icon={<Ticket className="w-5 h-5" />} text="Pipoca + carteirinha de estudante" />
             </div>
 
             <div
-              className="mt-4 inline-flex items-center gap-2 px-5 py-3 rounded-lg font-display font-bold tracking-wider text-sm md:text-base uppercase"
+              className="mt-4 inline-flex items-center gap-3 px-7 py-4 rounded-full font-display font-bold tracking-wider text-base md:text-lg uppercase"
               style={{
                 background: "linear-gradient(135deg, #ef4444, #dc2626)",
                 color: "white",
-                boxShadow: "0 0 30px rgba(239, 68, 68, 0.5)",
+                boxShadow: "0 0 40px rgba(239, 68, 68, 0.6), inset 0 1px 0 rgba(255,255,255,0.3)",
               }}
             >
-              Encontro: Entrada principal · em frente à Sephora
+              <Ticket className="w-5 h-5" />
+              Garanta sua vaga
             </div>
           </div>
         </div>
