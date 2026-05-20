@@ -122,30 +122,9 @@ export const CharadaSlide = ({ isActive }: Props) => {
             </p>
           </div>
 
-          {/* Divider */}
-          <div
-            className={cn(
-              "h-[2px] w-40 mx-auto bg-gradient-to-r from-transparent via-yellow-400 to-transparent",
-              isActive && "fade-in-delayed"
-            )}
-          />
-
-          {/* Answer reveal */}
-          <div className={cn(isActive && "fade-in-delayed")}>
-            <p className="text-yellow-200/70 font-display tracking-[0.3em] uppercase text-sm md:text-base mb-3">
-              Resposta
-            </p>
-            <p
-              className="font-display font-bold text-2xl md:text-4xl lg:text-5xl text-white"
-              style={{
-                textShadow: "0 0 30px rgba(168, 85, 247, 0.6)",
-              }}
-            >
-              {charada.a}
-            </p>
-          </div>
         </div>
       </div>
+
 
       <style>{`
         @keyframes floatGlow {
