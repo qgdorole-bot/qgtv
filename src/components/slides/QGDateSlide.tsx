@@ -89,8 +89,9 @@ export const QGDateSlide = ({ isActive }: Props) => {
             </h2>
 
             <p className="text-white/90 font-display text-lg md:text-2xl lg:text-3xl italic">
-              Um encontro especial para celebrar o amor
+              Um encontro especial
             </p>
+
 
             <p className="text-white/70 font-display text-base md:text-lg max-w-md mx-auto lg:mx-0">
               Vem viver um momento único com a gente. Conexão, afeto e muita
