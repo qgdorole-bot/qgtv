@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Clock, MapPin, Sparkles, Star } from "lucide-react";
 import neymarImg from "@/assets/neymar-figurinha.png";
+import cbfLogo from "@/assets/cbf-logo.png";
 
 interface Props {
   isActive: boolean;
