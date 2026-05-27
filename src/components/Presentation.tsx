@@ -6,6 +6,7 @@ import { GamificationOverviewSlide } from "./slides/GamificationOverviewSlide";
 import { InstitutionalSlide } from "./slides/InstitutionalSlide";
 import { StarWarsEventSlide } from "./slides/StarWarsEventSlide";
 import { QGDateSlide } from "./slides/QGDateSlide";
+import { FigurinhasSlide } from "./slides/FigurinhasSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
 import { SlideProgress } from "./SlideProgress";
 import { PresentationControls } from "./PresentationControls";
@@ -23,6 +24,7 @@ export const Presentation = () => {
     { id: "institutional", component: InstitutionalSlide, showWatermark: true },
     { id: "starwars", component: StarWarsEventSlide, showWatermark: true },
     { id: "qgdate", component: QGDateSlide, showWatermark: true },
+    { id: "figurinhas", component: FigurinhasSlide, showWatermark: true },
     { id: "closing", component: ClosingSlide, showWatermark: true },
   ];
 
