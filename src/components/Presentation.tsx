@@ -24,6 +24,7 @@ export const Presentation = () => {
     { id: "institutional", component: InstitutionalSlide, showWatermark: true },
     { id: "starwars", component: StarWarsEventSlide, showWatermark: true },
     { id: "qgdate", component: QGDateSlide, showWatermark: true },
+    { id: "figurinhas", component: FigurinhasSlide, showWatermark: true },
     { id: "closing", component: ClosingSlide, showWatermark: true },
   ];
 
