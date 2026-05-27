@@ -86,25 +86,44 @@ export const useSlideshow = ({
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       switch (e.key) {
+        // Setas / espaço / Page Down / Channel Up / Media Next (controles de TV)
         case "ArrowRight":
+        case "ArrowDown":
         case " ":
+        case "PageDown":
+        case "MediaTrackNext":
+        case "MediaNextTrack":
+        case "ChannelUp":
           e.preventDefault();
           nextSlide();
           break;
         case "ArrowLeft":
+        case "ArrowUp":
+        case "PageUp":
+        case "MediaTrackPrevious":
+        case "MediaPreviousTrack":
+        case "ChannelDown":
           e.preventDefault();
           prevSlide();
           break;
+        case "Enter":
+        case "MediaPlayPause":
+        case "MediaPause":
+        case "MediaPlay":
         case "p":
         case "P":
+          e.preventDefault();
           togglePause();
           break;
         case "f":
         case "F":
+        case "F11":
+          e.preventDefault();
           toggleFullscreen();
           break;
       }
     };
+
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
