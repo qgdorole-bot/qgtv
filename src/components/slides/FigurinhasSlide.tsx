@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Clock, MapPin, Sparkles, Star } from "lucide-react";
-import neymarImg from "@/assets/neymar-figurinha.png";
+import figurinhaAlbum from "@/assets/figurinha-album.png";
 import cbfLogo from "@/assets/cbf-logo.png";
 
 interface Props {
@@ -39,8 +39,8 @@ export const FigurinhasSlide = ({ isActive }: Props) => {
 
       <div className="relative z-10 h-full w-full flex items-center justify-center p-8 md:p-12 lg:p-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-7xl w-full items-center">
-          {/* Images side by side */}
-          <div className={cn("relative flex flex-col sm:flex-row items-center justify-center gap-6", isActive && "fade-in")}>
+          {/* Images: CBF logo + figurinha estilo álbum */}
+          <div className={cn("relative flex items-center justify-center gap-6", isActive && "fade-in")}>
             <div
               className="absolute inset-0 rounded-3xl blur-3xl opacity-50"
               style={{
@@ -48,26 +48,28 @@ export const FigurinhasSlide = ({ isActive }: Props) => {
                   "radial-gradient(circle, #10b981 0%, transparent 70%)",
               }}
             />
+            {/* CBF Logo */}
             <img
               src={cbfLogo}
               alt="CBF Logo"
               loading="lazy"
               width={280}
               height={280}
-              className="relative w-48 sm:w-56 md:w-64 rounded-2xl shadow-2xl"
+              className="relative w-40 sm:w-48 md:w-56 rounded-2xl shadow-2xl"
               style={{
                 filter: "drop-shadow(0 0 30px rgba(16, 185, 129, 0.5))",
               }}
             />
+            {/* Figurinha de álbum - principal */}
             <img
-              src={neymarImg}
-              alt="Neymar Figurinha"
+              src={figurinhaAlbum}
+              alt="Figurinha de Álbum"
               loading="lazy"
-              width={320}
-              height={320}
-              className="relative w-52 sm:w-60 md:w-72 rounded-3xl shadow-2xl"
+              width={400}
+              height={400}
+              className="relative w-56 sm:w-64 md:w-80"
               style={{
-                filter: "drop-shadow(0 0 40px rgba(16, 185, 129, 0.5))",
+                filter: "drop-shadow(0 0 50px rgba(16, 185, 129, 0.6)) drop-shadow(0 10px 30px rgba(0,0,0,0.5))",
               }}
             />
           </div>
