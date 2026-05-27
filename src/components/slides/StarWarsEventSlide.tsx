@@ -92,8 +92,9 @@ export const StarWarsEventSlide = ({ isActive }: Props) => {
             </p>
 
             <div className="space-y-3 pt-2">
-              <InfoRow icon={<Calendar className="w-5 h-5" />} text="Domingo · 24/05/2026" />
-              <InfoRow icon={<MapPin className="w-5 h-5" />} text="Shopping Eldorado · Pinheiros" />
+              <InfoRow icon={<Calendar className="w-5 h-5" />} text="Domingo · 31/05/2026" />
+              <InfoRow icon={<Clock className="w-5 h-5" />} text="15:10 às 18:10" />
+              <InfoRow icon={<MapPin className="w-5 h-5" />} text="Shopping Frei Caneca · Consolação" />
             </div>
 
             <div
