@@ -10,6 +10,7 @@ import { ClosingSlide } from "./slides/ClosingSlide";
 import { SlideProgress } from "./SlideProgress";
 import { PresentationControls } from "./PresentationControls";
 import { CornerLogo } from "./CornerLogo";
+import { TVControls } from "./TVControls";
 
 const SLIDE_DURATION = 14000; // 14 seconds per slide (more time to read)
 
@@ -74,6 +75,17 @@ export const Presentation = () => {
         onNextSlide={nextSlide}
         onToggleFullscreen={toggleFullscreen}
       />
+
+      {/* TV-friendly large controls (always visible, optimized for remotes) */}
+      <TVControls
+        isPaused={isPaused}
+        isFullscreen={isFullscreen}
+        onTogglePause={togglePause}
+        onPrevSlide={prevSlide}
+        onNextSlide={nextSlide}
+        onToggleFullscreen={toggleFullscreen}
+      />
+
 
       {/* Instructions overlay (fades out) */}
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2 text-white/30 text-sm font-light z-20 animate-fade-out pointer-events-none font-display tracking-wider">
