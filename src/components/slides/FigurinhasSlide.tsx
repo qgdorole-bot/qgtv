@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
-import { Calendar, Clock, MapPin, Sparkles, Star } from "lucide-react";
+import { Clock, MapPin, Sparkles, Star } from "lucide-react";
+import neymarImg from "@/assets/neymar-figurinha.png";
 
 interface Props {
   isActive: boolean;
