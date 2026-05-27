@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Calendar, HelpCircle, MapPin, Sparkles } from "lucide-react";
+import { Calendar, Clock, MapPin, Sparkles, Star } from "lucide-react";
 
 interface Props {
   isActive: boolean;
