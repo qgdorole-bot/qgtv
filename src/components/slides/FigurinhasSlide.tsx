@@ -81,19 +81,25 @@ export const FigurinhasSlide = ({ isActive }: Props) => {
           </p>
 
           {/* Info rows */}
-          <div className={cn("space-y-4 pt-4 flex flex-col items-center", isActive && "fade-in-delayed")}>
-            <InfoRow
-              icon={<Calendar className="w-6 h-6" />}
-              text="Data a confirmar"
-            />
+          <div className={cn("space-y-5 pt-6 flex flex-col items-center", isActive && "fade-in-delayed")}>
             <InfoRow
               icon={<MapPin className="w-6 h-6" />}
-              text="Local a confirmar"
+              text="Sala do QG"
             />
-            <InfoRow
-              icon={<HelpCircle className="w-6 h-6" />}
-              text="Fique ligado nas novidades!"
-            />
+            <div className="flex flex-col gap-3 items-center">
+              <InfoRow
+                icon={<Clock className="w-6 h-6" />}
+                text="Quinta-feira · 13:00"
+              />
+              <InfoRow
+                icon={<Clock className="w-6 h-6" />}
+                text="Sexta-feira · 16:00"
+              />
+              <InfoRow
+                icon={<Clock className="w-6 h-6" />}
+                text="Sábado · 13:00"
+              />
+            </div>
           </div>
 
           {/* CTA */}
@@ -108,8 +114,8 @@ export const FigurinhasSlide = ({ isActive }: Props) => {
                   "0 0 40px rgba(16, 185, 129, 0.6), inset 0 1px 0 rgba(255,255,255,0.3)",
               }}
             >
-              <Sparkles className="w-5 h-5" />
-              Em breve mais informações
+              <Star className="w-5 h-5 fill-current" />
+              Troque e complete seu álbum
             </div>
           </div>
         </div>
