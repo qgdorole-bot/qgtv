@@ -6,6 +6,7 @@ import { GamificationOverviewSlide } from "./slides/GamificationOverviewSlide";
 import { InstitutionalSlide } from "./slides/InstitutionalSlide";
 import { StarWarsEventSlide } from "./slides/StarWarsEventSlide";
 import { QGDateSlide } from "./slides/QGDateSlide";
+import { FigurinhasSlide } from "./slides/FigurinhasSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
 import { SlideProgress } from "./SlideProgress";
 import { PresentationControls } from "./PresentationControls";
