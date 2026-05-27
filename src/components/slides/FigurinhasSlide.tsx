@@ -37,86 +37,109 @@ export const FigurinhasSlide = ({ isActive }: Props) => {
       </div>
 
       <div className="relative z-10 h-full w-full flex items-center justify-center p-8 md:p-12 lg:p-16">
-        <div className="max-w-5xl w-full text-center space-y-8">
-          {/* Kicker */}
-          <div
-            className={cn(
-              "inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm md:text-base font-display tracking-[0.3em] uppercase mx-auto",
-              isActive && "fade-in"
-            )}
-            style={{
-              background: "rgba(16, 185, 129, 0.15)",
-              border: "1px solid rgba(16, 185, 129, 0.5)",
-              color: "#6ee7b7",
-            }}
-          >
-            <Sparkles className="w-4 h-4" />
-            Novidade do QG
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-7xl w-full items-center">
+          {/* Image */}
+          <div className={cn("relative flex justify-center", isActive && "fade-in")}>
+            <div
+              className="absolute inset-0 rounded-3xl blur-3xl opacity-50"
+              style={{
+                background:
+                  "radial-gradient(circle, #10b981 0%, transparent 70%)",
+              }}
+            />
+            <img
+              src={neymarImg}
+              alt="Neymar Figurinha"
+              loading="lazy"
+              width={600}
+              height={600}
+              className="relative w-full max-w-md rounded-3xl shadow-2xl"
+              style={{
+                filter: "drop-shadow(0 0 40px rgba(16, 185, 129, 0.5))",
+              }}
+            />
           </div>
 
-          {/* Title */}
-          <h2
-            className={cn(
-              "font-display font-black text-5xl md:text-7xl lg:text-8xl leading-none tracking-tight",
-              isActive && "fade-in-up"
-            )}
-            style={{
-              background:
-                "linear-gradient(135deg, #34d399 0%, #10b981 40%, #059669 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              textShadow: "0 0 50px rgba(16, 185, 129, 0.4)",
-            }}
-          >
-            TROCA DE FIGURINHAS
-          </h2>
+          {/* Content */}
+          <div className="space-y-6 text-center lg:text-left">
+            {/* Kicker */}
+            <div
+              className={cn(
+                "inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm md:text-base font-display tracking-[0.3em] uppercase mx-auto lg:mx-0",
+                isActive && "fade-in"
+              )}
+              style={{
+                background: "rgba(16, 185, 129, 0.15)",
+                border: "1px solid rgba(16, 185, 129, 0.5)",
+                color: "#6ee7b7",
+              }}
+            >
+              <Sparkles className="w-4 h-4" />
+              Novidade do QG
+            </div>
 
-          {/* Subtitle */}
-          <p
-            className={cn(
-              "text-white/90 font-display text-xl md:text-3xl lg:text-4xl -mt-2",
-              isActive && "fade-in-up"
-            )}
-          >
-            Complete seu álbum e troque com a galera
-          </p>
+            {/* Title */}
+            <h2
+              className={cn(
+                "font-display font-black text-5xl md:text-6xl lg:text-7xl leading-none tracking-tight",
+                isActive && "fade-in-up"
+              )}
+              style={{
+                background:
+                  "linear-gradient(135deg, #34d399 0%, #10b981 40%, #059669 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                textShadow: "0 0 50px rgba(16, 185, 129, 0.4)",
+              }}
+            >
+              TROCA DE FIGURINHAS
+            </h2>
 
-          {/* Info rows */}
-          <div className={cn("space-y-5 pt-6 flex flex-col items-center", isActive && "fade-in-delayed")}>
-            <InfoRow
-              icon={<MapPin className="w-6 h-6" />}
-              text="Sala do QG"
-            />
-            <div className="flex flex-col gap-3 items-center">
+            {/* Subtitle */}
+            <p
+              className={cn(
+                "text-white/90 font-display text-lg md:text-2xl lg:text-3xl",
+                isActive && "fade-in-up"
+              )}
+            >
+              Complete seu álbum e troque com a galera
+            </p>
+
+            {/* Info rows */}
+            <div className={cn("space-y-4 pt-2", isActive && "fade-in-delayed")}>
               <InfoRow
-                icon={<Clock className="w-6 h-6" />}
+                icon={<MapPin className="w-5 h-5" />}
+                text="Sala do QG"
+              />
+              <InfoRow
+                icon={<Clock className="w-5 h-5" />}
                 text="Quinta-feira · 13:00"
               />
               <InfoRow
-                icon={<Clock className="w-6 h-6" />}
+                icon={<Clock className="w-5 h-5" />}
                 text="Sexta-feira · 16:00"
               />
               <InfoRow
-                icon={<Clock className="w-6 h-6" />}
+                icon={<Clock className="w-5 h-5" />}
                 text="Sábado · 13:00"
               />
             </div>
-          </div>
 
-          {/* CTA */}
-          <div className={cn("pt-6", isActive && "fade-in-delayed")}>
-            <div
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-display font-bold tracking-wider text-base md:text-lg uppercase"
-              style={{
-                background:
-                  "linear-gradient(135deg, #10b981 0%, #059669 100%)",
-                color: "white",
-                boxShadow:
-                  "0 0 40px rgba(16, 185, 129, 0.6), inset 0 1px 0 rgba(255,255,255,0.3)",
-              }}
-            >
-              <Star className="w-5 h-5 fill-current" />
-              Troque e complete seu álbum
+            {/* CTA */}
+            <div className={cn("pt-4", isActive && "fade-in-delayed")}>
+              <div
+                className="inline-flex items-center gap-3 px-7 py-4 rounded-full font-display font-bold tracking-wider text-base md:text-lg uppercase"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                  color: "white",
+                  boxShadow:
+                    "0 0 40px rgba(16, 185, 129, 0.6), inset 0 1px 0 rgba(255,255,255,0.3)",
+                }}
+              >
+                <Star className="w-5 h-5 fill-current" />
+                Troque e complete seu álbum
+              </div>
             </div>
           </div>
         </div>
