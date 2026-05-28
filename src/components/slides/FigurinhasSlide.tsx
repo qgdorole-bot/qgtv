@@ -152,14 +152,42 @@ export const FigurinhasSlide = ({ isActive }: Props) => {
         {/* Info row */}
         <div
           className={cn(
-            "flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-white/85 font-display text-sm md:text-base lg:text-lg",
+            "flex flex-col items-center gap-3 max-w-4xl w-full",
             isActive && "fade-in-delayed"
           )}
         >
-          <InfoRow icon={<MapPin className="w-4 h-4" />} text="Sala do QG" />
-          <InfoRow icon={<Clock className="w-4 h-4" />} text="Qui · 13:00" />
-          <InfoRow icon={<Clock className="w-4 h-4" />} text="Sex · 16:00" />
-          <InfoRow icon={<Clock className="w-4 h-4" />} text="Sáb · 13:00" />
+          <div
+            className="flex items-center justify-center gap-2 px-5 py-2 rounded-full font-display text-sm md:text-base"
+            style={{
+              background: "rgba(16, 185, 129, 0.2)",
+              border: "1px solid rgba(16, 185, 129, 0.6)",
+              color: "#6ee7b7",
+            }}
+          >
+            <MapPin className="w-4 h-4" />
+            <span className="font-bold tracking-wide">Sala do QG</span>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {[
+              { label: "Qui", time: "13:00" },
+              { label: "Sex", time: "16:00" },
+              { label: "Sáb", time: "13:00" },
+            ].map((slot) => (
+              <div
+                key={slot.label}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl font-display text-sm md:text-base"
+                style={{
+                  background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                }}
+              >
+                <Clock className="w-4 h-4 text-emerald-400" />
+                <span className="text-white/90 font-semibold">{slot.label}</span>
+                <span className="text-emerald-300 font-bold">{slot.time}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* CTA */}
