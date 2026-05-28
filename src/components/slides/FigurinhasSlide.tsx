@@ -217,9 +217,3 @@ export const FigurinhasSlide = ({ isActive }: Props) => {
   );
 };
 
-const InfoRow = ({ icon, text }: { icon: React.ReactNode; text: string }) => (
-  <div className="flex items-center gap-2">
-    <span className="text-emerald-400">{icon}</span>
-    <span>{text}</span>
-  </div>
-);
