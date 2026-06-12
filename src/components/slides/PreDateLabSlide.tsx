@@ -8,7 +8,6 @@ import {
   Eye,
   Sparkles,
   Handshake,
-  DollarSign,
   CheckCircle2,
 } from "lucide-react";
 
@@ -165,11 +164,6 @@ export const PreDateLabSlide = ({ isActive }: Props) => {
               icon={<Clock className="w-5 h-5" />}
               label="Duração"
               value="1h30"
-            />
-            <InfoLine
-              icon={<DollarSign className="w-5 h-5" />}
-              label="Investimento"
-              value="R$ 96 · Pix ou cartão"
             />
             <div className="flex items-start gap-2 text-white/75 font-display text-xs md:text-sm pt-1">
               <CheckCircle2 className="w-4 h-4 text-red-300 mt-0.5 shrink-0" />
