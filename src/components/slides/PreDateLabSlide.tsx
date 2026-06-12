@@ -8,7 +8,6 @@ import {
   Eye,
   Sparkles,
   Handshake,
-  DollarSign,
   CheckCircle2,
 } from "lucide-react";
 
