@@ -4,7 +4,7 @@ import { WelcomeSlide } from "./slides/WelcomeSlide";
 import { CardsSlide } from "./slides/CardsSlide";
 import { GamificationOverviewSlide } from "./slides/GamificationOverviewSlide";
 import { InstitutionalSlide } from "./slides/InstitutionalSlide";
-import { StarWarsEventSlide } from "./slides/StarWarsEventSlide";
+import { PreDateLabSlide } from "./slides/PreDateLabSlide";
 import { QGDateSlide } from "./slides/QGDateSlide";
 import { FigurinhasSlide } from "./slides/FigurinhasSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
