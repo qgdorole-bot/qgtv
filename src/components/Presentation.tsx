@@ -22,7 +22,7 @@ export const Presentation = () => {
     { id: "cards", component: CardsSlide, showWatermark: true },
     { id: "gamification", component: GamificationOverviewSlide, showWatermark: true },
     { id: "institutional", component: InstitutionalSlide, showWatermark: true },
-    { id: "starwars", component: StarWarsEventSlide, showWatermark: true },
+    { id: "predatelab", component: PreDateLabSlide, showWatermark: true },
     { id: "qgdate", component: QGDateSlide, showWatermark: true },
     { id: "figurinhas", component: FigurinhasSlide, showWatermark: true },
     { id: "closing", component: ClosingSlide, showWatermark: true },
