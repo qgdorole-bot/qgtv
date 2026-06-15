@@ -303,25 +303,86 @@ export const CopaCalendarSlide = ({ isActive }: Props) => {
                     </div>
 
                     {/* Teams + score */}
-                    <div className="flex items-center justify-between gap-2 mb-3">
-                      <span className="text-white font-display font-bold text-sm md:text-base truncate flex-1">
-                        {jogo.homeTeam.name}
-                      </span>
-                      <span
-                        className="text-sm font-display font-black px-3 py-0.5 rounded min-w-[60px] text-center"
-                        style={{
-                          background: hasScore
-                            ? "rgba(168, 85, 247, 0.35)"
-                            : "rgba(168, 85, 247, 0.2)",
-                          color: hasScore ? "#ffffff" : "#c084fc",
-                        }}
-                      >
-                        {hasScore ? `${jogo.score.home} - ${jogo.score.away}` : "VS"}
-                      </span>
-                      <span className="text-white font-display font-bold text-sm md:text-base truncate text-right flex-1">
-                        {jogo.awayTeam.name}
-                      </span>
-                    </div>
+                    {(() => {
+                      const homeColor = teamColor(jogo.homeTeam.tla);
+                      const awayColor = teamColor(jogo.awayTeam.tla);
+                      const homeFlag = teamFlag(jogo.homeTeam.tla);
+                      const awayFlag = teamFlag(jogo.awayTeam.tla);
+                      const homeWin = hasScore && (jogo.score.home as number) > (jogo.score.away as number);
+                      const awayWin = hasScore && (jogo.score.away as number) > (jogo.score.home as number);
+                      return (
+                        <div className="flex items-center justify-between gap-2 mb-3">
+                          {/* Home */}
+                          <div className="flex items-center gap-2 flex-1 min-w-0">
+                            {homeFlag ? (
+                              <img
+                                src={homeFlag}
+                                alt={jogo.homeTeam.name}
+                                className="w-7 h-5 md:w-8 md:h-6 object-cover rounded-sm shrink-0"
+                                style={{ boxShadow: `0 0 12px ${homeColor}80`, border: `1px solid ${homeColor}` }}
+                              />
+                            ) : (
+                              <div
+                                className="w-7 h-5 md:w-8 md:h-6 rounded-sm shrink-0"
+                                style={{ background: homeColor, opacity: 0.4 }}
+                              />
+                            )}
+                            <span
+                              className={cn(
+                                "font-display font-bold text-sm md:text-base truncate",
+                                homeWin ? "text-white" : "text-white/85"
+                              )}
+                              style={homeWin ? { textShadow: `0 0 12px ${homeColor}` } : undefined}
+                            >
+                              {jogo.homeTeam.name}
+                            </span>
+                          </div>
+
+                          {/* Score / VS */}
+                          <span
+                            className="text-sm md:text-base font-display font-black px-3 py-1 rounded-md min-w-[64px] text-center shrink-0"
+                            style={{
+                              background: hasScore
+                                ? `linear-gradient(135deg, ${homeColor}55, ${awayColor}55)`
+                                : "rgba(168, 85, 247, 0.2)",
+                              border: hasScore
+                                ? "1px solid rgba(255,255,255,0.2)"
+                                : "1px solid rgba(168, 85, 247, 0.4)",
+                              color: hasScore ? "#ffffff" : "#c084fc",
+                              textShadow: hasScore ? "0 1px 4px rgba(0,0,0,0.5)" : undefined,
+                            }}
+                          >
+                            {hasScore ? `${jogo.score.home} - ${jogo.score.away}` : "VS"}
+                          </span>
+
+                          {/* Away */}
+                          <div className="flex items-center gap-2 flex-1 min-w-0 justify-end">
+                            <span
+                              className={cn(
+                                "font-display font-bold text-sm md:text-base truncate text-right",
+                                awayWin ? "text-white" : "text-white/85"
+                              )}
+                              style={awayWin ? { textShadow: `0 0 12px ${awayColor}` } : undefined}
+                            >
+                              {jogo.awayTeam.name}
+                            </span>
+                            {awayFlag ? (
+                              <img
+                                src={awayFlag}
+                                alt={jogo.awayTeam.name}
+                                className="w-7 h-5 md:w-8 md:h-6 object-cover rounded-sm shrink-0"
+                                style={{ boxShadow: `0 0 12px ${awayColor}80`, border: `1px solid ${awayColor}` }}
+                              />
+                            ) : (
+                              <div
+                                className="w-7 h-5 md:w-8 md:h-6 rounded-sm shrink-0"
+                                style={{ background: awayColor, opacity: 0.4 }}
+                              />
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })()}
 
                     {/* Info row */}
                     <div className="flex flex-wrap items-center gap-2 text-[10px] md:text-xs text-white/60 font-display">
