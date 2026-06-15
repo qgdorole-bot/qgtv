@@ -4,8 +4,9 @@ import { WelcomeSlide } from "./slides/WelcomeSlide";
 import { CardsSlide } from "./slides/CardsSlide";
 import { GamificationOverviewSlide } from "./slides/GamificationOverviewSlide";
 import { InstitutionalSlide } from "./slides/InstitutionalSlide";
-import { PreDateLabSlide } from "./slides/PreDateLabSlide";
 import { QGDateSlide } from "./slides/QGDateSlide";
+import { StarWarsEventSlide } from "./slides/StarWarsEventSlide";
+import { ToyStoryEventSlide } from "./slides/ToyStoryEventSlide";
 import { FigurinhasSlide } from "./slides/FigurinhasSlide";
 import { CopaCalendarSlide } from "./slides/CopaCalendarSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
@@ -16,19 +17,39 @@ import { TVControls } from "./TVControls";
 
 const SLIDE_DURATION = 14000; // 14 seconds per slide (more time to read)
 
+type SlideDef = {
+  id: string;
+  component: React.ComponentType<{ isActive: boolean }>;
+  showWatermark: boolean;
+  /** YYYY-MM-DD. Slide is hidden from rotation the day AFTER this date. */
+  expiresAt?: string;
+};
+
+const ALL_SLIDES: SlideDef[] = [
+  { id: "welcome", component: WelcomeSlide, showWatermark: true },
+  { id: "charada", component: CharadaSlide, showWatermark: true },
+  { id: "cards", component: CardsSlide, showWatermark: true },
+  { id: "gamification", component: GamificationOverviewSlide, showWatermark: true },
+  { id: "institutional", component: InstitutionalSlide, showWatermark: true },
+  // Event slides (auto-hidden after their date)
+  { id: "qgdate", component: QGDateSlide, showWatermark: true, expiresAt: "2026-06-12" },
+  { id: "starwars", component: StarWarsEventSlide, showWatermark: true, expiresAt: "2026-05-31" },
+  { id: "toystory", component: ToyStoryEventSlide, showWatermark: true, expiresAt: "2026-06-21" },
+  // Ongoing
+  { id: "figurinhas", component: FigurinhasSlide, showWatermark: true },
+  { id: "copacalendar", component: CopaCalendarSlide, showWatermark: true },
+  { id: "closing", component: ClosingSlide, showWatermark: true },
+];
+
+const isExpired = (expiresAt?: string) => {
+  if (!expiresAt) return false;
+  const today = new Date();
+  const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+  return expiresAt < todayStr;
+};
+
 export const Presentation = () => {
-  const slides = [
-    { id: "welcome", component: WelcomeSlide, showWatermark: true },
-    { id: "charada", component: CharadaSlide, showWatermark: true },
-    { id: "cards", component: CardsSlide, showWatermark: true },
-    { id: "gamification", component: GamificationOverviewSlide, showWatermark: true },
-    { id: "institutional", component: InstitutionalSlide, showWatermark: true },
-    { id: "predatelab", component: PreDateLabSlide, showWatermark: true },
-    { id: "qgdate", component: QGDateSlide, showWatermark: true },
-    { id: "figurinhas", component: FigurinhasSlide, showWatermark: true },
-    { id: "copacalendar", component: CopaCalendarSlide, showWatermark: true },
-    { id: "closing", component: ClosingSlide, showWatermark: true },
-  ];
+  const slides = ALL_SLIDES.filter((s) => !isExpired(s.expiresAt));
 
   const {
     currentSlide,
