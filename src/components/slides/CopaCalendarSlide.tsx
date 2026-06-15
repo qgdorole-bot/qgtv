@@ -42,6 +42,46 @@ const STATUS_LABEL: Record<string, string> = {
 
 const DIAS = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
 
+// FIFA TLA → ISO 3166-1 alpha-2 (para flagcdn.com)
+const TLA_TO_ISO2: Record<string, string> = {
+  BRA: "br", ARG: "ar", URU: "uy", PAR: "py", COL: "co", ECU: "ec", PER: "pe",
+  CHI: "cl", VEN: "ve", BOL: "bo", USA: "us", MEX: "mx", CAN: "ca", CRC: "cr",
+  PAN: "pa", HON: "hn", JAM: "jm", HAI: "ht", ESP: "es", POR: "pt", FRA: "fr",
+  GER: "de", ITA: "it", ENG: "gb-eng", SCO: "gb-sct", WAL: "gb-wls", NIR: "gb-nir",
+  IRL: "ie", NED: "nl", BEL: "be", SUI: "ch", AUT: "at", POL: "pl", CZE: "cz",
+  SVK: "sk", HUN: "hu", ROU: "ro", BUL: "bg", GRE: "gr", CRO: "hr", SRB: "rs",
+  SVN: "si", BIH: "ba", MKD: "mk", ALB: "al", UKR: "ua", RUS: "ru", TUR: "tr",
+  DEN: "dk", SWE: "se", NOR: "no", FIN: "fi", ISL: "is", JPN: "jp", KOR: "kr",
+  PRK: "kp", CHN: "cn", AUS: "au", NZL: "nz", IRN: "ir", IRQ: "iq", KSA: "sa",
+  UAE: "ae", QAT: "qa", SYR: "sy", JOR: "jo", LBN: "lb", PLE: "ps", MAR: "ma",
+  ALG: "dz", TUN: "tn", EGY: "eg", LBY: "ly", SEN: "sn", CIV: "ci", GHA: "gh",
+  NGA: "ng", CMR: "cm", RSA: "za", KEN: "ke", UGA: "ug", ZIM: "zw", MLI: "ml",
+  BFA: "bf", ANG: "ao", CPV: "cv", GUI: "gn", GAB: "ga", COD: "cd", CGO: "cg",
+  ETH: "et", SUD: "sd", MAD: "mg", ZAM: "zm", IND: "in", IDN: "id", THA: "th",
+  VIE: "vn", MAS: "my", SGP: "sg", PHI: "ph", UZB: "uz",
+};
+
+const TEAM_ACCENT: Record<string, string> = {
+  BRA: "#facc15", ARG: "#60a5fa", FRA: "#3b82f6", GER: "#a3a3a3", ESP: "#ef4444",
+  POR: "#16a34a", ENG: "#dc2626", NED: "#f97316", ITA: "#22c55e", BEL: "#eab308",
+  CRO: "#ef4444", URU: "#38bdf8", COL: "#fde047", MEX: "#16a34a", USA: "#3b82f6",
+  CAN: "#ef4444", MAR: "#dc2626", JPN: "#dc2626", KOR: "#3b82f6", AUS: "#facc15",
+  SUI: "#ef4444", DEN: "#dc2626", SEN: "#16a34a", CIV: "#f97316", GHA: "#facc15",
+  CMR: "#16a34a", RSA: "#16a34a", IRN: "#16a34a", SRB: "#dc2626", POL: "#dc2626",
+};
+
+function teamFlag(tla?: string) {
+  if (!tla) return null;
+  const iso = TLA_TO_ISO2[tla.toUpperCase()];
+  if (!iso) return null;
+  return `https://flagcdn.com/w80/${iso}.png`;
+}
+
+function teamColor(tla?: string) {
+  if (!tla) return "#a855f7";
+  return TEAM_ACCENT[tla.toUpperCase()] || "#a855f7";
+}
+
 function formatMatchDate(utc: string) {
   const d = new Date(utc);
   const dia = DIAS[d.getDay()];
@@ -263,25 +303,86 @@ export const CopaCalendarSlide = ({ isActive }: Props) => {
                     </div>
 
                     {/* Teams + score */}
-                    <div className="flex items-center justify-between gap-2 mb-3">
-                      <span className="text-white font-display font-bold text-sm md:text-base truncate flex-1">
-                        {jogo.homeTeam.name}
-                      </span>
-                      <span
-                        className="text-sm font-display font-black px-3 py-0.5 rounded min-w-[60px] text-center"
-                        style={{
-                          background: hasScore
-                            ? "rgba(168, 85, 247, 0.35)"
-                            : "rgba(168, 85, 247, 0.2)",
-                          color: hasScore ? "#ffffff" : "#c084fc",
-                        }}
-                      >
-                        {hasScore ? `${jogo.score.home} - ${jogo.score.away}` : "VS"}
-                      </span>
-                      <span className="text-white font-display font-bold text-sm md:text-base truncate text-right flex-1">
-                        {jogo.awayTeam.name}
-                      </span>
-                    </div>
+                    {(() => {
+                      const homeColor = teamColor(jogo.homeTeam.tla);
+                      const awayColor = teamColor(jogo.awayTeam.tla);
+                      const homeFlag = teamFlag(jogo.homeTeam.tla);
+                      const awayFlag = teamFlag(jogo.awayTeam.tla);
+                      const homeWin = hasScore && (jogo.score.home as number) > (jogo.score.away as number);
+                      const awayWin = hasScore && (jogo.score.away as number) > (jogo.score.home as number);
+                      return (
+                        <div className="flex items-center justify-between gap-2 mb-3">
+                          {/* Home */}
+                          <div className="flex items-center gap-2 flex-1 min-w-0">
+                            {homeFlag ? (
+                              <img
+                                src={homeFlag}
+                                alt={jogo.homeTeam.name}
+                                className="w-7 h-5 md:w-8 md:h-6 object-cover rounded-sm shrink-0"
+                                style={{ boxShadow: `0 0 12px ${homeColor}80`, border: `1px solid ${homeColor}` }}
+                              />
+                            ) : (
+                              <div
+                                className="w-7 h-5 md:w-8 md:h-6 rounded-sm shrink-0"
+                                style={{ background: homeColor, opacity: 0.4 }}
+                              />
+                            )}
+                            <span
+                              className={cn(
+                                "font-display font-bold text-sm md:text-base truncate",
+                                homeWin ? "text-white" : "text-white/85"
+                              )}
+                              style={homeWin ? { textShadow: `0 0 12px ${homeColor}` } : undefined}
+                            >
+                              {jogo.homeTeam.name}
+                            </span>
+                          </div>
+
+                          {/* Score / VS */}
+                          <span
+                            className="text-sm md:text-base font-display font-black px-3 py-1 rounded-md min-w-[64px] text-center shrink-0"
+                            style={{
+                              background: hasScore
+                                ? `linear-gradient(135deg, ${homeColor}55, ${awayColor}55)`
+                                : "rgba(168, 85, 247, 0.2)",
+                              border: hasScore
+                                ? "1px solid rgba(255,255,255,0.2)"
+                                : "1px solid rgba(168, 85, 247, 0.4)",
+                              color: hasScore ? "#ffffff" : "#c084fc",
+                              textShadow: hasScore ? "0 1px 4px rgba(0,0,0,0.5)" : undefined,
+                            }}
+                          >
+                            {hasScore ? `${jogo.score.home} - ${jogo.score.away}` : "VS"}
+                          </span>
+
+                          {/* Away */}
+                          <div className="flex items-center gap-2 flex-1 min-w-0 justify-end">
+                            <span
+                              className={cn(
+                                "font-display font-bold text-sm md:text-base truncate text-right",
+                                awayWin ? "text-white" : "text-white/85"
+                              )}
+                              style={awayWin ? { textShadow: `0 0 12px ${awayColor}` } : undefined}
+                            >
+                              {jogo.awayTeam.name}
+                            </span>
+                            {awayFlag ? (
+                              <img
+                                src={awayFlag}
+                                alt={jogo.awayTeam.name}
+                                className="w-7 h-5 md:w-8 md:h-6 object-cover rounded-sm shrink-0"
+                                style={{ boxShadow: `0 0 12px ${awayColor}80`, border: `1px solid ${awayColor}` }}
+                              />
+                            ) : (
+                              <div
+                                className="w-7 h-5 md:w-8 md:h-6 rounded-sm shrink-0"
+                                style={{ background: awayColor, opacity: 0.4 }}
+                              />
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })()}
 
                     {/* Info row */}
                     <div className="flex flex-wrap items-center gap-2 text-[10px] md:text-xs text-white/60 font-display">
