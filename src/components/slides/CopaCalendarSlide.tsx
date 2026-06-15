@@ -42,6 +42,46 @@ const STATUS_LABEL: Record<string, string> = {
 
 const DIAS = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
 
+// FIFA TLA → ISO 3166-1 alpha-2 (para flagcdn.com)
+const TLA_TO_ISO2: Record<string, string> = {
+  BRA: "br", ARG: "ar", URU: "uy", PAR: "py", COL: "co", ECU: "ec", PER: "pe",
+  CHI: "cl", VEN: "ve", BOL: "bo", USA: "us", MEX: "mx", CAN: "ca", CRC: "cr",
+  PAN: "pa", HON: "hn", JAM: "jm", HAI: "ht", ESP: "es", POR: "pt", FRA: "fr",
+  GER: "de", ITA: "it", ENG: "gb-eng", SCO: "gb-sct", WAL: "gb-wls", NIR: "gb-nir",
+  IRL: "ie", NED: "nl", BEL: "be", SUI: "ch", AUT: "at", POL: "pl", CZE: "cz",
+  SVK: "sk", HUN: "hu", ROU: "ro", BUL: "bg", GRE: "gr", CRO: "hr", SRB: "rs",
+  SVN: "si", BIH: "ba", MKD: "mk", ALB: "al", UKR: "ua", RUS: "ru", TUR: "tr",
+  DEN: "dk", SWE: "se", NOR: "no", FIN: "fi", ISL: "is", JPN: "jp", KOR: "kr",
+  PRK: "kp", CHN: "cn", AUS: "au", NZL: "nz", IRN: "ir", IRQ: "iq", KSA: "sa",
+  UAE: "ae", QAT: "qa", SYR: "sy", JOR: "jo", LBN: "lb", PLE: "ps", MAR: "ma",
+  ALG: "dz", TUN: "tn", EGY: "eg", LBY: "ly", SEN: "sn", CIV: "ci", GHA: "gh",
+  NGA: "ng", CMR: "cm", RSA: "za", KEN: "ke", UGA: "ug", ZIM: "zw", MLI: "ml",
+  BFA: "bf", ANG: "ao", CPV: "cv", GUI: "gn", GAB: "ga", COD: "cd", CGO: "cg",
+  ETH: "et", SUD: "sd", MAD: "mg", ZAM: "zm", IND: "in", IDN: "id", THA: "th",
+  VIE: "vn", MAS: "my", SGP: "sg", PHI: "ph", UZB: "uz",
+};
+
+const TEAM_ACCENT: Record<string, string> = {
+  BRA: "#facc15", ARG: "#60a5fa", FRA: "#3b82f6", GER: "#a3a3a3", ESP: "#ef4444",
+  POR: "#16a34a", ENG: "#dc2626", NED: "#f97316", ITA: "#22c55e", BEL: "#eab308",
+  CRO: "#ef4444", URU: "#38bdf8", COL: "#fde047", MEX: "#16a34a", USA: "#3b82f6",
+  CAN: "#ef4444", MAR: "#dc2626", JPN: "#dc2626", KOR: "#3b82f6", AUS: "#facc15",
+  SUI: "#ef4444", DEN: "#dc2626", SEN: "#16a34a", CIV: "#f97316", GHA: "#facc15",
+  CMR: "#16a34a", RSA: "#16a34a", IRN: "#16a34a", SRB: "#dc2626", POL: "#dc2626",
+};
+
+function teamFlag(tla?: string) {
+  if (!tla) return null;
+  const iso = TLA_TO_ISO2[tla.toUpperCase()];
+  if (!iso) return null;
+  return `https://flagcdn.com/w80/${iso}.png`;
+}
+
+function teamColor(tla?: string) {
+  if (!tla) return "#a855f7";
+  return TEAM_ACCENT[tla.toUpperCase()] || "#a855f7";
+}
+
 function formatMatchDate(utc: string) {
   const d = new Date(utc);
   const dia = DIAS[d.getDay()];
