@@ -7,6 +7,7 @@ import { InstitutionalSlide } from "./slides/InstitutionalSlide";
 import { PreDateLabSlide } from "./slides/PreDateLabSlide";
 import { QGDateSlide } from "./slides/QGDateSlide";
 import { FigurinhasSlide } from "./slides/FigurinhasSlide";
+import { CopaCalendarSlide } from "./slides/CopaCalendarSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
 import { SlideProgress } from "./SlideProgress";
 import { PresentationControls } from "./PresentationControls";
