@@ -7,6 +7,7 @@ import { InstitutionalSlide } from "./slides/InstitutionalSlide";
 import { PreDateLabSlide } from "./slides/PreDateLabSlide";
 import { QGDateSlide } from "./slides/QGDateSlide";
 import { FigurinhasSlide } from "./slides/FigurinhasSlide";
+import { CopaCalendarSlide } from "./slides/CopaCalendarSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
 import { SlideProgress } from "./SlideProgress";
 import { PresentationControls } from "./PresentationControls";
@@ -25,6 +26,7 @@ export const Presentation = () => {
     { id: "predatelab", component: PreDateLabSlide, showWatermark: true },
     { id: "qgdate", component: QGDateSlide, showWatermark: true },
     { id: "figurinhas", component: FigurinhasSlide, showWatermark: true },
+    { id: "copacalendar", component: CopaCalendarSlide, showWatermark: true },
     { id: "closing", component: ClosingSlide, showWatermark: true },
   ];
 
