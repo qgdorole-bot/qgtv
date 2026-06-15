@@ -26,6 +26,7 @@ export const Presentation = () => {
     { id: "predatelab", component: PreDateLabSlide, showWatermark: true },
     { id: "qgdate", component: QGDateSlide, showWatermark: true },
     { id: "figurinhas", component: FigurinhasSlide, showWatermark: true },
+    { id: "copacalendar", component: CopaCalendarSlide, showWatermark: true },
     { id: "closing", component: ClosingSlide, showWatermark: true },
   ];
 
