@@ -9,6 +9,8 @@ Deno.serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  try {
+
   const json = (body: unknown, status = 200) =>
     new Response(JSON.stringify(body), {
       status,
