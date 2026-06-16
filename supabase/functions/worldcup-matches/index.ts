@@ -85,4 +85,8 @@ Deno.serve(async (req) => {
     fallback: true,
     matches: [],
   });
+  } catch (e) {
+    console.error("Erro inesperado no handler:", e);
+    return json({ error: String(e), fallback: true, matches: [] });
+  }
 });
