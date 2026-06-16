@@ -1,0 +1,12 @@
+{
+  "appId": "app.lovable.c7e038df57534b9b9b1be8796c21ab94",
+  "appName": "qgtv",
+  "webDir": "dist",
+  "server": {
+    "url": "https://qgtv.lovable.app",
+    "cleartext": true
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}
