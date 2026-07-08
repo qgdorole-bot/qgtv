@@ -7,6 +7,7 @@ import { InstitutionalSlide } from "./slides/InstitutionalSlide";
 import { QGDateSlide } from "./slides/QGDateSlide";
 import { StarWarsEventSlide } from "./slides/StarWarsEventSlide";
 import { ToyStoryEventSlide } from "./slides/ToyStoryEventSlide";
+import { DoffEventSlide } from "./slides/DoffEventSlide";
 import { FigurinhasSlide } from "./slides/FigurinhasSlide";
 import { CopaCalendarSlide } from "./slides/CopaCalendarSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
