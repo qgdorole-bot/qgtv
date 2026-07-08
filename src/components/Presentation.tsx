@@ -7,6 +7,7 @@ import { InstitutionalSlide } from "./slides/InstitutionalSlide";
 import { QGDateSlide } from "./slides/QGDateSlide";
 import { StarWarsEventSlide } from "./slides/StarWarsEventSlide";
 import { ToyStoryEventSlide } from "./slides/ToyStoryEventSlide";
+import { DoffEventSlide } from "./slides/DoffEventSlide";
 import { FigurinhasSlide } from "./slides/FigurinhasSlide";
 import { CopaCalendarSlide } from "./slides/CopaCalendarSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
@@ -35,6 +36,7 @@ const ALL_SLIDES: SlideDef[] = [
   { id: "qgdate", component: QGDateSlide, showWatermark: true, expiresAt: "2026-06-12" },
   { id: "starwars", component: StarWarsEventSlide, showWatermark: true, expiresAt: "2026-05-31" },
   { id: "toystory", component: ToyStoryEventSlide, showWatermark: true, expiresAt: "2026-06-21" },
+  { id: "doff", component: DoffEventSlide, showWatermark: true, expiresAt: "2026-07-12" },
   // Ongoing
   { id: "figurinhas", component: FigurinhasSlide, showWatermark: true },
   { id: "copacalendar", component: CopaCalendarSlide, showWatermark: true },
