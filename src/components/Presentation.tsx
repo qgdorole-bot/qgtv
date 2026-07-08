@@ -36,6 +36,7 @@ const ALL_SLIDES: SlideDef[] = [
   { id: "qgdate", component: QGDateSlide, showWatermark: true, expiresAt: "2026-06-12" },
   { id: "starwars", component: StarWarsEventSlide, showWatermark: true, expiresAt: "2026-05-31" },
   { id: "toystory", component: ToyStoryEventSlide, showWatermark: true, expiresAt: "2026-06-21" },
+  { id: "doff", component: DoffEventSlide, showWatermark: true, expiresAt: "2026-07-12" },
   // Ongoing
   { id: "figurinhas", component: FigurinhasSlide, showWatermark: true },
   { id: "copacalendar", component: CopaCalendarSlide, showWatermark: true },
