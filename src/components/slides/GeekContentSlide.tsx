@@ -220,7 +220,7 @@ export const GeekContentSlide = ({ isActive }: GeekContentSlideProps) => {
               <div className={cn("flex items-start gap-5 rounded-2xl border px-7 py-7", tone.chip)}>
                 <Sparkles className="h-8 w-8 md:h-10 md:w-10 shrink-0 mt-1" />
                 <p className="text-2xl md:text-4xl font-semibold leading-snug text-brand-cream">
-                  {item.curiosity}
+                  {curiosity}
                 </p>
               </div>
             </div>
