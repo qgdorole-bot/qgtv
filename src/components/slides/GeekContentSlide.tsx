@@ -134,6 +134,8 @@ export const GeekContentSlide = ({ isActive }: GeekContentSlideProps) => {
   const item = CONTENTS[index];
   const tone = TONES[item.tone];
   const Icon = item.icon;
+  const day = getDayIndex();
+  const curiosity = item.curiosities[(day + index) % item.curiosities.length];
 
   return (
     <div
