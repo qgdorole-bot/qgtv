@@ -82,7 +82,7 @@ export const ClosingSlide = ({ isActive }: ClosingSlideProps) => {
         {/* Instagram */}
         <div className={`flex items-center gap-4 ${isActive ? 'fade-in-delayed' : ''}`}>
           <Instagram className="w-8 h-8 md:w-10 md:h-10 text-primary" />
-          <span className="text-2xl md:text-3xl font-display font-bold bg-cyber-gradient bg-clip-text text-transparent">
+          <span className="text-2xl md:text-3xl font-display font-bold bg-gradient-to-r from-brand-orange-light via-brand-orange to-brand-sky bg-clip-text text-transparent">
             @qgdorole
           </span>
         </div>
