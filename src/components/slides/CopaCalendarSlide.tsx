@@ -78,8 +78,8 @@ function teamFlag(tla?: string) {
 }
 
 function teamColor(tla?: string) {
-  if (!tla) return "#a855f7";
-  return TEAM_ACCENT[tla.toUpperCase()] || "#a855f7";
+  if (!tla) return "#E8431F";
+  return TEAM_ACCENT[tla.toUpperCase()] || "#E8431F";
 }
 
 function formatMatchDate(utc: string) {
@@ -165,9 +165,9 @@ export const CopaCalendarSlide = ({ isActive }: Props) => {
               isActive && "fade-in"
             )}
             style={{
-              background: "rgba(168, 85, 247, 0.15)",
-              border: "1px solid rgba(168, 85, 247, 0.5)",
-              color: "#c084fc",
+              background: "rgba(232, 67, 31, 0.15)",
+              border: "1px solid rgba(232, 67, 31, 0.5)",
+              color: "#F5794F",
             }}
           >
             <Trophy className="w-4 h-4" />
@@ -180,10 +180,10 @@ export const CopaCalendarSlide = ({ isActive }: Props) => {
             )}
             style={{
               background:
-                "linear-gradient(135deg, #c084fc 0%, #a855f7 40%, #7c3aed 100%)",
+                "linear-gradient(135deg, #F5794F 0%, #E8431F 40%, #232149 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              textShadow: "0 0 50px rgba(168, 85, 247, 0.4)",
+              textShadow: "0 0 50px rgba(232, 67, 31, 0.4)",
             }}
           >
             CALENDÁRIO AO VIVO
@@ -243,7 +243,7 @@ export const CopaCalendarSlide = ({ isActive }: Props) => {
                         ? "radial-gradient(circle, #fbbf24 0%, transparent 70%)"
                         : isLive
                         ? "radial-gradient(circle, #ef4444 0%, transparent 70%)"
-                        : "radial-gradient(circle, #a855f7 0%, transparent 70%)",
+                        : "radial-gradient(circle, #E8431F 0%, transparent 70%)",
                     }}
                   />
 
@@ -265,11 +265,11 @@ export const CopaCalendarSlide = ({ isActive }: Props) => {
                         style={{
                           background: isFinal
                             ? "rgba(251, 191, 36, 0.2)"
-                            : "rgba(168, 85, 247, 0.2)",
+                            : "rgba(232, 67, 31, 0.2)",
                           border: isFinal
                             ? "1px solid rgba(251, 191, 36, 0.5)"
-                            : "1px solid rgba(168, 85, 247, 0.4)",
-                          color: isFinal ? "#fbbf24" : "#c084fc",
+                            : "1px solid rgba(232, 67, 31, 0.4)",
+                          color: isFinal ? "#fbbf24" : "#F5794F",
                         }}
                       >
                         <Shield className="w-3 h-3" />
@@ -344,11 +344,11 @@ export const CopaCalendarSlide = ({ isActive }: Props) => {
                             style={{
                               background: hasScore
                                 ? `linear-gradient(135deg, ${homeColor}55, ${awayColor}55)`
-                                : "rgba(168, 85, 247, 0.2)",
+                                : "rgba(232, 67, 31, 0.2)",
                               border: hasScore
                                 ? "1px solid rgba(255,255,255,0.2)"
-                                : "1px solid rgba(168, 85, 247, 0.4)",
-                              color: hasScore ? "#ffffff" : "#c084fc",
+                                : "1px solid rgba(232, 67, 31, 0.4)",
+                              color: hasScore ? "#ffffff" : "#F5794F",
                               textShadow: hasScore ? "0 1px 4px rgba(0,0,0,0.5)" : undefined,
                             }}
                           >
@@ -387,7 +387,7 @@ export const CopaCalendarSlide = ({ isActive }: Props) => {
                     {/* Info row */}
                     <div className="flex flex-wrap items-center gap-2 text-[10px] md:text-xs text-white/60 font-display">
                       <div className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3 text-purple-400" />
+                        <Calendar className="w-3 h-3 text-brand-orange" />
                         <span className="text-white/80">{data}</span>
                         <span>({dia})</span>
                       </div>
@@ -414,10 +414,10 @@ export const CopaCalendarSlide = ({ isActive }: Props) => {
           <div
             className="inline-flex items-center gap-3 px-6 py-3 rounded-full font-display font-bold tracking-wider text-sm md:text-base uppercase"
             style={{
-              background: "linear-gradient(135deg, #a855f7 0%, #7c3aed 100%)",
+              background: "linear-gradient(135deg, #E8431F 0%, #232149 100%)",
               color: "white",
               boxShadow:
-                "0 0 40px rgba(168, 85, 247, 0.6), inset 0 1px 0 rgba(255,255,255,0.3)",
+                "0 0 40px rgba(232, 67, 31, 0.6), inset 0 1px 0 rgba(255,255,255,0.3)",
             }}
           >
             <Trophy className="w-4 h-4 fill-current" />

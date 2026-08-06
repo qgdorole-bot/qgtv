@@ -16,9 +16,9 @@ export const SlideProgress = ({ currentSlide, totalSlides, duration, isPaused }:
           <div
             className={`h-full rounded-full ${
               index < currentSlide 
-                ? 'w-full bg-gradient-to-r from-purple-400 to-primary' 
+                ? 'w-full bg-gradient-to-r from-brand-orange to-primary' 
                 : index === currentSlide 
-                  ? `${isPaused ? '' : 'animate-progress'} bg-gradient-to-r from-purple-400 to-primary` 
+                  ? `${isPaused ? '' : 'animate-progress'} bg-gradient-to-r from-brand-orange to-primary` 
                   : 'w-0'
             }`}
             style={{
