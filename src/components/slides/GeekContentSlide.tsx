@@ -1,6 +1,11 @@
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { BookOpen, Clapperboard, Tv, Swords, Flame, Star } from "lucide-react";
+import imgDragonBall from "@/assets/geek/dragonball.jpg";
+import imgManga from "@/assets/geek/manga.jpg";
+import imgFilmes from "@/assets/geek/filmes.jpg";
+import imgGames from "@/assets/geek/games.jpg";
+import imgRpg from "@/assets/geek/rpg.jpg";
 
 interface GeekContentSlideProps {
   isActive: boolean;
@@ -13,11 +18,13 @@ type GeekContent = {
   tone: "orange" | "sky";
   facts: string[];
   highlight: string;
+  image: string;
 };
 
 const CONTENTS: GeekContent[] = [
   {
     title: "Dragon Ball",
+    image: imgDragonBall,
     category: "Anime · Mangá",
     icon: Flame,
     tone: "orange",
@@ -31,6 +38,7 @@ const CONTENTS: GeekContent[] = [
   },
   {
     title: "Clássicos do Mangá",
+    image: imgManga,
     category: "Leitura obrigatória",
     icon: BookOpen,
     tone: "sky",
@@ -44,6 +52,7 @@ const CONTENTS: GeekContent[] = [
   },
   {
     title: "Filmes Geeks",
+    image: imgFilmes,
     category: "Cinema · Franquias",
     icon: Clapperboard,
     tone: "orange",
@@ -57,6 +66,7 @@ const CONTENTS: GeekContent[] = [
   },
   {
     title: "Séries & Games",
+    image: imgGames,
     category: "Cultura pop",
     icon: Tv,
     tone: "sky",
@@ -70,6 +80,7 @@ const CONTENTS: GeekContent[] = [
   },
   {
     title: "RPG & Card Games",
+    image: imgRpg,
     category: "Mesa · Estratégia",
     icon: Swords,
     tone: "orange",
@@ -168,42 +179,65 @@ export const GeekContentSlide = ({ isActive }: GeekContentSlideProps) => {
             {String(index + 1).padStart(2, "0")}
           </span>
 
-          <div className="p-8 md:p-11 pl-10 md:pl-14">
-            <div className="flex items-center gap-6 mb-8">
+          <div className="grid lg:grid-cols-[420px_1fr] gap-8 p-8 md:p-11 pl-10 md:pl-14">
+            {/* Illustration */}
+            <div className="relative overflow-hidden rounded-[1.5rem] ring-1 ring-brand-cream/10 min-h-[300px] hidden lg:block">
+              <img
+                src={item.image}
+                alt={`Ilustração de ${item.title}`}
+                loading="lazy"
+                width={1024}
+                height={1024}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/85 via-brand-navy/10 to-transparent" />
               <div
                 className={cn(
-                  "shrink-0 flex items-center justify-center rounded-2xl h-20 w-20 md:h-24 md:w-24 border",
+                  "absolute bottom-4 left-4 rounded-xl border px-4 py-2 font-display tracking-[0.2em] uppercase text-sm backdrop-blur-md",
                   tone.chip
                 )}
               >
-                <Icon className="h-10 w-10 md:h-12 md:w-12" />
-              </div>
-              <div className="min-w-0">
-                <p className={cn("font-display tracking-[0.3em] uppercase text-sm md:text-lg mb-1", tone.text)}>
-                  {item.category}
-                </p>
-                <h3 className="font-display font-black text-4xl md:text-6xl text-brand-cream leading-none">
-                  {item.title}
-                </h3>
+                {item.category}
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-4 md:gap-5">
-              {item.facts.map((fact, i) => (
+            <div>
+              <div className="flex items-center gap-6 mb-7">
                 <div
-                  key={fact}
-                  className="flex items-start gap-4 rounded-2xl border border-brand-cream/10 bg-brand-cream/[0.04] px-5 py-4 fade-in-up"
-                  style={{ animationDelay: `${120 + i * 90}ms` }}
+                  className={cn(
+                    "shrink-0 flex items-center justify-center rounded-2xl h-20 w-20 md:h-24 md:w-24 border",
+                    tone.chip
+                  )}
                 >
-                  <span className={cn("mt-2.5 h-2.5 w-2.5 rounded-full shrink-0", tone.bullet)} />
-                  <p className="text-lg md:text-2xl text-brand-cream/85 leading-snug">{fact}</p>
+                  <Icon className="h-10 w-10 md:h-12 md:w-12" />
                 </div>
-              ))}
-            </div>
+                <div className="min-w-0">
+                  <p className={cn("font-display tracking-[0.3em] uppercase text-sm md:text-lg mb-1 lg:hidden", tone.text)}>
+                    {item.category}
+                  </p>
+                  <h3 className="font-display font-black text-4xl md:text-6xl text-brand-cream leading-none">
+                    {item.title}
+                  </h3>
+                </div>
+              </div>
 
-            <div className={cn("mt-7 flex items-center gap-4 rounded-2xl border px-6 py-4", tone.chip)}>
-              <Star className="h-7 w-7 md:h-8 md:w-8 shrink-0" />
-              <p className="text-base md:text-2xl font-semibold">{item.highlight}</p>
+              <div className="grid md:grid-cols-2 gap-4">
+                {item.facts.map((fact, i) => (
+                  <div
+                    key={fact}
+                    className="flex items-start gap-4 rounded-2xl border border-brand-cream/10 bg-brand-cream/[0.04] px-5 py-4 fade-in-up"
+                    style={{ animationDelay: `${120 + i * 90}ms` }}
+                  >
+                    <span className={cn("mt-2.5 h-2.5 w-2.5 rounded-full shrink-0", tone.bullet)} />
+                    <p className="text-base md:text-xl text-brand-cream/85 leading-snug">{fact}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className={cn("mt-6 flex items-center gap-4 rounded-2xl border px-6 py-4", tone.chip)}>
+                <Star className="h-7 w-7 md:h-8 md:w-8 shrink-0" />
+                <p className="text-base md:text-xl font-semibold">{item.highlight}</p>
+              </div>
             </div>
           </div>
         </div>
