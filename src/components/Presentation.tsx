@@ -9,7 +9,7 @@ import { StarWarsEventSlide } from "./slides/StarWarsEventSlide";
 import { ToyStoryEventSlide } from "./slides/ToyStoryEventSlide";
 import { DoffEventSlide } from "./slides/DoffEventSlide";
 import { FigurinhasSlide } from "./slides/FigurinhasSlide";
-import { CopaCalendarSlide } from "./slides/CopaCalendarSlide";
+import { GeekEventsSlide } from "./slides/GeekEventsSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
 import { SlideProgress } from "./SlideProgress";
 import { PresentationControls } from "./PresentationControls";
@@ -39,7 +39,7 @@ const ALL_SLIDES: SlideDef[] = [
   { id: "doff", component: DoffEventSlide, showWatermark: true, expiresAt: "2026-07-12" },
   // Ongoing
   { id: "figurinhas", component: FigurinhasSlide, showWatermark: true },
-  { id: "copacalendar", component: CopaCalendarSlide, showWatermark: true },
+  { id: "geekevents", component: GeekEventsSlide, showWatermark: true },
   { id: "closing", component: ClosingSlide, showWatermark: true },
 ];
 
@@ -72,7 +72,7 @@ export const Presentation = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden hide-scrollbar cursor-none hover:cursor-auto bg-black">
       {/* Watermark Logo (hidden on hero slide) */}
-      {showWatermark && <CornerLogo />}
+      {showWatermark && <CornerLogo variant={currentSlide} />}
 
       {/* Slides */}
       {slides.map((slide, index) => {
