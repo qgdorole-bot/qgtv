@@ -72,22 +72,22 @@ export const CardsSlide = ({ isActive }: CardsSlideProps) => {
 
       {/* Cards row */}
       <div className="relative z-10 w-full px-8 md:px-12">
-        <div key={page} className="flex items-center justify-center gap-5 md:gap-7">
+        <div key={page} className="flex items-start justify-center gap-5 md:gap-7">
           {visible.map((card, index) => (
             <div
               key={card.name}
               className="flex-1 max-w-[19%] animate-card-in"
               style={{ animationDelay: `${index * 90}ms` }}
             >
-              <div className="rounded-xl overflow-hidden shadow-2xl ring-2 ring-primary/40 shadow-primary/30">
+              <div className="flex h-[42vh] md:h-[48vh] items-center justify-center">
                 <img
                   src={card.image}
                   alt={`Carta ${card.name}`}
-                  className="w-full h-auto object-contain"
+                  className="max-h-full w-auto object-contain rounded-xl shadow-2xl shadow-primary/30 ring-2 ring-primary/40"
                   loading="lazy"
                 />
               </div>
-              <p className="mt-3 text-center font-display font-bold uppercase tracking-widest text-white/90 text-lg md:text-2xl">
+              <p className="mt-4 text-center font-display font-bold uppercase tracking-widest text-white/90 text-lg md:text-2xl">
                 {card.name}
               </p>
             </div>
