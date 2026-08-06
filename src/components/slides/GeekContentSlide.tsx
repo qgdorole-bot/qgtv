@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
-import { BookOpen, Clapperboard, Tv, Swords, Flame, Star } from "lucide-react";
+import { BookOpen, Clapperboard, Tv, Swords, Flame, Sparkles } from "lucide-react";
 import imgDragonBall from "@/assets/geek/dragonball.jpg";
 import imgManga from "@/assets/geek/manga.jpg";
 import imgFilmes from "@/assets/geek/filmes.jpg";
@@ -16,81 +16,55 @@ type GeekContent = {
   category: string;
   icon: typeof BookOpen;
   tone: "orange" | "sky";
-  facts: string[];
-  highlight: string;
   image: string;
+  curiosity: string;
 };
 
 const CONTENTS: GeekContent[] = [
   {
     title: "Dragon Ball",
-    image: imgDragonBall,
     category: "Anime · Mangá",
     icon: Flame,
     tone: "orange",
-    highlight: "Mais de 260 milhões de mangás vendidos no mundo",
-    facts: [
-      "Criado por Akira Toriyama em 1984, com 42 volumes de mangá",
-      "Z adaptou a saga adulta: Saiyajins, Freeza, Cell e Majin Boo",
-      "Daima (2024) é a série mais recente da franquia",
-      "Ordem para maratonar: Dragon Ball → Z → Super → Daima",
-    ],
+    image: imgDragonBall,
+    curiosity:
+      "Criado por Akira Toriyama em 1984, já vendeu mais de 260 milhões de mangás no mundo.",
   },
   {
     title: "Clássicos do Mangá",
-    image: imgManga,
     category: "Leitura obrigatória",
     icon: BookOpen,
     tone: "sky",
-    highlight: "One Piece passou de 500 milhões de cópias impressas",
-    facts: [
-      "One Piece · Eiichiro Oda — em publicação desde 1997",
-      "Naruto · 72 volumes — ninjas, amizade e superação",
-      "Berserk · dark fantasy, arte considerada a melhor do meio",
-      "Chainsaw Man e Jujutsu Kaisen — a nova geração shonen",
-    ],
+    image: imgManga,
+    curiosity:
+      "One Piece passou de 500 milhões de cópias impressas — o mangá mais vendido da história.",
   },
   {
     title: "Filmes Geeks",
-    image: imgFilmes,
     category: "Cinema · Franquias",
     icon: Clapperboard,
     tone: "orange",
-    highlight: "Do MCU a Star Wars: universos que marcaram gerações",
-    facts: [
-      "Marvel: 30+ filmes conectados desde Homem de Ferro (2008)",
-      "Star Wars: 9 filmes da saga Skywalker + spin-offs",
-      "O Senhor dos Anéis: 17 Oscars somando a trilogia",
-      "Animes no cinema: Suzume, Your Name e Demon Slayer",
-    ],
+    image: imgFilmes,
+    curiosity:
+      "A trilogia O Senhor dos Anéis levou 17 Oscars, recorde para uma saga de fantasia.",
   },
   {
     title: "Séries & Games",
-    image: imgGames,
     category: "Cultura pop",
     icon: Tv,
     tone: "sky",
-    highlight: "Adaptações de games viraram fenômeno na TV",
-    facts: [
-      "Arcane · League of Legends, animação premiada",
-      "The Last of Us e Fallout — games que viraram séries",
-      "Stranger Things: nostalgia dos anos 80 e RPG de mesa",
-      "Cyberpunk Edgerunners — 10 episódios que viraram cult",
-    ],
+    image: imgGames,
+    curiosity:
+      "Arcane, baseada em League of Legends, foi a primeira série de streaming a ganhar o Emmy de animação.",
   },
   {
     title: "RPG & Card Games",
-    image: imgRpg,
     category: "Mesa · Estratégia",
     icon: Swords,
     tone: "orange",
-    highlight: "O QG tem mesa aberta pra quem quer aprender",
-    facts: [
-      "D&D 5ª edição: o RPG mais jogado do planeta",
-      "Magic: The Gathering — 30 anos de metagame",
-      "Pokémon TCG e Yu-Gi-Oh! seguem fortes nos torneios",
-      "Board games modernos: Catan, Wingspan, Dixit",
-    ],
+    image: imgRpg,
+    curiosity:
+      "D&D é o RPG mais jogado do planeta — e no QG tem mesa aberta pra quem quer aprender.",
   },
 ];
 
@@ -100,7 +74,6 @@ const TONES = {
     glow: "hsl(var(--brand-orange) / 0.28)",
     text: "text-brand-orange",
     chip: "bg-brand-orange/10 text-brand-orange border-brand-orange/35",
-    bullet: "bg-brand-orange",
     line: "from-brand-orange/70 via-brand-orange/10 to-transparent",
   },
   sky: {
@@ -108,7 +81,6 @@ const TONES = {
     glow: "hsl(var(--brand-sky) / 0.25)",
     text: "text-brand-sky",
     chip: "bg-brand-sky/10 text-brand-sky border-brand-sky/35",
-    bullet: "bg-brand-sky",
     line: "from-brand-sky/70 via-brand-sky/10 to-transparent",
   },
 } as const;
@@ -123,7 +95,7 @@ export const GeekContentSlide = ({ isActive }: GeekContentSlideProps) => {
     }
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % CONTENTS.length);
-    }, 4500);
+    }, 9000);
     return () => clearInterval(id);
   }, [isActive]);
 
@@ -151,7 +123,7 @@ export const GeekContentSlide = ({ isActive }: GeekContentSlideProps) => {
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-orange/40 to-transparent" />
 
       {/* Header */}
-      <div className={cn("relative z-10 text-center mb-7", isActive ? "fade-in-up" : "opacity-0")}>
+      <div className={cn("relative z-10 text-center mb-8", isActive ? "fade-in-up" : "opacity-0")}>
         <p className="font-display tracking-[0.5em] text-brand-sky/70 text-sm md:text-lg uppercase mb-2">
           Universo Geek
         </p>
@@ -162,7 +134,7 @@ export const GeekContentSlide = ({ isActive }: GeekContentSlideProps) => {
       </div>
 
       {/* Card */}
-      <div className="relative z-10 w-full max-w-[1480px] px-8">
+      <div className="relative z-10 w-full max-w-[1400px] px-8">
         <div
           key={item.title}
           className={cn(
@@ -172,16 +144,11 @@ export const GeekContentSlide = ({ isActive }: GeekContentSlideProps) => {
           )}
           style={{ boxShadow: `0 24px 80px -20px ${tone.glow}` }}
         >
-          {/* Accent bar */}
           <div className={cn("absolute inset-y-0 left-0 w-1.5 bg-gradient-to-b", tone.line)} />
-          {/* Ghost index number */}
-          <span className="pointer-events-none absolute -right-4 -top-10 font-display font-black text-[12rem] leading-none text-brand-cream/[0.04] select-none">
-            {String(index + 1).padStart(2, "0")}
-          </span>
 
-          <div className="grid lg:grid-cols-[420px_1fr] gap-8 p-8 md:p-11 pl-10 md:pl-14">
+          <div className="grid lg:grid-cols-[480px_1fr] gap-10 p-8 md:p-12 pl-10 md:pl-16">
             {/* Illustration */}
-            <div className="relative overflow-hidden rounded-[1.5rem] ring-1 ring-brand-cream/10 min-h-[300px] hidden lg:block">
+            <div className="relative overflow-hidden rounded-[1.5rem] ring-1 ring-brand-cream/10 min-h-[340px] hidden lg:block">
               <img
                 src={item.image}
                 alt={`Ilustração de ${item.title}`}
@@ -193,7 +160,7 @@ export const GeekContentSlide = ({ isActive }: GeekContentSlideProps) => {
               <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/85 via-brand-navy/10 to-transparent" />
               <div
                 className={cn(
-                  "absolute bottom-4 left-4 rounded-xl border px-4 py-2 font-display tracking-[0.2em] uppercase text-sm backdrop-blur-md",
+                  "absolute bottom-5 left-5 rounded-xl border px-4 py-2 font-display tracking-[0.2em] uppercase text-sm backdrop-blur-md",
                   tone.chip
                 )}
               >
@@ -201,8 +168,8 @@ export const GeekContentSlide = ({ isActive }: GeekContentSlideProps) => {
               </div>
             </div>
 
-            <div>
-              <div className="flex items-center gap-6 mb-7">
+            <div className="flex flex-col justify-center">
+              <div className="flex items-center gap-6 mb-8">
                 <div
                   className={cn(
                     "shrink-0 flex items-center justify-center rounded-2xl h-20 w-20 md:h-24 md:w-24 border",
@@ -211,32 +178,16 @@ export const GeekContentSlide = ({ isActive }: GeekContentSlideProps) => {
                 >
                   <Icon className="h-10 w-10 md:h-12 md:w-12" />
                 </div>
-                <div className="min-w-0">
-                  <p className={cn("font-display tracking-[0.3em] uppercase text-sm md:text-lg mb-1 lg:hidden", tone.text)}>
-                    {item.category}
-                  </p>
-                  <h3 className="font-display font-black text-4xl md:text-6xl text-brand-cream leading-none">
-                    {item.title}
-                  </h3>
-                </div>
+                <h3 className="font-display font-black text-4xl md:text-6xl text-brand-cream leading-none">
+                  {item.title}
+                </h3>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {item.facts.map((fact, i) => (
-                  <div
-                    key={fact}
-                    className="flex items-start gap-4 rounded-2xl border border-brand-cream/10 bg-brand-cream/[0.04] px-5 py-4 fade-in-up"
-                    style={{ animationDelay: `${120 + i * 90}ms` }}
-                  >
-                    <span className={cn("mt-2.5 h-2.5 w-2.5 rounded-full shrink-0", tone.bullet)} />
-                    <p className="text-base md:text-xl text-brand-cream/85 leading-snug">{fact}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className={cn("mt-6 flex items-center gap-4 rounded-2xl border px-6 py-4", tone.chip)}>
-                <Star className="h-7 w-7 md:h-8 md:w-8 shrink-0" />
-                <p className="text-base md:text-xl font-semibold">{item.highlight}</p>
+              <div className={cn("flex items-start gap-5 rounded-2xl border px-7 py-7", tone.chip)}>
+                <Sparkles className="h-8 w-8 md:h-10 md:w-10 shrink-0 mt-1" />
+                <p className="text-2xl md:text-4xl font-semibold leading-snug text-brand-cream">
+                  {item.curiosity}
+                </p>
               </div>
             </div>
           </div>
@@ -244,7 +195,7 @@ export const GeekContentSlide = ({ isActive }: GeekContentSlideProps) => {
       </div>
 
       {/* Dots */}
-      <div className="relative z-10 mt-7 flex items-center gap-3">
+      <div className="relative z-10 mt-8 flex items-center gap-3">
         {CONTENTS.map((c, i) => (
           <span
             key={c.title}
