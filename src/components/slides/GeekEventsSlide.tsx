@@ -82,18 +82,20 @@ const TONES = {
 } as const;
 
 export const GeekEventsSlide = ({ isActive }: GeekEventsSlideProps) => {
-  const [highlight, setHighlight] = useState(0);
+  const [index, setIndex] = useState(() => Math.floor(Math.random() * EVENTS.length));
 
   useEffect(() => {
-    if (!isActive) {
-      setHighlight(0);
-      return;
-    }
-    const id = window.setInterval(() => {
-      setHighlight((h) => (h + 1) % EVENTS.length);
-    }, 2000);
-    return () => clearInterval(id);
+    if (!isActive) return;
+    // Sorteia um evento diferente sempre que o slide entra em cena
+    setIndex((prev) => {
+      const options = EVENTS.map((_, i) => i).filter((i) => i !== prev);
+      return options[Math.floor(Math.random() * options.length)];
+    });
   }, [isActive]);
+
+  const ev = EVENTS[index];
+  const tone = TONES[ev.tone];
+  const Icon = ev.icon;
 
   return (
     <div
@@ -114,59 +116,49 @@ export const GeekEventsSlide = ({ isActive }: GeekEventsSlideProps) => {
       />
 
       {/* Header */}
-      <div className={cn("relative z-10 text-center mb-8", isActive ? "fade-in-up" : "opacity-0")}>
+      <div className={cn("relative z-10 text-center mb-10", isActive ? "fade-in-up" : "opacity-0")}>
         <p className="font-display tracking-[0.4em] text-brand-sky/80 text-base md:text-xl uppercase mb-3">
           Agenda da cidade
         </p>
-        <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-black tracking-wide text-brand-orange text-glow-purple">
+        <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-black tracking-wide text-brand-orange">
           Eventos Geeks em SP
         </h2>
       </div>
 
-      {/* Grid */}
-      <div className="relative z-10 w-full max-w-[1600px] px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {EVENTS.map((ev, i) => {
-            const tone = TONES[ev.tone];
-            const Icon = ev.icon;
-            const active = highlight === i;
-            return (
-              <div
-                key={ev.name}
-                className={cn(
-                  "relative rounded-2xl p-5 md:p-7 backdrop-blur-sm ring-1 transition-all duration-500",
-                  tone.ring,
-                  active ? "scale-[1.04] bg-white/[0.07]" : "bg-white/[0.03]"
-                )}
-                style={{ boxShadow: active ? `0 0 45px ${tone.glow}` : "none" }}
-              >
-                <div className="flex items-start gap-4">
-                  <div
-                    className={cn(
-                      "shrink-0 flex items-center justify-center rounded-xl h-14 w-14 md:h-16 md:w-16 border",
-                      tone.chip
-                    )}
-                  >
-                    <Icon className="h-7 w-7 md:h-8 md:w-8" />
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="font-display font-bold text-xl md:text-3xl text-brand-cream leading-tight">
-                      {ev.name}
-                    </h3>
-                    <p className={cn("mt-1 font-semibold text-base md:text-xl", tone.text)}>
-                      {ev.when} · {ev.place}
-                    </p>
-                    <p className="mt-2 text-sm md:text-lg text-brand-cream/60">{ev.tag}</p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+      {/* Evento em destaque */}
+      <div className="relative z-10 w-full max-w-[1200px] px-8">
+        <div
+          key={ev.name}
+          className={cn(
+            "relative rounded-[2rem] p-10 md:p-14 backdrop-blur-md ring-1 bg-white/[0.06] fade-in-up",
+            tone.ring
+          )}
+          style={{ boxShadow: `0 0 70px ${tone.glow}` }}
+        >
+          <div className="flex items-center gap-8">
+            <div
+              className={cn(
+                "shrink-0 flex items-center justify-center rounded-3xl h-28 w-28 md:h-36 md:w-36 border",
+                tone.chip
+              )}
+            >
+              <Icon className="h-14 w-14 md:h-20 md:w-20" />
+            </div>
+            <div className="min-w-0">
+              <h3 className="font-display font-black text-5xl md:text-7xl text-brand-cream leading-none">
+                {ev.name}
+              </h3>
+              <p className={cn("mt-4 font-bold text-2xl md:text-4xl", tone.text)}>
+                {ev.when} · {ev.place}
+              </p>
+              <p className="mt-3 text-xl md:text-2xl text-brand-cream/70">{ev.tag}</p>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Footer note */}
-      <p className="relative z-10 mt-8 text-sm md:text-lg text-brand-cream/50 tracking-wide">
+      <p className="relative z-10 mt-10 text-base md:text-xl text-brand-cream/50 tracking-wide">
         Confira as datas oficiais no site de cada evento · Quer ir junto? Fala com o QG
       </p>
     </div>
