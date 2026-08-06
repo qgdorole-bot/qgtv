@@ -8,7 +8,7 @@ import { QGDateSlide } from "./slides/QGDateSlide";
 import { StarWarsEventSlide } from "./slides/StarWarsEventSlide";
 import { ToyStoryEventSlide } from "./slides/ToyStoryEventSlide";
 import { DoffEventSlide } from "./slides/DoffEventSlide";
-import { FigurinhasSlide } from "./slides/FigurinhasSlide";
+import { TerapeutasMusicosSlide } from "./slides/TerapeutasMusicosSlide";
 import { GeekEventsSlide } from "./slides/GeekEventsSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
 import { SlideProgress } from "./SlideProgress";
@@ -38,7 +38,7 @@ const ALL_SLIDES: SlideDef[] = [
   { id: "toystory", component: ToyStoryEventSlide, showWatermark: true, expiresAt: "2026-06-21" },
   { id: "doff", component: DoffEventSlide, showWatermark: true, expiresAt: "2026-07-12" },
   // Ongoing
-  { id: "figurinhas", component: FigurinhasSlide, showWatermark: true },
+  { id: "terapeutas-musicos", component: TerapeutasMusicosSlide, showWatermark: true },
   { id: "geekevents", component: GeekEventsSlide, showWatermark: true },
   { id: "closing", component: ClosingSlide, showWatermark: true },
 ];
