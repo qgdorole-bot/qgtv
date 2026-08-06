@@ -71,3 +71,12 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+## APK para Google TV
+
+1. Conecte este projeto ao GitHub (menu **+** → GitHub → Connect project).
+2. No repositório, abra **Actions → Build APK (Google TV) → Run workflow**.
+3. Ao terminar, baixe `qg-tv.apk` em **Releases** (ou em Artifacts).
+4. Na TV, abra o app **Downloader** e digite a URL do arquivo em Releases para instalar direto.
+
+O APK abre `https://qgtv.lovable.app` em tela cheia e aparece na tela inicial da Google TV (leanback launcher).

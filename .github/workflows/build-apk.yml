@@ -1,0 +1,77 @@
+name: Build APK (Google TV)
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build web app
+        run: npm run build
+
+      - name: Add Android platform
+        run: npx cap add android || true
+
+      - name: Sync Capacitor
+        run: npx cap sync android
+
+      - name: Enable Google TV (leanback) launcher
+        run: |
+          MANIFEST=android/app/src/main/AndroidManifest.xml
+          python3 - "$MANIFEST" <<'PY'
+          import sys
+          p = sys.argv[1]
+          s = open(p).read()
+          if 'leanback' not in s:
+              s = s.replace(
+                  '</manifest>',
+                  '    <uses-feature android:name="android.software.leanback" android:required="false" />\n'
+                  '    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />\n'
+                  '</manifest>')
+              s = s.replace(
+                  '<category android:name="android.intent.category.LAUNCHER" />',
+                  '<category android:name="android.intent.category.LAUNCHER" />\n'
+                  '                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />')
+          open(p, 'w').write(s)
+          PY
+          cat android/app/src/main/AndroidManifest.xml
+
+      - name: Build debug APK
+        run: cd android && chmod +x gradlew && ./gradlew assembleDebug
+
+      - name: Rename APK
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk qg-tv.apk
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: qg-tv-apk
+          path: qg-tv.apk
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_type == 'tag' && github.ref_name || format('build-{0}', github.run_number) }}
+          name: QG TV APK
+          files: qg-tv.apk
