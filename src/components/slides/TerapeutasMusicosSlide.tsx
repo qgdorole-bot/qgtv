@@ -21,6 +21,7 @@ const artistas = [
   { name: "José", role: "Piano & voz", image: jose },
   { name: "Juliana", role: "Voz e alma", image: juliana },
   { name: "Isadora", role: "Voz e microfone", image: isadora },
+  { name: "Estagiária", role: "Vocalista de heavy metal", image: estagiaria },
 ];
 
 interface TerapeutasMusicosSlideProps {
