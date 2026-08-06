@@ -1,6 +1,11 @@
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { BookOpen, Clapperboard, Tv, Swords, Flame, Star } from "lucide-react";
+import imgDragonBall from "@/assets/geek/dragonball.jpg";
+import imgManga from "@/assets/geek/manga.jpg";
+import imgFilmes from "@/assets/geek/filmes.jpg";
+import imgGames from "@/assets/geek/games.jpg";
+import imgRpg from "@/assets/geek/rpg.jpg";
 
 interface GeekContentSlideProps {
   isActive: boolean;
@@ -13,6 +18,7 @@ type GeekContent = {
   tone: "orange" | "sky";
   facts: string[];
   highlight: string;
+  image: string;
 };
 
 const CONTENTS: GeekContent[] = [
