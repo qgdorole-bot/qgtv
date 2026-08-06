@@ -5,6 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // "usb" mode = portable build for pen drive (relative asset paths)
+  base: mode === "usb" ? "./" : "/",
   server: {
     host: "::",
     port: 8080,
