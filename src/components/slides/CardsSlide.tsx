@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { useState, useEffect } from "react";
+
 
 import taylorSwift from "@/assets/cards-t2/taylor-swift.jpg";
 import paramore from "@/assets/cards-t2/paramore.jpg";
@@ -25,30 +25,11 @@ const cards = [
   { name: "Radiohead", image: radiohead },
 ];
 
-const PER_PAGE = 5;
-const PAGES = Math.ceil(cards.length / PER_PAGE);
-const PAGE_MS = 4500;
-
 interface CardsSlideProps {
   isActive: boolean;
 }
 
 export const CardsSlide = ({ isActive }: CardsSlideProps) => {
-  const [page, setPage] = useState(0);
-
-  useEffect(() => {
-    if (!isActive) {
-      setPage(0);
-      return;
-    }
-    const id = window.setInterval(() => {
-      setPage((p) => (p + 1) % PAGES);
-    }, PAGE_MS);
-    return () => clearInterval(id);
-  }, [isActive]);
-
-  const visible = cards.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
-
   return (
     <div
       className={cn(
@@ -61,25 +42,25 @@ export const CardsSlide = ({ isActive }: CardsSlideProps) => {
       <div className="absolute inset-0 grid-pattern opacity-20" />
 
       {/* Header */}
-      <div className={cn("z-10 text-center mb-6", isActive ? "fade-in-up" : "opacity-0")}>
-        <p className="font-display tracking-[0.4em] text-primary/70 text-lg md:text-2xl uppercase mb-2">
+      <div className={cn("z-10 text-center mb-4", isActive ? "fade-in-up" : "opacity-0")}>
+        <p className="font-display tracking-[0.4em] text-primary/70 text-base md:text-xl uppercase mb-1">
           2ª Temporada · 2º Semestre
         </p>
-        <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-wide text-primary text-glow-purple">
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold tracking-wide text-primary text-glow-purple">
           Cartas da Temporada
         </h2>
       </div>
 
-      {/* Cards row */}
-      <div className="relative z-10 w-full px-8 md:px-12">
-        <div key={page} className="flex items-start justify-center gap-5 md:gap-7">
-          {visible.map((card, index) => (
+      {/* All cards — 5 per row, 2 rows */}
+      <div className="relative z-10 w-full px-6 md:px-10">
+        <div className="grid grid-cols-5 gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-5">
+          {cards.map((card, index) => (
             <div
               key={card.name}
-              className="flex-1 max-w-[19%] animate-card-in"
-              style={{ animationDelay: `${index * 90}ms` }}
+              className={cn("flex flex-col items-center", isActive && "animate-card-in")}
+              style={{ animationDelay: `${index * 70}ms` }}
             >
-              <div className="flex h-[42vh] md:h-[48vh] items-center justify-center">
+              <div className="flex h-[26vh] md:h-[30vh] items-center justify-center">
                 <img
                   src={card.image}
                   alt={`Carta ${card.name}`}
@@ -87,7 +68,7 @@ export const CardsSlide = ({ isActive }: CardsSlideProps) => {
                   loading="lazy"
                 />
               </div>
-              <p className="mt-4 text-center font-display font-bold uppercase tracking-widest text-white/90 text-lg md:text-2xl">
+              <p className="mt-2 text-center font-display font-bold uppercase tracking-widest text-white/90 text-base md:text-xl">
                 {card.name}
               </p>
             </div>
@@ -95,18 +76,6 @@ export const CardsSlide = ({ isActive }: CardsSlideProps) => {
         </div>
       </div>
 
-      {/* Page dots */}
-      <div className="z-10 mt-7 flex gap-3">
-        {Array.from({ length: PAGES }).map((_, i) => (
-          <div
-            key={i}
-            className={cn(
-              "h-2.5 rounded-full transition-all duration-500",
-              i === page ? "w-12 bg-primary shadow-[0_0_16px_hsl(var(--primary))]" : "w-2.5 bg-white/20"
-            )}
-          />
-        ))}
-      </div>
 
       <style>{`
         @keyframes cardIn {
