@@ -1,0 +1,14 @@
+QG TV - APP PORTATIL (PEN DRIVE)
+================================
+
+1) Copie TODO o conteudo desta pasta para a raiz do pen drive.
+2) Espete o pen drive na TV / TV Box / mini PC.
+3) Abra o arquivo index.html pelo navegador do dispositivo.
+
+Dica: em TV Box / Google TV, instale um navegador (ex: Chrome, Puffin TV,
+TV Bro) e abra: file:///storage/usb/index.html
+
+Observacao: eventos e conteudos ja estao embutidos e funcionam OFFLINE.
+Somente dados online (se houver) precisam de internet.
+
+Melhor opcao para Google TV: gerar o APK com Capacitor e instalar via pen drive.
