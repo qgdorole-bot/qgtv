@@ -3,7 +3,6 @@ import { GeekContentSlide } from "./slides/GeekContentSlide";
 import { WelcomeSlide } from "./slides/WelcomeSlide";
 import { CardsSlide } from "./slides/CardsSlide";
 import { GamificationOverviewSlide } from "./slides/GamificationOverviewSlide";
-import { InstitutionalSlide } from "./slides/InstitutionalSlide";
 import { QGDateSlide } from "./slides/QGDateSlide";
 import { StarWarsEventSlide } from "./slides/StarWarsEventSlide";
 import { ToyStoryEventSlide } from "./slides/ToyStoryEventSlide";
@@ -31,7 +30,6 @@ const ALL_SLIDES: SlideDef[] = [
   { id: "geekcontent", component: GeekContentSlide, showWatermark: true },
   { id: "cards", component: CardsSlide, showWatermark: true },
   { id: "gamification", component: GamificationOverviewSlide, showWatermark: true },
-  { id: "institutional", component: InstitutionalSlide, showWatermark: true },
   // Event slides (auto-hidden after their date)
   { id: "qgdate", component: QGDateSlide, showWatermark: true, expiresAt: "2026-06-12" },
   { id: "starwars", component: StarWarsEventSlide, showWatermark: true, expiresAt: "2026-05-31" },
