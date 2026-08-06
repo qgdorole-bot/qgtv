@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { useState, useEffect } from "react";
+
 
 import taylorSwift from "@/assets/cards-t2/taylor-swift.jpg";
 import paramore from "@/assets/cards-t2/paramore.jpg";
