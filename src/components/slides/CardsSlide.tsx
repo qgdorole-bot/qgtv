@@ -1,28 +1,28 @@
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 
-import taylorSwift from "@/assets/cards-t2/taylor-swift.jpg.asset.json";
-import paramore from "@/assets/cards-t2/paramore.jpg.asset.json";
-import sabrinaCarpenter from "@/assets/cards-t2/sabrina-carpenter.jpg.asset.json";
-import theWeeknd from "@/assets/cards-t2/the-weeknd.jpg.asset.json";
-import bts from "@/assets/cards-t2/bts.jpg.asset.json";
-import deftones from "@/assets/cards-t2/deftones.jpg.asset.json";
-import arianaGrande from "@/assets/cards-t2/ariana-grande.jpg.asset.json";
-import slipknot from "@/assets/cards-t2/slipknot.jpg.asset.json";
-import radiohead from "@/assets/cards-t2/radiohead.jpg.asset.json";
-import oliviaRodrigo from "@/assets/cards-t2/olivia-rodrigo.jpg.asset.json";
+import taylorSwift from "@/assets/cards-t2/taylor-swift.jpg";
+import paramore from "@/assets/cards-t2/paramore.jpg";
+import sabrinaCarpenter from "@/assets/cards-t2/sabrina-carpenter.jpg";
+import theWeeknd from "@/assets/cards-t2/the-weeknd.jpg";
+import bts from "@/assets/cards-t2/bts.jpg";
+import deftones from "@/assets/cards-t2/deftones.jpg";
+import arianaGrande from "@/assets/cards-t2/ariana-grande.jpg";
+import slipknot from "@/assets/cards-t2/slipknot.jpg";
+import radiohead from "@/assets/cards-t2/radiohead.jpg";
+import oliviaRodrigo from "@/assets/cards-t2/olivia-rodrigo.jpg";
 
 const cards = [
-  { name: "Taylor Swift", image: taylorSwift.url },
-  { name: "Sabrina Carpenter", image: sabrinaCarpenter.url },
-  { name: "Ariana Grande", image: arianaGrande.url },
-  { name: "Olivia Rodrigo", image: oliviaRodrigo.url },
-  { name: "BTS", image: bts.url },
-  { name: "The Weeknd", image: theWeeknd.url },
-  { name: "Paramore", image: paramore.url },
-  { name: "Deftones", image: deftones.url },
-  { name: "Slipknot", image: slipknot.url },
-  { name: "Radiohead", image: radiohead.url },
+  { name: "Taylor Swift", image: taylorSwift },
+  { name: "Sabrina Carpenter", image: sabrinaCarpenter },
+  { name: "Ariana Grande", image: arianaGrande },
+  { name: "Olivia Rodrigo", image: oliviaRodrigo },
+  { name: "BTS", image: bts },
+  { name: "The Weeknd", image: theWeeknd },
+  { name: "Paramore", image: paramore },
+  { name: "Deftones", image: deftones },
+  { name: "Slipknot", image: slipknot },
+  { name: "Radiohead", image: radiohead },
 ];
 
 const PER_PAGE = 5;
