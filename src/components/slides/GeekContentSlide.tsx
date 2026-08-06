@@ -24,6 +24,7 @@ type GeekContent = {
 const CONTENTS: GeekContent[] = [
   {
     title: "Dragon Ball",
+    image: imgDragonBall,
     category: "Anime · Mangá",
     icon: Flame,
     tone: "orange",
@@ -37,6 +38,7 @@ const CONTENTS: GeekContent[] = [
   },
   {
     title: "Clássicos do Mangá",
+    image: imgManga,
     category: "Leitura obrigatória",
     icon: BookOpen,
     tone: "sky",
@@ -50,6 +52,7 @@ const CONTENTS: GeekContent[] = [
   },
   {
     title: "Filmes Geeks",
+    image: imgFilmes,
     category: "Cinema · Franquias",
     icon: Clapperboard,
     tone: "orange",
@@ -63,6 +66,7 @@ const CONTENTS: GeekContent[] = [
   },
   {
     title: "Séries & Games",
+    image: imgGames,
     category: "Cultura pop",
     icon: Tv,
     tone: "sky",
@@ -76,6 +80,7 @@ const CONTENTS: GeekContent[] = [
   },
   {
     title: "RPG & Card Games",
+    image: imgRpg,
     category: "Mesa · Estratégia",
     icon: Swords,
     tone: "orange",
