@@ -28,7 +28,7 @@ type SlideDef = {
 
 const ALL_SLIDES: SlideDef[] = [
   { id: "welcome", component: WelcomeSlide, showWatermark: true },
-  { id: "charada", component: CharadaSlide, showWatermark: true },
+  { id: "geekcontent", component: GeekContentSlide, showWatermark: true },
   { id: "cards", component: CardsSlide, showWatermark: true },
   { id: "gamification", component: GamificationOverviewSlide, showWatermark: true },
   { id: "institutional", component: InstitutionalSlide, showWatermark: true },
