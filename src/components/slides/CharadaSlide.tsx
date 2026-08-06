@@ -58,7 +58,7 @@ export const CharadaSlide = ({ isActive }: Props) => {
       )}
       style={{
         background:
-          "radial-gradient(ellipse at top left, hsl(280 80% 25% / 1) 0%, hsl(260 60% 10%) 50%, #000 100%)",
+          "radial-gradient(ellipse at top left, hsl(243 38% 26%) 0%, hsl(243 40% 10%) 50%, #000 100%)",
       }}
     >
       {/* Animated glow blobs */}
@@ -68,7 +68,7 @@ export const CharadaSlide = ({ isActive }: Props) => {
       />
       <div
         className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-30"
-        style={{ background: "hsl(280 80% 60%)" }}
+        style={{ background: "hsl(11 81% 52%)" }}
       />
 
       {/* Floating lightbulbs */}
