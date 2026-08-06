@@ -8,6 +8,7 @@ import jhon from "@/assets/terapeutas-musicos/jhon.jpg";
 import renan from "@/assets/terapeutas-musicos/renan.jpg";
 import jose from "@/assets/terapeutas-musicos/jose.jpg";
 import juliana from "@/assets/terapeutas-musicos/juliana.jpg";
+import isadora from "@/assets/terapeutas-musicos/isadora.jpg";
 
 const artistas = [
   { name: "Luana", role: "Vocal principal", image: luana },
@@ -18,6 +19,7 @@ const artistas = [
   { name: "Renan", role: "Frontman", image: renan },
   { name: "José", role: "Piano & voz", image: jose },
   { name: "Juliana", role: "Voz e alma", image: juliana },
+  { name: "Isadora", role: "Voz e microfone", image: isadora },
 ];
 
 interface TerapeutasMusicosSlideProps {
@@ -55,7 +57,7 @@ export const TerapeutasMusicosSlide = ({ isActive }: TerapeutasMusicosSlideProps
 
       {/* Cards */}
       <div className="relative z-10 w-full px-6 md:px-10">
-        <div className="grid grid-cols-4 gap-x-5 gap-y-4 md:gap-x-7 md:gap-y-5">
+        <div className="grid grid-cols-5 gap-x-5 gap-y-4 md:gap-x-7 md:gap-y-5">
           {artistas.map((a, index) => (
             <div
               key={a.name}
