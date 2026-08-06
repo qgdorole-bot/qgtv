@@ -9,6 +9,7 @@ import renan from "@/assets/terapeutas-musicos/renan.jpg";
 import jose from "@/assets/terapeutas-musicos/jose.jpg";
 import juliana from "@/assets/terapeutas-musicos/juliana.jpg";
 import isadora from "@/assets/terapeutas-musicos/isadora.jpg";
+import estagiaria from "@/assets/terapeutas-musicos/estagiaria.jpg";
 
 const artistas = [
   { name: "Luana", role: "Vocal principal", image: luana },
@@ -20,6 +21,7 @@ const artistas = [
   { name: "José", role: "Piano & voz", image: jose },
   { name: "Juliana", role: "Voz e alma", image: juliana },
   { name: "Isadora", role: "Voz e microfone", image: isadora },
+  { name: "Estagiária", role: "Vocalista de heavy metal", image: estagiaria },
 ];
 
 interface TerapeutasMusicosSlideProps {
