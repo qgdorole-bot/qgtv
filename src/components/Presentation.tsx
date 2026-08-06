@@ -1,5 +1,5 @@
 import { useSlideshow } from "@/hooks/useSlideshow";
-import { CharadaSlide } from "./slides/CharadaSlide";
+import { GeekContentSlide } from "./slides/GeekContentSlide";
 import { WelcomeSlide } from "./slides/WelcomeSlide";
 import { CardsSlide } from "./slides/CardsSlide";
 import { GamificationOverviewSlide } from "./slides/GamificationOverviewSlide";
