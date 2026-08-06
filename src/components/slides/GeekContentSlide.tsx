@@ -17,7 +17,14 @@ type GeekContent = {
   icon: typeof BookOpen;
   tone: "orange" | "sky";
   image: string;
-  curiosity: string;
+  curiosities: string[];
+};
+
+// Índice do dia (muda a cada 24h) — usado para variar a curiosidade exibida
+const getDayIndex = () => {
+  const now = new Date();
+  const start = new Date(now.getFullYear(), 0, 0);
+  return Math.floor((now.getTime() - start.getTime()) / 86400000);
 };
 
 const CONTENTS: GeekContent[] = [
@@ -27,8 +34,13 @@ const CONTENTS: GeekContent[] = [
     icon: Flame,
     tone: "orange",
     image: imgDragonBall,
-    curiosity:
+    curiosities: [
       "Criado por Akira Toriyama em 1984, já vendeu mais de 260 milhões de mangás no mundo.",
+      "Goku foi inspirado no Rei Macaco da lenda chinesa 'Jornada ao Oeste'.",
+      "O grito do Kamehameha foi batizado por Toriyama a partir de um rei havaiano.",
+      "O Super Saiyajin ficou loiro só porque era mais fácil de desenhar sem preencher o cabelo.",
+      "Dragon Ball Z teve 291 episódios e é exibido em mais de 80 países.",
+    ],
   },
   {
     title: "Clássicos do Mangá",
@@ -36,8 +48,13 @@ const CONTENTS: GeekContent[] = [
     icon: BookOpen,
     tone: "sky",
     image: imgManga,
-    curiosity:
+    curiosities: [
       "One Piece passou de 500 milhões de cópias impressas — o mangá mais vendido da história.",
+      "Naruto foi recusado várias vezes antes de virar um dos maiores sucessos da Shonen Jump.",
+      "Berserk é desenhado com um nível de detalhe que levava semanas por página.",
+      "Astro Boy, de Osamu Tezuka, definiu o estilo de olhos grandes do mangá moderno.",
+      "Mangás são lidos da direita para a esquerda — e isso é mantido nas edições brasileiras.",
+    ],
   },
   {
     title: "Filmes Geeks",
@@ -45,8 +62,13 @@ const CONTENTS: GeekContent[] = [
     icon: Clapperboard,
     tone: "orange",
     image: imgFilmes,
-    curiosity:
+    curiosities: [
       "A trilogia O Senhor dos Anéis levou 17 Oscars, recorde para uma saga de fantasia.",
+      "O som do sabre de luz veio de um projetor antigo somado a uma TV com interferência.",
+      "Matrix popularizou o 'bullet time' usando mais de 100 câmeras em círculo.",
+      "De Volta para o Futuro quase teve o DeLorean substituído por uma geladeira.",
+      "Jurassic Park usou só 14 minutos de dinossauros em tela — e mudou os efeitos pra sempre.",
+    ],
   },
   {
     title: "Séries & Games",
@@ -54,8 +76,13 @@ const CONTENTS: GeekContent[] = [
     icon: Tv,
     tone: "sky",
     image: imgGames,
-    curiosity:
+    curiosities: [
       "Arcane, baseada em League of Legends, foi a primeira série de streaming a ganhar o Emmy de animação.",
+      "Minecraft é o jogo mais vendido de todos os tempos, com mais de 300 milhões de cópias.",
+      "The Last of Us virou uma das adaptações de game mais bem avaliadas da TV.",
+      "Tetris foi criado em 1984 por um programador soviético nas horas vagas.",
+      "Stranger Things reacendeu a febre de D&D entre adolescentes no mundo todo.",
+    ],
   },
   {
     title: "RPG & Card Games",
@@ -63,8 +90,13 @@ const CONTENTS: GeekContent[] = [
     icon: Swords,
     tone: "orange",
     image: imgRpg,
-    curiosity:
+    curiosities: [
       "D&D é o RPG mais jogado do planeta — e no QG tem mesa aberta pra quem quer aprender.",
+      "Magic: The Gathering foi o primeiro card game colecionável moderno, lançado em 1993.",
+      "O dado de 20 lados virou símbolo do RPG por equilibrar sorte e estratégia.",
+      "Existem cartas de Pokémon avaliadas em mais de 5 milhões de dólares.",
+      "Uma campanha de RPG pode durar anos — a mais longa registrada passa de 40 anos.",
+    ],
   },
 ];
 
@@ -102,6 +134,8 @@ export const GeekContentSlide = ({ isActive }: GeekContentSlideProps) => {
   const item = CONTENTS[index];
   const tone = TONES[item.tone];
   const Icon = item.icon;
+  const day = getDayIndex();
+  const curiosity = item.curiosities[(day + index) % item.curiosities.length];
 
   return (
     <div
@@ -186,7 +220,7 @@ export const GeekContentSlide = ({ isActive }: GeekContentSlideProps) => {
               <div className={cn("flex items-start gap-5 rounded-2xl border px-7 py-7", tone.chip)}>
                 <Sparkles className="h-8 w-8 md:h-10 md:w-10 shrink-0 mt-1" />
                 <p className="text-2xl md:text-4xl font-semibold leading-snug text-brand-cream">
-                  {item.curiosity}
+                  {curiosity}
                 </p>
               </div>
             </div>
