@@ -1,13 +1,22 @@
 import { forwardRef } from "react";
-import logoWatermark from "@/assets/logo-qg-watermark.png";
+import simboloLaranja from "@/assets/brand/simbolo-laranja.png";
+import simboloAzul from "@/assets/brand/simbolo-azul.png";
 
-export const CornerLogo = forwardRef<HTMLDivElement>((_, ref) => {
+const MARKS = [simboloLaranja, simboloAzul];
+
+interface CornerLogoProps {
+  variant?: number;
+}
+
+export const CornerLogo = forwardRef<HTMLDivElement, CornerLogoProps>(({ variant = 0 }, ref) => {
+  const src = MARKS[Math.abs(variant) % MARKS.length];
+
   return (
     <div ref={ref} className="absolute top-6 left-6 z-30">
-      <img 
-        src={logoWatermark} 
-        alt="QG do Rolê" 
-        className="w-20 h-auto md:w-24 lg:w-28 object-contain opacity-20"
+      <img
+        src={src}
+        alt="QG do Rolê"
+        className="w-16 h-auto md:w-20 lg:w-24 object-contain opacity-30 transition-opacity duration-700"
       />
     </div>
   );

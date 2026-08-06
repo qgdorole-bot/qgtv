@@ -29,7 +29,7 @@ export const DoffEventSlide = ({ isActive }: Props) => {
               height: `${8 + Math.random() * 14}px`,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              background: ["#f59e0b", "#a855f7", "#ec4899", "#22d3ee"][i % 4],
+              background: ["#f59e0b", "#E8431F", "#ec4899", "#22d3ee"][i % 4],
               boxShadow: "0 0 20px currentColor",
               animation: `floatDice ${8 + Math.random() * 6}s ease-in-out infinite`,
               animationDelay: `${Math.random() * 5}s`,
@@ -47,7 +47,7 @@ export const DoffEventSlide = ({ isActive }: Props) => {
               className="absolute -inset-4 rounded-2xl blur-2xl opacity-70"
               style={{
                 background:
-                  "linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #f59e0b 100%)",
+                  "linear-gradient(135deg, #E8431F 0%, #ec4899 50%, #f59e0b 100%)",
               }}
             />
             <img
@@ -65,8 +65,8 @@ export const DoffEventSlide = ({ isActive }: Props) => {
             <div
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs md:text-sm font-display tracking-[0.3em] uppercase"
               style={{
-                background: "rgba(168, 85, 247, 0.15)",
-                border: "1px solid rgba(168, 85, 247, 0.5)",
+                background: "rgba(232, 67, 31, 0.15)",
+                border: "1px solid rgba(232, 67, 31, 0.5)",
                 color: "#e9d5ff",
               }}
             >
@@ -78,10 +78,10 @@ export const DoffEventSlide = ({ isActive }: Props) => {
               className="font-display font-black text-4xl md:text-6xl lg:text-7xl leading-none tracking-tight"
               style={{
                 background:
-                  "linear-gradient(135deg, #fde047 0%, #ec4899 50%, #a855f7 100%)",
+                  "linear-gradient(135deg, #fde047 0%, #ec4899 50%, #E8431F 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                textShadow: "0 0 40px rgba(168, 85, 247, 0.4)",
+                textShadow: "0 0 40px rgba(232, 67, 31, 0.4)",
               }}
             >
               QG NO DOFF
@@ -100,10 +100,10 @@ export const DoffEventSlide = ({ isActive }: Props) => {
             <div
               className="mt-4 inline-flex items-center gap-3 px-7 py-4 rounded-full font-display font-bold tracking-wider text-base md:text-lg uppercase"
               style={{
-                background: "linear-gradient(135deg, #a855f7, #ec4899)",
+                background: "linear-gradient(135deg, #E8431F, #ec4899)",
                 color: "white",
                 boxShadow:
-                  "0 0 40px rgba(168, 85, 247, 0.6), inset 0 1px 0 rgba(255,255,255,0.3)",
+                  "0 0 40px rgba(232, 67, 31, 0.6), inset 0 1px 0 rgba(255,255,255,0.3)",
               }}
             >
               <Dice5 className="w-5 h-5" />

@@ -11,7 +11,7 @@ const tiers = [
   { rank: "Prata", emoji: "🥈", cost: 3, color: "text-gray-300", border: "border-gray-400/50", bg: "bg-gray-500/10" },
   { rank: "Ouro", emoji: "🥇", cost: 5, color: "text-amber-300", border: "border-amber-400/50", bg: "bg-amber-500/10" },
   { rank: "Platina", emoji: "💎", cost: 9, color: "text-cyan-300", border: "border-cyan-400/50", bg: "bg-cyan-500/10" },
-  { rank: "Diamante", emoji: "✨", cost: 15, color: "text-purple-300", border: "border-purple-400/50", bg: "bg-purple-500/10" },
+  { rank: "Diamante", emoji: "✨", cost: 15, color: "text-brand-sky", border: "border-brand-orange/50", bg: "bg-brand-orange/10" },
 ];
 
 const pillars = [

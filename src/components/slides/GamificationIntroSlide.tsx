@@ -33,7 +33,7 @@ const steps = [
     emoji: "4️⃣",
     title: "Suba de Patente",
     description: "Level + Tasks desbloqueiam novas patentes no QG",
-    accent: "text-purple-300",
+    accent: "text-brand-sky",
   },
 ];
 

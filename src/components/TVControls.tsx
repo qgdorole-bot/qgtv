@@ -21,9 +21,9 @@ export const TVControls = ({
     <div
       className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 md:gap-4 px-4 md:px-6 py-3 md:py-4 rounded-full backdrop-blur-md opacity-30 hover:opacity-100 focus-within:opacity-100 transition-opacity duration-300"
       style={{
-        background: "rgba(10, 10, 25, 0.75)",
-        border: "1px solid rgba(168, 85, 247, 0.4)",
-        boxShadow: "0 0 30px rgba(168, 85, 247, 0.25)",
+        background: "rgba(15, 14, 34, 0.8)",
+        border: "1px solid rgba(232, 67, 31, 0.4)",
+        boxShadow: "0 0 30px rgba(232, 67, 31, 0.25)",
       }}
     >
       <TVButton onClick={onPrevSlide} label="Anterior">
@@ -70,7 +70,7 @@ const TVButton = ({
           }
         : {
             background: "rgba(255, 255, 255, 0.08)",
-            border: "1px solid rgba(168, 85, 247, 0.4)",
+            border: "1px solid rgba(232, 67, 31, 0.4)",
           }
     }
   >

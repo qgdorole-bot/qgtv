@@ -16,7 +16,7 @@ const values = [
     icon: Sparkles, 
     title: "Liberdade", 
     description: "Inovação com foco em resultados",
-    color: "text-purple-300 border-purple-300/50"
+    color: "text-brand-sky border-brand-sky/50"
   },
   { 
     icon: Eye, 
@@ -28,13 +28,13 @@ const values = [
     icon: TrendingUp, 
     title: "Desenvolvimento", 
     description: "Aprendemos e melhoramos continuamente",
-    color: "text-purple-400 border-purple-400/50"
+    color: "text-brand-orange border-brand-orange/50"
   },
   { 
     icon: Compass, 
     title: "Vida Real", 
     description: "Explorar o mundo",
-    color: "text-violet-300 border-violet-300/50"
+    color: "text-brand-sky border-brand-sky/50"
   },
 ];
 

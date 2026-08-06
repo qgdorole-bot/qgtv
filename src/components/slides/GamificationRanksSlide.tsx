@@ -57,9 +57,9 @@ const ranks = [
     meetings: "96 encontros",
     tasks: 96,
     level: 192,
-    color: "text-purple-300",
-    border: "border-purple-400/30",
-    bg: "bg-purple-500/5",
+    color: "text-brand-sky",
+    border: "border-brand-orange/30",
+    bg: "bg-brand-orange/5",
   },
 ];
 
