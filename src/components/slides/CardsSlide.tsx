@@ -44,11 +44,14 @@ export const CardsSlide = ({ isActive }: CardsSlideProps) => {
       {/* Header */}
       <div className={cn("z-10 text-center mb-4", isActive ? "fade-in-up" : "opacity-0")}>
         <p className="font-display tracking-[0.4em] text-brand-sky/80 text-base md:text-xl uppercase mb-1">
-          Temporada 2/2026 · Tema Musical
+          Temporada 2/2026
         </p>
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-black tracking-wide text-brand-orange">
           Cartas da Temporada
         </h2>
+        <p className="mt-1 font-display font-bold uppercase tracking-[0.3em] text-white/90 text-lg md:text-2xl">
+          Temporada Musical
+        </p>
       </div>
 
 
