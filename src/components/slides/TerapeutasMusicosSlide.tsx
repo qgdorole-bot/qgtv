@@ -50,8 +50,9 @@ export const TerapeutasMusicosSlide = ({ isActive }: TerapeutasMusicosSlideProps
       {/* Header */}
       <div className={cn("relative z-10 text-center mb-4", isActive ? "fade-in-up" : "opacity-0")}>
         <p className="font-display tracking-[0.4em] text-brand-sky/80 text-base md:text-xl uppercase mb-1">
-          Banda do QG
+          Temporada 2/2026 · Tema Musical
         </p>
+
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-black tracking-wide text-brand-orange">
           Nosso Time no Palco
         </h2>
