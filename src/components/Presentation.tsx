@@ -72,8 +72,14 @@ export const Presentation = () => {
       {/* Watermark Logo (hidden on hero slide) */}
       {showWatermark && <CornerLogo variant={currentSlide} />}
 
-      {/* Slides */}
+      {/* Slides — only current + neighbours are mounted (keeps TVs light) */}
       {slides.map((slide, index) => {
+        const total = slides.length;
+        const dist = Math.min(
+          Math.abs(index - currentSlide),
+          total - Math.abs(index - currentSlide)
+        );
+        if (dist > 1) return null;
         const SlideComponent = slide.component;
         return (
           <SlideComponent
