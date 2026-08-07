@@ -43,13 +43,14 @@ export const CardsSlide = ({ isActive }: CardsSlideProps) => {
 
       {/* Header */}
       <div className={cn("z-10 text-center mb-4", isActive ? "fade-in-up" : "opacity-0")}>
-        <p className="font-display tracking-[0.4em] text-primary/70 text-base md:text-xl uppercase mb-1">
-          2ª Temporada · 2º Semestre
+        <p className="font-display tracking-[0.4em] text-brand-sky/80 text-base md:text-xl uppercase mb-1">
+          Temporada 2/2026 · Tema Musical
         </p>
-        <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold tracking-wide text-primary text-glow-purple">
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-black tracking-wide text-brand-orange">
           Cartas da Temporada
         </h2>
       </div>
+
 
       {/* All cards — 5 per row, 2 rows */}
       <div className="relative z-10 w-full px-6 md:px-10">
