@@ -72,7 +72,7 @@ export const TerapeutasMusicosSlide = ({ isActive }: TerapeutasMusicosSlideProps
                   src={a.image}
                   alt={`Carta musical de ${a.name}`}
                   className="max-h-full w-auto object-contain rounded-xl shadow-2xl shadow-brand-orange/25 ring-2 ring-brand-orange/40"
-                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <p className="mt-2 text-center font-display font-bold uppercase tracking-widest text-brand-cream text-lg md:text-2xl">

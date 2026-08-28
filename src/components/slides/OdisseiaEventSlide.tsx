@@ -1,0 +1,83 @@
+import { cn } from "@/lib/utils";
+import { Calendar, Clock, MapPin, Popcorn, Users, Film } from "lucide-react";
+import odisseiaImg from "@/assets/odisseia-event.jpg";
+
+interface Props {
+  isActive: boolean;
+}
+
+export const OdisseiaEventSlide = ({ isActive }: Props) => {
+  return (
+    <div
+      className={cn(
+        "absolute inset-0 overflow-hidden transition-opacity duration-1000",
+        isActive ? "opacity-100 z-10" : "opacity-0 z-0"
+      )}
+      style={{
+        background:
+          "radial-gradient(ellipse at top, #232149 0%, #14132b 60%, #05050d 100%)",
+      }}
+    >
+      <div className="relative z-10 h-full w-full flex items-center justify-center p-8 md:p-12 lg:p-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-7xl w-full items-center">
+          {/* Image */}
+          <div className={cn("relative", isActive && "fade-in")}>
+            <div
+              className="absolute -inset-4 rounded-2xl blur-2xl opacity-60"
+              style={{
+                background:
+                  "linear-gradient(135deg, hsl(var(--brand-sky)) 0%, hsl(var(--brand-orange)) 100%)",
+              }}
+            />
+            <img
+              src={odisseiaImg}
+              alt="Cinema — A Odisseia"
+              decoding="async"
+              width={1024}
+              height={1024}
+              className="relative rounded-2xl shadow-2xl w-full h-auto"
+            />
+          </div>
+
+          {/* Content */}
+          <div className={cn("space-y-5 md:space-y-6", isActive && "fade-in-up")}>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs md:text-sm font-display tracking-[0.3em] uppercase bg-brand-sky/15 border border-brand-sky/50 text-brand-sky">
+              <Film className="w-3.5 h-3.5" />
+              Rolê Extra · Cinema
+            </div>
+
+            <h2 className="font-display font-black text-4xl md:text-6xl lg:text-7xl leading-none tracking-tight text-brand-orange">
+              A ODISSEIA
+            </h2>
+            <p className="text-white/90 font-display text-lg md:text-2xl lg:text-3xl -mt-2">
+              Uma jornada épica na tela grande
+            </p>
+
+            <div className="space-y-3 pt-2">
+              <InfoRow icon={<Calendar className="w-5 h-5" />} text="Sábado · 29/08/2026" />
+              <InfoRow icon={<Clock className="w-5 h-5" />} text="16:30" />
+              <InfoRow
+                icon={<MapPin className="w-5 h-5" />}
+                text="Av. Paulista, 2073 · Conjunto Nacional"
+              />
+              <InfoRow icon={<Users className="w-5 h-5" />} text="Encontro nas catracas do Horsa 1" />
+              <InfoRow icon={<Popcorn className="w-5 h-5" />} text="Leve dinheiro para a pipoca" />
+            </div>
+
+            <div className="mt-4 inline-flex items-center gap-3 px-7 py-4 rounded-full font-display font-bold tracking-wider text-base md:text-lg uppercase bg-brand-orange text-white shadow-[0_0_40px_hsl(var(--brand-orange)/0.6)]">
+              <Popcorn className="w-5 h-5" />
+              Garanta sua vaga
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const InfoRow = ({ icon, text }: { icon: React.ReactNode; text: string }) => (
+  <div className="flex items-center gap-3 text-white/85 font-display text-base md:text-lg">
+    <span className="text-brand-sky">{icon}</span>
+    <span>{text}</span>
+  </div>
+);

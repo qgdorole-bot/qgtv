@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSlideshow } from "@/hooks/useSlideshow";
 import { GeekContentSlide } from "./slides/GeekContentSlide";
 import { WelcomeSlide } from "./slides/WelcomeSlide";
@@ -7,6 +8,8 @@ import { QGDateSlide } from "./slides/QGDateSlide";
 import { StarWarsEventSlide } from "./slides/StarWarsEventSlide";
 import { ToyStoryEventSlide } from "./slides/ToyStoryEventSlide";
 import { DoffEventSlide } from "./slides/DoffEventSlide";
+import { OdisseiaEventSlide } from "./slides/OdisseiaEventSlide";
+import { CircoEventSlide } from "./slides/CircoEventSlide";
 import { TerapeutasMusicosSlide } from "./slides/TerapeutasMusicosSlide";
 import { GeekEventsSlide } from "./slides/GeekEventsSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
@@ -35,6 +38,8 @@ const ALL_SLIDES: SlideDef[] = [
   { id: "starwars", component: StarWarsEventSlide, showWatermark: true, expiresAt: "2026-05-31" },
   { id: "toystory", component: ToyStoryEventSlide, showWatermark: true, expiresAt: "2026-06-21" },
   { id: "doff", component: DoffEventSlide, showWatermark: true, expiresAt: "2026-07-12" },
+  { id: "odisseia", component: OdisseiaEventSlide, showWatermark: true, expiresAt: "2026-08-29" },
+  { id: "circo", component: CircoEventSlide, showWatermark: true, expiresAt: "2026-08-30" },
   // Ongoing
   { id: "terapeutas-musicos", component: TerapeutasMusicosSlide, showWatermark: true },
   { id: "geekevents", component: GeekEventsSlide, showWatermark: true },
@@ -48,7 +53,33 @@ const isExpired = (expiresAt?: string) => {
   return expiresAt < todayStr;
 };
 
+/** Pré-carrega e decodifica todas as imagens uma única vez (evita travadas na TV) */
+const usePreloadAssets = () => {
+  useEffect(() => {
+    const modules = import.meta.glob("/src/assets/**/*.{png,jpg,jpeg,webp,svg}", {
+      eager: true,
+      query: "?url",
+      import: "default",
+    }) as Record<string, string>;
+
+    const imgs: HTMLImageElement[] = [];
+    Object.values(modules).forEach((url) => {
+      const img = new Image();
+      img.decoding = "async";
+      img.src = url;
+      imgs.push(img);
+    });
+
+    return () => {
+      imgs.forEach((img) => {
+        img.src = "";
+      });
+    };
+  }, []);
+};
+
 export const Presentation = () => {
+  usePreloadAssets();
   const slides = ALL_SLIDES.filter((s) => !isExpired(s.expiresAt));
 
   const {
