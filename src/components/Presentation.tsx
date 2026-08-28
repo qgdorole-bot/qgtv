@@ -53,7 +53,33 @@ const isExpired = (expiresAt?: string) => {
   return expiresAt < todayStr;
 };
 
+/** Pré-carrega e decodifica todas as imagens uma única vez (evita travadas na TV) */
+const usePreloadAssets = () => {
+  useEffect(() => {
+    const modules = import.meta.glob("/src/assets/**/*.{png,jpg,jpeg,webp,svg}", {
+      eager: true,
+      query: "?url",
+      import: "default",
+    }) as Record<string, string>;
+
+    const imgs: HTMLImageElement[] = [];
+    Object.values(modules).forEach((url) => {
+      const img = new Image();
+      img.decoding = "async";
+      img.src = url;
+      imgs.push(img);
+    });
+
+    return () => {
+      imgs.forEach((img) => {
+        img.src = "";
+      });
+    };
+  }, []);
+};
+
 export const Presentation = () => {
+  usePreloadAssets();
   const slides = ALL_SLIDES.filter((s) => !isExpired(s.expiresAt));
 
   const {
