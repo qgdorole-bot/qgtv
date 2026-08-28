@@ -69,7 +69,7 @@ export const CardsSlide = ({ isActive }: CardsSlideProps) => {
                   src={card.image}
                   alt={`Carta ${card.name}`}
                   className="max-h-full w-auto object-contain rounded-xl shadow-2xl shadow-primary/30 ring-2 ring-primary/40"
-                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <p className="mt-2 text-center font-display font-bold uppercase tracking-widest text-white/90 text-base md:text-xl">
