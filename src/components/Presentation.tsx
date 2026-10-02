@@ -41,7 +41,7 @@ const ALL_SLIDES: SlideDef[] = [
   { id: "doff", component: DoffEventSlide, showWatermark: true, expiresAt: "2026-07-12" },
   { id: "odisseia", component: OdisseiaEventSlide, showWatermark: true, expiresAt: "2026-08-29" },
   { id: "circo", component: CircoEventSlide, showWatermark: true, expiresAt: "2026-08-30" },
-  { id: "bgs", component: BgsEventSlide, showWatermark: true, expiresAt: "2026-10-12" },
+  { id: "bgs", component: BgsEventSlide, showWatermark: true, expiresAt: "2026-10-11" },
   // Ongoing
   { id: "terapeutas-musicos", component: TerapeutasMusicosSlide, showWatermark: true },
   { id: "geekevents", component: GeekEventsSlide, showWatermark: true },

@@ -54,14 +54,14 @@ export const BgsEventSlide = ({ isActive }: Props) => {
             </p>
 
             <div className="space-y-3 pt-2">
-              <InfoRow icon={<Calendar className="w-5 h-5" />} text="9 a 12 de outubro de 2026" />
-              <InfoRow icon={<Clock className="w-5 h-5" />} text="Das 12:00 às 21:00" />
+              <InfoRow icon={<Calendar className="w-5 h-5" />} text="Domingo · 11/10/2026" />
+              <InfoRow icon={<Clock className="w-5 h-5" />} text="Feira aberta das 12:00 às 21:00" />
               <InfoRow
                 icon={<MapPin className="w-5 h-5" />}
-                text="Distrito Anhembi · Santana, SP"
+                text="Distrito Anhembi · Av. Olavo Fontoura, 1209 · Santana, SP"
               />
-              <InfoRow icon={<Gamepad2 className="w-5 h-5" />} text="Lançamentos, eSports, cosplay e muito mais" />
-              <InfoRow icon={<Ticket className="w-5 h-5" />} text="Leve dinheiro para ingresso e consumo" />
+              <InfoRow icon={<Gamepad2 className="w-5 h-5" />} text="Vivência guiada + task social + acompanhamento" />
+              <InfoRow icon={<Ticket className="w-5 h-5" />} text="R$ 442 com ingresso incluso · até 4x no cartão" />
             </div>
 
             <div className="mt-4 inline-flex items-center gap-3 px-7 py-4 rounded-full font-display font-bold tracking-wider text-base md:text-lg uppercase bg-brand-orange text-white shadow-[0_0_40px_hsl(var(--brand-orange)/0.6)]">
