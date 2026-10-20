@@ -1,21 +1,25 @@
-import { Pause, Play, ChevronLeft, ChevronRight, Maximize, Minimize } from "lucide-react";
+import { Pause, Play, ChevronLeft, ChevronRight, Maximize, Minimize, Volume2, VolumeX } from "lucide-react";
 
 interface TVControlsProps {
   isPaused: boolean;
   isFullscreen: boolean;
+  isSoundOn: boolean;
   onTogglePause: () => void;
   onPrevSlide: () => void;
   onNextSlide: () => void;
   onToggleFullscreen: () => void;
+  onToggleSound: () => void;
 }
 
 export const TVControls = ({
   isPaused,
   isFullscreen,
+  isSoundOn,
   onTogglePause,
   onPrevSlide,
   onNextSlide,
   onToggleFullscreen,
+  onToggleSound,
 }: TVControlsProps) => {
   return (
     <div
@@ -38,6 +42,9 @@ export const TVControls = ({
       <div className="w-px h-8 bg-primary/30 mx-1" />
       <TVButton onClick={onToggleFullscreen} label={isFullscreen ? "Sair da tela cheia" : "Tela cheia"}>
         {isFullscreen ? <Minimize className="h-6 w-6 md:h-7 md:w-7" /> : <Maximize className="h-6 w-6 md:h-7 md:w-7" />}
+      </TVButton>
+      <TVButton onClick={onToggleSound} label={isSoundOn ? "Desligar som" : "Ligar som"}>
+        {isSoundOn ? <Volume2 className="h-6 w-6 md:h-7 md:w-7" /> : <VolumeX className="h-6 w-6 md:h-7 md:w-7" />}
       </TVButton>
     </div>
   );

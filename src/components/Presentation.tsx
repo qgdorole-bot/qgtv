@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSlideshow } from "@/hooks/useSlideshow";
+import { AmbientAudio } from "./AmbientAudio";
 import { GeekContentSlide } from "./slides/GeekContentSlide";
 import { WelcomeSlide } from "./slides/WelcomeSlide";
 import { CardsSlide } from "./slides/CardsSlide";
@@ -84,6 +85,21 @@ const usePreloadAssets = () => {
 
 export const Presentation = () => {
   usePreloadAssets();
+  const [isSoundOn, setIsSoundOn] = useState(true);
+  const toggleSound = () => setIsSoundOn((prev) => !prev);
+
+  // Tecla M liga/desliga o som (controle de teclado)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "m" || e.key === "M") {
+        e.preventDefault();
+        setIsSoundOn((prev) => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   const slides = ALL_SLIDES.filter((s) => !isExpired(s.expiresAt));
 
   const {
@@ -100,10 +116,14 @@ export const Presentation = () => {
     autoPlay: true,
   });
 
+
+
   const showWatermark = slides[currentSlide]?.showWatermark ?? false;
 
   return (
     <div className="relative w-full h-screen overflow-hidden hide-scrollbar cursor-none hover:cursor-auto bg-black">
+      {/* Trilha de Halloween (toca até 31/10; some sozinha depois) */}
+      <AmbientAudio isOn={isSoundOn} />
       {/* Watermark Logo (hidden on hero slide) */}
       {showWatermark && <CornerLogo variant={currentSlide} />}
 
@@ -146,16 +166,18 @@ export const Presentation = () => {
       <TVControls
         isPaused={isPaused}
         isFullscreen={isFullscreen}
+        isSoundOn={isSoundOn}
         onTogglePause={togglePause}
         onPrevSlide={prevSlide}
         onNextSlide={nextSlide}
         onToggleFullscreen={toggleFullscreen}
+        onToggleSound={toggleSound}
       />
 
 
       {/* Instructions overlay (fades out) */}
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2 text-white/30 text-sm font-light z-20 animate-fade-out pointer-events-none font-display tracking-wider">
-        F = Tela cheia • Espaço = Avançar • P = Pausar
+        F = Tela cheia • Espaço = Avançar • P = Pausar • M = Som
       </div>
       <style>{`
         @keyframes fadeOut {
