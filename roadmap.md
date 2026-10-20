@@ -1,7 +1,7 @@
 # Roadmap
 
-- [ ] Aplicar contexto de Halloween às imagens da apresentação
-- [ ] Aumentar tempo de leitura das telas com mais elementos
+- [x] Aplicar contexto de Halloween às imagens da apresentação
+- [x] Aumentar tempo de leitura das telas com mais elementos
 - [x] Playlist de Halloween adicionada
 
 - [x] Padronizar molduras e tamanho das dez cartas de Halloween
