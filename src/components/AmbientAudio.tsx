@@ -20,6 +20,7 @@ export const AmbientAudio = ({ isOn }: AmbientAudioProps) => {
     if (!isHalloweenSeason()) return;
     const audio = audioRef.current;
     if (!audio) return;
+    audio.volume = 0.25;
 
     const tryPlay = () => {
       audio.play().catch(() => {
@@ -69,7 +70,6 @@ export const AmbientAudio = ({ isOn }: AmbientAudioProps) => {
       src={track.url}
       loop
       preload="auto"
-      volume={0.25}
       style={{ display: "none" }}
     />
   );
