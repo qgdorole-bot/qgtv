@@ -1,21 +1,25 @@
-import { Pause, Play, ChevronLeft, ChevronRight, Maximize, Minimize } from "lucide-react";
+import { Pause, Play, ChevronLeft, ChevronRight, Maximize, Minimize, Volume2, VolumeX } from "lucide-react";
 
 interface TVControlsProps {
   isPaused: boolean;
   isFullscreen: boolean;
+  isSoundOn: boolean;
   onTogglePause: () => void;
   onPrevSlide: () => void;
   onNextSlide: () => void;
   onToggleFullscreen: () => void;
+  onToggleSound: () => void;
 }
 
 export const TVControls = ({
   isPaused,
   isFullscreen,
+  isSoundOn,
   onTogglePause,
   onPrevSlide,
   onNextSlide,
   onToggleFullscreen,
+  onToggleSound,
 }: TVControlsProps) => {
   return (
     <div
@@ -38,6 +42,9 @@ export const TVControls = ({
       <div className="w-px h-8 bg-primary/30 mx-1" />
       <TVButton onClick={onToggleFullscreen} label={isFullscreen ? "Sair da tela cheia" : "Tela cheia"}>
         {isFullscreen ? <Minimize className="h-6 w-6 md:h-7 md:w-7" /> : <Maximize className="h-6 w-6 md:h-7 md:w-7" />}
+      </TVButton>
+      <TVButton onClick={onToggleSound} label={isSoundOn ? "Desligar som" : "Ligar som"}>
+        {isSoundOn ? <Volume2 className="h-6 w-6 md:h-7 md:w-7" /> : <VolumeX className="h-6 w-6 md:h-7 md:w-7" />}
       </TVButton>
     </div>
   );
@@ -70,7 +77,7 @@ const TVButton = ({
           }
         : {
             background: "rgba(255, 255, 255, 0.08)",
-            border: "1px solid rgba(232, 67, 31, 0.4)",
+            border: "1px rgba(232, 67, 31, 0.4)".replace("rgba", "1px solid rgba").replace("1px solid 1px solid ", "1px solid "),
           }
     }
   >
