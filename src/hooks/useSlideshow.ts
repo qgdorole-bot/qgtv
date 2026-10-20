@@ -3,18 +3,21 @@ import { useState, useEffect, useCallback, useRef } from "react";
 interface UseSlideshowProps {
   totalSlides: number;
   intervalMs?: number;
+  slideDurations?: number[];
   autoPlay?: boolean;
 }
 
 export const useSlideshow = ({ 
   totalSlides, 
-  intervalMs = 8000, 
+  intervalMs = 8000,
+  slideDurations,
   autoPlay = true 
 }: UseSlideshowProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(!autoPlay);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const timerRef = useRef<number | null>(null);
+  const duration = slideDurations?.[currentSlide] ?? intervalMs;
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % totalSlides);
@@ -45,7 +48,7 @@ export const useSlideshow = ({
   // Clear any existing timer
   const clearTimer = useCallback(() => {
     if (timerRef.current !== null) {
-      clearInterval(timerRef.current);
+      clearTimeout(timerRef.current);
       timerRef.current = null;
     }
   }, []);
@@ -53,8 +56,8 @@ export const useSlideshow = ({
   // Start timer
   const startTimer = useCallback(() => {
     clearTimer();
-    timerRef.current = window.setInterval(nextSlide, intervalMs);
-  }, [clearTimer, nextSlide, intervalMs]);
+    if (!document.hidden) timerRef.current = window.setTimeout(nextSlide, duration);
+  }, [clearTimer, nextSlide, duration]);
 
   // Auto-advance slides with visibility handling
   useEffect(() => {
@@ -80,7 +83,7 @@ export const useSlideshow = ({
       clearTimer();
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, [isPaused, startTimer, clearTimer]);
+  }, [currentSlide, isPaused, startTimer, clearTimer]);
 
   // Keyboard navigation
   useEffect(() => {
