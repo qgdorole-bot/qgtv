@@ -116,14 +116,14 @@ export const Presentation = () => {
     autoPlay: true,
   });
 
-  {/* Trilha de Halloween (toca até 31/10; some sozinha depois) */}
-  <AmbientAudio isOn={isSoundOn} />
 
 
   const showWatermark = slides[currentSlide]?.showWatermark ?? false;
 
   return (
     <div className="relative w-full h-screen overflow-hidden hide-scrollbar cursor-none hover:cursor-auto bg-black">
+      {/* Trilha de Halloween (toca até 31/10; some sozinha depois) */}
+      <AmbientAudio isOn={isSoundOn} />
       {/* Watermark Logo (hidden on hero slide) */}
       {showWatermark && <CornerLogo variant={currentSlide} />}
 
