@@ -45,12 +45,12 @@ export const RolesSemanaSlide = ({ isActive }: Props) => {
     )}
     style={{ background: "radial-gradient(ellipse at top, #2e2c5e 0%, #232149 55%, #12112a 100%)" }}
   >
-    <div className="relative z-10 h-full w-full flex flex-col items-center justify-center p-8 md:p-14 gap-8">
+    <div className="relative z-10 h-full w-full flex flex-col items-center justify-center p-6 md:p-10 gap-5">
       <div className={cn("text-center", isActive && "fade-in-up")}>
         <p className="font-display tracking-[0.35em] uppercase text-sm md:text-lg" style={{ color: "#5BC0EB" }}>
           Escala da semana
         </p>
-        <h2 className="font-display font-black text-5xl md:text-7xl leading-none" style={{ color: "#E8431F" }}>
+        <h2 className="font-display font-black text-5xl md:text-6xl leading-none" style={{ color: "#E8431F" }}>
           Rolês da Semana
         </h2>
       </div>
@@ -62,16 +62,16 @@ export const RolesSemanaSlide = ({ isActive }: Props) => {
         {dias.map((d, i) => (
           <div
             key={d.dia}
-            className="rounded-3xl p-6 md:p-8"
+            className="rounded-3xl p-5 md:p-6"
             style={{ background: "rgba(255,255,255,0.06)", border: `3px solid ${CORES[i % 3]}` }}
           >
-            <div className="flex items-baseline justify-between mb-5">
+            <div className="flex items-baseline justify-between mb-3">
               <h3 className="font-display font-black text-3xl md:text-5xl" style={{ color: CORES[i % 3] }}>{d.dia}</h3>
               <span className="font-display text-xl md:text-3xl" style={{ color: "#F5EFE0" }}>{d.data}</span>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3">
               {d.roles.map((r, j) => (
-                <div key={j} className="rounded-2xl px-5 py-4" style={{ background: "rgba(0,0,0,0.25)" }}>
+                <div key={j} className="rounded-2xl px-5 py-3" style={{ background: "rgba(0,0,0,0.25)" }}>
                   <p className="font-display font-bold text-2xl md:text-3xl" style={{ color: "#F5EFE0" }}>{r.nome}</p>
                   <div className="flex flex-wrap gap-x-6 gap-y-1 text-lg md:text-2xl mt-1" style={{ color: "#cfe9f7" }}>
                     <span className="flex items-center gap-2"><MapPin className="w-5 h-5" />{r.local}</span>
