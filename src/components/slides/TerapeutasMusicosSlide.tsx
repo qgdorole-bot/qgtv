@@ -5,7 +5,7 @@ import luana from "@/assets/terapeutas-musicos/luana.jpg";
 import bahia from "@/assets/terapeutas-musicos/bahia.jpg";
 import dani from "@/assets/terapeutas-musicos/dani.jpg";
 import joao from "@/assets/terapeutas-musicos/joao.jpg";
-import jhon from "@/assets/terapeutas-musicos/jhon.jpg";
+import vinicius from "@/assets/terapeutas-musicos/vinicius.jpg";
 import renan from "@/assets/terapeutas-musicos/renan.jpg";
 import jose from "@/assets/terapeutas-musicos/jose.jpg";
 import juliana from "@/assets/terapeutas-musicos/juliana.jpg";
@@ -17,7 +17,7 @@ import hLuana from "@/assets/terapeutas-halloween/luana.jpg";
 import hBahia from "@/assets/terapeutas-halloween/bahia.jpg";
 import hDani from "@/assets/terapeutas-halloween/dani.jpg";
 import hJoao from "@/assets/terapeutas-halloween/joao.jpg";
-import hJhon from "@/assets/terapeutas-halloween/jhon.jpg";
+import hVinicius from "@/assets/terapeutas-halloween/vinicius.jpg";
 import hRenan from "@/assets/terapeutas-halloween/renan.jpg";
 import hJose from "@/assets/terapeutas-halloween/jose.jpg";
 import hJuliana from "@/assets/terapeutas-halloween/juliana.jpg";
@@ -29,7 +29,7 @@ const musicos = [
   { name: "Bahia", role: "Rock & guitarra", image: bahia },
   { name: "Dani", role: "Diva pop", image: dani },
   { name: "João", role: "Guitarra & voz", image: joao },
-  { name: "Jhon", role: "Soul & R&B", image: jhon },
+  { name: "Vinicius", role: "Soul & R&B", image: vinicius },
   { name: "Renan", role: "Frontman", image: renan },
   { name: "José", role: "Piano & voz", image: jose },
   { name: "Juliana", role: "Voz e alma", image: juliana },
@@ -42,7 +42,7 @@ const halloween = [
   { name: "Bahia", role: "Lobisomem", image: hBahia },
   { name: "Dani", role: "Vampira", image: hDani },
   { name: "João", role: "Frankenstein", image: hJoao },
-  { name: "Jhon", role: "Zumbi", image: hJhon },
+  { name: "Vinicius", role: "Múmia", image: hVinicius },
   { name: "Renan", role: "Esqueleto", image: hRenan },
   { name: "José", role: "Alquimista", image: hJose },
   { name: "Juliana", role: "Gata Preta", image: hJuliana },
