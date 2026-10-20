@@ -11,6 +11,7 @@ import { DoffEventSlide } from "./slides/DoffEventSlide";
 import { OdisseiaEventSlide } from "./slides/OdisseiaEventSlide";
 import { CircoEventSlide } from "./slides/CircoEventSlide";
 import { BgsEventSlide } from "./slides/BgsEventSlide";
+import { RolesSemanaSlide } from "./slides/RolesSemanaSlide";
 import { TerapeutasMusicosSlide } from "./slides/TerapeutasMusicosSlide";
 import { GeekEventsSlide } from "./slides/GeekEventsSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
@@ -43,6 +44,7 @@ const ALL_SLIDES: SlideDef[] = [
   { id: "circo", component: CircoEventSlide, showWatermark: true, expiresAt: "2026-08-30" },
   { id: "bgs", component: BgsEventSlide, showWatermark: true, expiresAt: "2026-10-11" },
   // Ongoing
+  { id: "roles-semana", component: RolesSemanaSlide, showWatermark: true, expiresAt: "2026-10-24" },
   { id: "terapeutas-musicos", component: TerapeutasMusicosSlide, showWatermark: true },
   { id: "geekevents", component: GeekEventsSlide, showWatermark: true },
   { id: "closing", component: ClosingSlide, showWatermark: true },
