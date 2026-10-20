@@ -1,5 +1,5 @@
 import { Slide } from "./Slide";
-import groupSessionImage from "@/assets/group-session.jpg";
+import groupSessionImage from "@/assets/halloween/group-session.jpg";
 import qrcodeAppStore from "@/assets/qrcode-appstore.png";
 import qrcodePlayStore from "@/assets/qrcode-playstore.png";
 import { Instagram, Apple, Play } from "lucide-react";

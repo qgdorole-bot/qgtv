@@ -1,16 +1,16 @@
 import { cn } from "@/lib/utils";
 
 
-import taylorSwift from "@/assets/cards-t2/taylor-swift.jpg";
-import paramore from "@/assets/cards-t2/paramore.jpg";
-import sabrinaCarpenter from "@/assets/cards-t2/sabrina-carpenter.jpg";
-import theWeeknd from "@/assets/cards-t2/the-weeknd.jpg";
-import bts from "@/assets/cards-t2/bts.jpg";
-import deftones from "@/assets/cards-t2/deftones.jpg";
-import arianaGrande from "@/assets/cards-t2/ariana-grande.jpg";
-import slipknot from "@/assets/cards-t2/slipknot.jpg";
-import radiohead from "@/assets/cards-t2/radiohead.jpg";
-import oliviaRodrigo from "@/assets/cards-t2/olivia-rodrigo.jpg";
+import taylorSwift from "@/assets/halloween/cards/taylor-swift.jpg";
+import paramore from "@/assets/halloween/cards/paramore.jpg";
+import sabrinaCarpenter from "@/assets/halloween/cards/sabrina-carpenter.jpg";
+import theWeeknd from "@/assets/halloween/cards/the-weeknd.jpg";
+import bts from "@/assets/halloween/cards/bts.jpg";
+import deftones from "@/assets/halloween/cards/deftones.jpg";
+import arianaGrande from "@/assets/halloween/cards/ariana-grande.jpg";
+import slipknot from "@/assets/halloween/cards/slipknot.jpg";
+import radiohead from "@/assets/halloween/cards/radiohead.jpg";
+import oliviaRodrigo from "@/assets/halloween/cards/olivia-rodrigo.jpg";
 
 const cards = [
   { name: "Taylor Swift", image: taylorSwift },
@@ -50,7 +50,7 @@ export const CardsSlide = ({ isActive }: CardsSlideProps) => {
           Cartas da Temporada
         </h2>
         <p className="mt-1 font-display font-bold uppercase tracking-[0.3em] text-white/90 text-lg md:text-2xl">
-          Temporada Musical
+          Temporada Musical · Especial Halloween
         </p>
       </div>
 

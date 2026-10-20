@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { BookOpen, Clapperboard, Tv, Swords, Flame, Sparkles } from "lucide-react";
-import imgDragonBall from "@/assets/geek/dragonball.jpg";
-import imgManga from "@/assets/geek/manga.jpg";
-import imgFilmes from "@/assets/geek/filmes.jpg";
-import imgGames from "@/assets/geek/games.jpg";
-import imgRpg from "@/assets/geek/rpg.jpg";
+import imgDragonBall from "@/assets/halloween/geek-dragonball.jpg";
+import imgManga from "@/assets/halloween/geek-manga.jpg";
+import imgFilmes from "@/assets/halloween/geek-filmes.jpg";
+import imgGames from "@/assets/halloween/geek-games.jpg";
+import imgRpg from "@/assets/halloween/geek-rpg.jpg";
 
 interface GeekContentSlideProps {
   isActive: boolean;
@@ -117,18 +117,15 @@ const TONES = {
   },
 } as const;
 
+let nextContentIndex = getDayIndex() % CONTENTS.length;
+
 export const GeekContentSlide = ({ isActive }: GeekContentSlideProps) => {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(nextContentIndex);
 
   useEffect(() => {
-    if (!isActive) {
-      setIndex(0);
-      return;
-    }
-    const id = window.setInterval(() => {
-      setIndex((i) => (i + 1) % CONTENTS.length);
-    }, 9000);
-    return () => clearInterval(id);
+    if (!isActive) return;
+    setIndex(nextContentIndex);
+    nextContentIndex = (nextContentIndex + 1) % CONTENTS.length;
   }, [isActive]);
 
   const item = CONTENTS[index];
@@ -186,7 +183,7 @@ export const GeekContentSlide = ({ isActive }: GeekContentSlideProps) => {
               <img
                 src={item.image}
                 alt={`Ilustração de ${item.title}`}
-                loading="lazy"
+                decoding="async"
                 width={1024}
                 height={1024}
                 className="absolute inset-0 h-full w-full object-cover"

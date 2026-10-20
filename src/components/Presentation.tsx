@@ -20,8 +20,8 @@ import { SlideProgress } from "./SlideProgress";
 import { PresentationControls } from "./PresentationControls";
 import { CornerLogo } from "./CornerLogo";
 import { TVControls } from "./TVControls";
-
-const SLIDE_DURATION = 14000; // 14 seconds per slide (more time to read)
+import { getSlideDuration } from "@/lib/slideTiming";
+import halloweenFrame from "@/assets/halloween/frame.png";
 
 type SlideDef = {
   id: string;
@@ -58,33 +58,7 @@ const isExpired = (expiresAt?: string) => {
   return expiresAt < todayStr;
 };
 
-/** Pré-carrega e decodifica todas as imagens uma única vez (evita travadas na TV) */
-const usePreloadAssets = () => {
-  useEffect(() => {
-    const modules = import.meta.glob("/src/assets/**/*.{png,jpg,jpeg,webp,svg}", {
-      eager: true,
-      query: "?url",
-      import: "default",
-    }) as Record<string, string>;
-
-    const imgs: HTMLImageElement[] = [];
-    Object.values(modules).forEach((url) => {
-      const img = new Image();
-      img.decoding = "async";
-      img.src = url;
-      imgs.push(img);
-    });
-
-    return () => {
-      imgs.forEach((img) => {
-        img.src = "";
-      });
-    };
-  }, []);
-};
-
 export const Presentation = () => {
-  usePreloadAssets();
   const [isSoundOn, setIsSoundOn] = useState(true);
   const toggleSound = () => setIsSoundOn((prev) => !prev);
 
@@ -112,7 +86,7 @@ export const Presentation = () => {
     toggleFullscreen,
   } = useSlideshow({
     totalSlides: slides.length,
-    intervalMs: SLIDE_DURATION,
+    slideDurations: slides.map((slide) => getSlideDuration(slide.id)),
     autoPlay: true,
   });
 
@@ -121,7 +95,7 @@ export const Presentation = () => {
   const showWatermark = slides[currentSlide]?.showWatermark ?? false;
 
   return (
-    <div className="relative w-full h-screen overflow-hidden hide-scrollbar cursor-none hover:cursor-auto bg-black">
+    <div className="relative w-full h-screen overflow-hidden hide-scrollbar cursor-none hover:cursor-auto bg-background" data-slide-id={slides[currentSlide]?.id}>
       {/* Trilha de Halloween (toca até 31/10; some sozinha depois) */}
       <AmbientAudio isOn={isSoundOn} />
       {/* Watermark Logo (hidden on hero slide) */}
@@ -144,11 +118,15 @@ export const Presentation = () => {
         );
       })}
 
+      {/* Moldura estática e leve, sem cobrir os textos ou QR codes. */}
+      <img src={halloweenFrame} alt="" aria-hidden="true" width={1536} height={1024}
+        decoding="async" className="halloween-frame absolute inset-0 h-full w-full pointer-events-none z-[11]" />
+
       {/* Progress indicators */}
       <SlideProgress
         currentSlide={currentSlide}
         totalSlides={slides.length}
-        duration={SLIDE_DURATION}
+        duration={getSlideDuration(slides[currentSlide]?.id ?? "welcome")}
         isPaused={isPaused}
       />
 
