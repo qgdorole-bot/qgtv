@@ -18,12 +18,8 @@ export const AmbientAudio = ({ isOn }: AmbientAudioProps) => {
 
   useEffect(() => {
     if (!isHalloweenSeason()) return;
-
-    const audio = new Audio(track.url);
-    audio.loop = true;
-    audio.volume = 0.25;
-    audio.preload = "auto";
-    audioRef.current = audio;
+    const audio = audioRef.current;
+    if (!audio) return;
 
     const tryPlay = () => {
       audio.play().catch(() => {
@@ -51,9 +47,6 @@ export const AmbientAudio = ({ isOn }: AmbientAudioProps) => {
       window.removeEventListener("pointerdown", tryPlay);
       document.removeEventListener("visibilitychange", handleVisibility);
       audio.pause();
-      audio.removeAttribute("src");
-      audio.load();
-      audioRef.current = null;
     };
   }, []);
 
@@ -68,5 +61,16 @@ export const AmbientAudio = ({ isOn }: AmbientAudioProps) => {
     }
   }, [isOn]);
 
-  return null;
+  if (!isHalloweenSeason()) return null;
+
+  return (
+    <audio
+      ref={audioRef}
+      src={track.url}
+      loop
+      preload="auto"
+      volume={0.25}
+      style={{ display: "none" }}
+    />
+  );
 };
