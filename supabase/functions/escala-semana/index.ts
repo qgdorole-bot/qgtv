@@ -69,7 +69,7 @@ Deno.serve(async (req) => {
     let current: (typeof dias)[number] | null = null;
     for (const raw of lines) {
       const n = norm(raw);
-      const day = DAYS.find((d) => new RegExp(`^${d.key}\\b`).test(n.replace(/[^a-z ]/g, "").trim()));
+      const day = DAYS.find((d) => new RegExp(`^${d.key}\\b`).test(n.replace(/[^a-z]+/g, " ").trim()));
       if (day && raw.length < 30) {
         const dt = new Date(base);
         dt.setUTCDate(base.getUTCDate() + day.offset);
@@ -81,10 +81,11 @@ Deno.serve(async (req) => {
       if (!current || !HIGHLIGHT.test(n)) continue;
       const parts = raw.replace(/^\d+\s*-?\s*/, "").split(/\s+-\s+/).map((p) => p.trim()).filter(Boolean);
       const hora = (raw.match(/\b(\d{1,2})\s*[h:]\s*(\d{2})?\s*(h|horas)?\b/i) || [""])[0];
-      const nome = parts[0]?.replace(/\(.*?\)/g, "").trim() || raw;
+      const clean = (x: string) => x.replace(/\(.*?\)/g, "").replace(/\b\d{1,2}\s*[h:]\s*\d{0,2}\s*(h|horas)?\b/gi, "").replace(/\s+/g, " ").trim();
+      const nome = clean(parts[0] ?? "") || raw;
       const local =
         parts.slice(1).find((p) => HIGHLIGHT.test(norm(p)))?.replace(/^rol[eê]\s*/i, "Rolê ") ?? "Rolê do grupo";
-      current.roles.push({ nome, local: local.trim() || "Rolê do grupo", hora: hora.replace(/\s/g, "").replace(/:00$/, "h").replace(/h00$/, "h") });
+      current.roles.push({ nome, local: (/^rol[eê]$/i.test(clean(local)) || !clean(local)) ? "Rolê do grupo" : clean(local).replace(/^Rol[eê] (?!do)/, "Rolê na "), hora: hora.toLowerCase().replace(/\s/g, "").replace(/:00$/, "h").replace(/h00$/, "h") });
     }
 
     return json({ semana: page.properties?.["ROLÊ"]?.title?.[0]?.plain_text ?? "", dias: dias.filter((d) => d.roles.length) });
