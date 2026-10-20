@@ -77,7 +77,7 @@ const TVButton = ({
           }
         : {
             background: "rgba(255, 255, 255, 0.08)",
-            border: "1px rgba(232, 67, 31, 0.4)".replace("rgba", "1px solid rgba").replace("1px solid 1px solid ", "1px solid "),
+            border: "1px solid rgba(232, 67, 31, 0.4)",
           }
     }
   >
