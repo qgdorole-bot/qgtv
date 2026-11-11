@@ -41,7 +41,7 @@ export const GamificationOverviewSlide = ({ isActive }: Props) => {
       <div className="flex flex-col items-center justify-center text-center space-y-8 md:space-y-10">
         {/* Title */}
         <div className="flex items-center gap-4">
-          <span className={cn("text-4xl md:text-5xl", isActive && "scale-in")}>🎮</span>
+          <span className={cn("text-4xl md:text-5xl", isActive && "scale-in")}>🎁</span>
           <h2
             className={cn(
               "text-3xl md:text-5xl lg:text-6xl font-display font-bold tracking-wide",
@@ -49,7 +49,7 @@ export const GamificationOverviewSlide = ({ isActive }: Props) => {
               isActive ? "fade-in-up" : "opacity-0"
             )}
           >
-            Gamificação
+            Gamificação · Natal
           </h2>
         </div>
 

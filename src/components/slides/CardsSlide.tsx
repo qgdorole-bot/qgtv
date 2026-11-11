@@ -69,7 +69,7 @@ export const CardsSlide = ({ isActive }: CardsSlideProps) => {
                 <img
                   src={card.image}
                   alt={`Carta ${card.name}`}
-                  className="max-h-full max-w-full w-auto object-contain rounded-lg shadow-2xl shadow-primary/30 ring-2 ring-primary/40"
+                  className={cn("max-h-full max-w-full w-auto object-contain rounded-lg shadow-2xl shadow-primary/30 ring-2 ring-primary/40", card.name !== "Sabrina Carpenter" && "seasonal-original")}
                   width={896} height={1200}
                   decoding="async"
                 />

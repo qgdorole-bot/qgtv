@@ -21,7 +21,7 @@ import { PresentationControls } from "./PresentationControls";
 import { CornerLogo } from "./CornerLogo";
 import { TVControls } from "./TVControls";
 import { getSlideDuration } from "@/lib/slideTiming";
-import christmasFrame from "@/assets/christmas/frame.png";
+import christmasFrame from "@/assets/christmas/frame-compact.png";
 
 type SlideDef = {
   id: string;
@@ -59,6 +59,13 @@ const isExpired = (expiresAt?: string) => {
 };
 
 export const Presentation = () => {
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap";
+    document.head.appendChild(link);
+    return () => link.remove();
+  }, []);
   const [isSoundOn, setIsSoundOn] = useState(true);
   const toggleSound = () => setIsSoundOn((prev) => !prev);
 
