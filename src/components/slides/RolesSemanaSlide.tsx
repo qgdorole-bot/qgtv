@@ -48,7 +48,7 @@ export const RolesSemanaSlide = ({ isActive }: Props) => {
     <div className="relative z-10 h-full w-full flex flex-col items-center justify-center p-6 md:p-10 gap-5">
       <div className={cn("text-center", isActive && "fade-in-up")}>
         <p className="font-display tracking-[0.35em] uppercase text-sm md:text-lg" style={{ color: "#5BC0EB" }}>
-          Escala da semana
+          Especial Natal · Escala da semana
         </p>
         <h2 className="font-display font-black text-5xl md:text-6xl leading-none" style={{ color: "#E8431F" }}>
           Rolês da Semana

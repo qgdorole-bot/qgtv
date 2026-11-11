@@ -21,7 +21,7 @@ import { PresentationControls } from "./PresentationControls";
 import { CornerLogo } from "./CornerLogo";
 import { TVControls } from "./TVControls";
 import { getSlideDuration } from "@/lib/slideTiming";
-import halloweenFrame from "@/assets/halloween/frame.png";
+import christmasFrame from "@/assets/christmas/frame.png";
 
 type SlideDef = {
   id: string;
@@ -96,7 +96,7 @@ export const Presentation = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden hide-scrollbar cursor-none hover:cursor-auto bg-background" data-slide-id={slides[currentSlide]?.id}>
-      {/* Trilha de Halloween (toca até 31/10; some sozinha depois) */}
+      {/* Playlist natalina em loop */}
       <AmbientAudio isOn={isSoundOn} />
       {/* Watermark Logo (hidden on hero slide) */}
       {showWatermark && <CornerLogo variant={currentSlide} />}
@@ -119,8 +119,8 @@ export const Presentation = () => {
       })}
 
       {/* Moldura estática e leve, sem cobrir os textos ou QR codes. */}
-      <img src={halloweenFrame} alt="" aria-hidden="true" width={1536} height={1024}
-        decoding="async" className="halloween-frame absolute inset-0 h-full w-full pointer-events-none z-[11]" />
+      <img src={christmasFrame} alt="" aria-hidden="true" width={1536} height={1024}
+        decoding="async" className="seasonal-frame absolute inset-0 h-full w-full pointer-events-none z-[11]" />
 
       {/* Progress indicators */}
       <SlideProgress

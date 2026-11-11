@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { BookOpen, Clapperboard, Tv, Swords, Flame, Sparkles } from "lucide-react";
-import imgDragonBall from "@/assets/halloween/geek-dragonball.jpg";
-import imgManga from "@/assets/halloween/geek-manga.jpg";
-import imgFilmes from "@/assets/halloween/geek-filmes.jpg";
-import imgGames from "@/assets/halloween/geek-games.jpg";
-import imgRpg from "@/assets/halloween/geek-rpg.jpg";
+import imgDragonBall from "@/assets/christmas/geek-dragonball.jpg";
+import imgManga from "@/assets/christmas/geek-manga.jpg";
+import imgFilmes from "@/assets/christmas/geek-filmes.jpg";
+import imgGames from "@/assets/christmas/geek-games.jpg";
+import imgRpg from "@/assets/christmas/geek-rpg.jpg";
 
 interface GeekContentSlideProps {
   isActive: boolean;
@@ -156,7 +156,7 @@ export const GeekContentSlide = ({ isActive }: GeekContentSlideProps) => {
       {/* Header */}
       <div className={cn("relative z-10 text-center mb-8", isActive ? "fade-in-up" : "opacity-0")}>
         <p className="font-display tracking-[0.5em] text-brand-sky/70 text-sm md:text-lg uppercase mb-2">
-          Universo Geek
+          Universo Geek · Especial Natal
         </p>
         <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-black tracking-wide text-brand-orange">
           Conteúdos Geeks

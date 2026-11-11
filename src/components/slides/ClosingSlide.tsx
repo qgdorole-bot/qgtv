@@ -1,5 +1,5 @@
 import { Slide } from "./Slide";
-import groupSessionImage from "@/assets/halloween/group-session.jpg";
+import groupSessionImage from "@/assets/christmas/group-session.jpg";
 import qrcodeAppStore from "@/assets/qrcode-appstore.png";
 import qrcodePlayStore from "@/assets/qrcode-playstore.png";
 import { Instagram, Apple, Play } from "lucide-react";
@@ -15,10 +15,10 @@ export const ClosingSlide = ({ isActive }: ClosingSlideProps) => {
         {/* Header */}
         <div className={`space-y-3 ${isActive ? 'fade-in-up' : ''}`}>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold">
-            <span className="text-primary text-glow-purple">Realizamos sonhos</span>
+            <span className="text-primary text-glow-purple">Feliz Natal, QG!</span>
           </h2>
           <p className="text-lg md:text-2xl text-muted-foreground font-light">
-            ensinando habilidades pra lidar com o mundo
+            Celebrando encontros, amizade e novos sonhos
           </p>
         </div>
 
@@ -28,7 +28,7 @@ export const ClosingSlide = ({ isActive }: ClosingSlideProps) => {
           <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/20 shrink-0">
             <img
               src={groupSessionImage}
-              alt="Grupos treinando habilidades sociais"
+              alt="O grupo do QG celebrando o Natal"
               className="w-64 md:w-80 h-44 md:h-56 object-cover"
               loading="lazy"
             />

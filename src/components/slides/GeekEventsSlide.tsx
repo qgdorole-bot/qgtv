@@ -118,7 +118,7 @@ export const GeekEventsSlide = ({ isActive }: GeekEventsSlideProps) => {
       {/* Header */}
       <div className={cn("relative z-10 text-center mb-10", isActive ? "fade-in-up" : "opacity-0")}>
         <p className="font-display tracking-[0.4em] text-brand-sky/80 text-base md:text-xl uppercase mb-3">
-          Agenda da cidade
+          Natal Geek · Agenda da cidade
         </p>
         <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-black tracking-wide text-brand-orange">
           Eventos Geeks em SP
