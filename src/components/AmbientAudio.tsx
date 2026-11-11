@@ -1,104 +1,66 @@
 import { useEffect, useRef } from "react";
-import danse from "@/assets/audio/halloween-music.mp3.asset.json";
-import toccata from "@/assets/audio/halloween-toccata.mp3.asset.json";
-import mountain from "@/assets/audio/halloween-mountain.mp3.asset.json";
-import bald from "@/assets/audio/halloween-bald.mp3.asset.json";
+import jingle from "@/assets/audio/christmas-jingle-bells.mp3.asset.json";
+import wish from "@/assets/audio/christmas-we-wish-you.mp3.asset.json";
+import halls from "@/assets/audio/christmas-deck-the-halls.mp3.asset.json";
+import silent from "@/assets/audio/christmas-silent-night.mp3.asset.json";
 
-/** Halloween ativo até o fim do dia 31/10 (mesma regra das cartas do time). */
-const isHalloweenSeason = () => {
-  const today = new Date();
-  const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
-  return todayStr <= "2026-10-31";
-};
-
-// Playlist livre de direitos: obras de domínio público, gravações por Kevin MacLeod (incompetech.com, CC BY 3.0) e Musopen
-const PLAYLIST = [
-  { url: danse.url, title: "Danse Macabre" },
-  { url: toccata.url, title: "Toccata and Fugue in D Minor" },
-  { url: mountain.url, title: "In the Hall of the Mountain King" },
-  { url: bald.url, title: "Night on Bald Mountain" },
-];
-
-/** Ordem embaralhada de forma determinística pelo dia (muda todo dia). */
+const PLAYLIST = [jingle.url, wish.url, halls.url, silent.url];
 const dailyShuffle = () => {
   const today = new Date();
-  const seed = today.getFullYear() * 372 + (today.getMonth() + 1) * 31 + today.getDate();
-  let s = seed % 2147483647;
-  const rand = () => (s = (s * 48271) % 2147483647) / 2147483647;
-  return [...PLAYLIST].sort(() => rand() - 0.5);
+  let seed = (today.getFullYear() * 372 + (today.getMonth() + 1) * 31 + today.getDate()) % 2147483647;
+  const queue = [...PLAYLIST];
+  for (let i = queue.length - 1; i > 0; i--) {
+    seed = (seed * 48271) % 2147483647;
+    const j = Math.floor((seed / 2147483647) * (i + 1));
+    [queue[i], queue[j]] = [queue[j], queue[i]];
+  }
+  return queue;
 };
 
-interface AmbientAudioProps {
-  isOn: boolean;
-}
-
-export const AmbientAudio = ({ isOn }: AmbientAudioProps) => {
+export const AmbientAudio = ({ isOn }: { isOn: boolean }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const queueRef = useRef<string[]>([]);
-  const indexRef = useRef(0);
+  const isOnRef = useRef(isOn);
+  isOnRef.current = isOn;
 
   useEffect(() => {
-    if (!isHalloweenSeason()) return;
     const audio = audioRef.current;
     if (!audio) return;
+    const queue = dailyShuffle();
+    let index = 0;
     audio.volume = 0.25;
-
-    queueRef.current = dailyShuffle().map((t) => t.url);
-    indexRef.current = 0;
-    audio.src = queueRef.current[0];
-
+    audio.src = queue[index];
     const tryPlay = () => {
-      audio.play().catch(() => {
-        /* aguardando interação do usuário */
-      });
+      if (!isOnRef.current || document.hidden) return;
+      audio.play().catch(() => { /* O navegador aguarda interação. */ });
     };
-
-    // Passa para a próxima música quando a atual termina (loop infinito da playlist)
-    const handleEnded = () => {
-      indexRef.current = (indexRef.current + 1) % queueRef.current.length;
-      audio.src = queueRef.current[indexRef.current];
+    const ended = () => {
+      index = (index + 1) % queue.length;
+      audio.src = queue[index];
       tryPlay();
     };
-    audio.addEventListener("ended", handleEnded);
-
+    const visibility = () => document.hidden ? audio.pause() : tryPlay();
+    audio.addEventListener("ended", ended);
+    window.addEventListener("keydown", tryPlay);
+    window.addEventListener("pointerdown", tryPlay);
+    document.addEventListener("visibilitychange", visibility);
     tryPlay();
-    // Navegadores só permitem som após a primeira interação — tenta de novo no primeiro toque/tecla
-    window.addEventListener("keydown", tryPlay, { once: true });
-    window.addEventListener("pointerdown", tryPlay, { once: true });
-
-    // Pausa quando a aba/TV está em segundo plano (economia e estabilidade)
-    const handleVisibility = () => {
-      if (document.hidden) {
-        audio.pause();
-      } else {
-        tryPlay();
-      }
-    };
-    document.addEventListener("visibilitychange", handleVisibility);
-
     return () => {
-      audio.removeEventListener("ended", handleEnded);
+      audio.removeEventListener("ended", ended);
       window.removeEventListener("keydown", tryPlay);
       window.removeEventListener("pointerdown", tryPlay);
-      document.removeEventListener("visibilitychange", handleVisibility);
+      document.removeEventListener("visibilitychange", visibility);
       audio.pause();
+      audio.removeAttribute("src");
+      audio.load();
     };
   }, []);
 
-  // Liga/desliga pelo controle (TV ou tecla M)
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    if (isOn) {
-      audio.play().catch(() => {});
-    } else {
-      audio.pause();
-    }
+    if (isOn && !document.hidden) audio.play().catch(() => {});
+    else audio.pause();
   }, [isOn]);
 
-  if (!isHalloweenSeason()) return null;
-
-  return (
-    <audio ref={audioRef} preload="auto" style={{ display: "none" }} />
-  );
+  return <audio ref={audioRef} preload="auto" className="hidden" aria-label="Playlist de Natal" />;
 };

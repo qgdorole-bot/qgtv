@@ -21,7 +21,7 @@ import { PresentationControls } from "./PresentationControls";
 import { CornerLogo } from "./CornerLogo";
 import { TVControls } from "./TVControls";
 import { getSlideDuration } from "@/lib/slideTiming";
-import halloweenFrame from "@/assets/halloween/frame.png";
+import christmasFrame from "@/assets/christmas/frame-compact.png";
 
 type SlideDef = {
   id: string;
@@ -59,6 +59,13 @@ const isExpired = (expiresAt?: string) => {
 };
 
 export const Presentation = () => {
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap";
+    document.head.appendChild(link);
+    return () => link.remove();
+  }, []);
   const [isSoundOn, setIsSoundOn] = useState(true);
   const toggleSound = () => setIsSoundOn((prev) => !prev);
 
@@ -96,8 +103,9 @@ export const Presentation = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden hide-scrollbar cursor-none hover:cursor-auto bg-background" data-slide-id={slides[currentSlide]?.id}>
-      {/* Trilha de Halloween (toca até 31/10; some sozinha depois) */}
+      {/* Playlist natalina em loop */}
       <AmbientAudio isOn={isSoundOn} />
+      <a href="/christmas-music-credits.txt" target="_blank" rel="noreferrer" className="absolute bottom-2 right-4 z-30 text-xs text-muted-foreground">Música: Kevin MacLeod · CC BY 4.0</a>
       {/* Watermark Logo (hidden on hero slide) */}
       {showWatermark && <CornerLogo variant={currentSlide} />}
 
@@ -119,8 +127,8 @@ export const Presentation = () => {
       })}
 
       {/* Moldura estática e leve, sem cobrir os textos ou QR codes. */}
-      <img src={halloweenFrame} alt="" aria-hidden="true" width={1536} height={1024}
-        decoding="async" className="halloween-frame absolute inset-0 h-full w-full pointer-events-none z-[11]" />
+      <img src={christmasFrame} alt="" aria-hidden="true" width={1536} height={1024}
+        decoding="async" className="seasonal-frame absolute inset-0 h-full w-full pointer-events-none z-[11]" />
 
       {/* Progress indicators */}
       <SlideProgress

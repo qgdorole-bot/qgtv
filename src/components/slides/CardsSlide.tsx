@@ -1,16 +1,17 @@
 import { cn } from "@/lib/utils";
+import frame from "@/assets/christmas/frame.png";
 
 
-import taylorSwift from "@/assets/halloween/cards/taylor-swift.jpg";
-import paramore from "@/assets/halloween/cards/paramore.jpg";
-import sabrinaCarpenter from "@/assets/halloween/cards/sabrina-carpenter.jpg";
-import theWeeknd from "@/assets/halloween/cards/the-weeknd.jpg";
-import bts from "@/assets/halloween/cards/bts.jpg";
-import deftones from "@/assets/halloween/cards/deftones.jpg";
-import arianaGrande from "@/assets/halloween/cards/ariana-grande.jpg";
-import slipknot from "@/assets/halloween/cards/slipknot.jpg";
-import radiohead from "@/assets/halloween/cards/radiohead.jpg";
-import oliviaRodrigo from "@/assets/halloween/cards/olivia-rodrigo.jpg";
+import taylorSwift from "@/assets/cards-t2/taylor-swift.jpg";
+import paramore from "@/assets/cards-t2/paramore.jpg";
+import sabrinaCarpenter from "@/assets/christmas/cards/sabrina-carpenter.jpg";
+import theWeeknd from "@/assets/cards-t2/the-weeknd.jpg";
+import bts from "@/assets/cards-t2/bts.jpg";
+import deftones from "@/assets/cards-t2/deftones.jpg";
+import arianaGrande from "@/assets/cards-t2/ariana-grande.jpg";
+import slipknot from "@/assets/cards-t2/slipknot.jpg";
+import radiohead from "@/assets/cards-t2/radiohead.jpg";
+import oliviaRodrigo from "@/assets/cards-t2/olivia-rodrigo.jpg";
 
 const cards = [
   { name: "Taylor Swift", image: taylorSwift },
@@ -43,14 +44,14 @@ export const CardsSlide = ({ isActive }: CardsSlideProps) => {
 
       {/* Header */}
       <div className={cn("z-10 text-center mb-4", isActive ? "fade-in-up" : "opacity-0")}>
-        <p className="font-display tracking-[0.4em] text-brand-sky/80 text-base md:text-xl uppercase mb-1">
+        <p className="font-display tracking-normal text-brand-sky/80 text-base md:text-xl uppercase mb-1">
           Temporada 2/2026
         </p>
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-black tracking-wide text-brand-orange">
           Cartas da Temporada
         </h2>
-        <p className="mt-1 font-display font-bold uppercase tracking-[0.3em] text-white/90 text-lg md:text-2xl">
-          Temporada Musical · Especial Halloween
+        <p className="mt-1 font-display font-bold uppercase tracking-normal text-brand-cream/90 text-lg md:text-2xl">
+          Temporada Musical · Especial Natal
         </p>
       </div>
 
@@ -64,15 +65,17 @@ export const CardsSlide = ({ isActive }: CardsSlideProps) => {
               className={cn("flex flex-col items-center", isActive && "animate-card-in")}
               style={{ animationDelay: `${index * 70}ms` }}
             >
-              <div className="flex h-[26vh] md:h-[30vh] items-center justify-center">
+              <div className="relative flex h-[26vh] md:h-[30vh] min-w-0 items-center justify-center">
                 <img
                   src={card.image}
                   alt={`Carta ${card.name}`}
-                  className="max-h-full w-auto object-contain rounded-xl shadow-2xl shadow-primary/30 ring-2 ring-primary/40"
+                  className={cn("max-h-full max-w-full w-auto object-contain rounded-lg shadow-2xl shadow-primary/30 ring-2 ring-primary/40", card.name !== "Sabrina Carpenter" && "seasonal-original")}
+                  width={896} height={1200}
                   decoding="async"
                 />
+                <img src={frame} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full pointer-events-none" />
               </div>
-              <p className="mt-2 text-center font-display font-bold uppercase tracking-widest text-white/90 text-base md:text-xl">
+              <p className="mt-2 text-center font-display font-bold uppercase tracking-normal text-brand-cream/90 text-base md:text-xl">
                 {card.name}
               </p>
             </div>
