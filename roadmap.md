@@ -1,7 +1,7 @@
 # Roadmap
 
-- [ ] Trocar todas as telas e imagens ativas para Natal, preservando rostos, logos e QR codes
-- [ ] Substituir a playlist por música natalina e verificar som e navegação na TV
+- [x] Aplicar Natal a todas as telas ativas, novas cartas do time e imagens geek; artistas originais preservados com decoração natalina após bloqueio de edição
+- [x] Substituir a playlist por quatro músicas natalinas; som, silêncio e navegação verificados no navegador em formato TV com os áudios reais
 
 - [x] Aplicar contexto de Halloween às imagens da apresentação
 - [x] Aumentar tempo de leitura das telas com mais elementos

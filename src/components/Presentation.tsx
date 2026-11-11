@@ -105,6 +105,7 @@ export const Presentation = () => {
     <div className="relative w-full h-screen overflow-hidden hide-scrollbar cursor-none hover:cursor-auto bg-background" data-slide-id={slides[currentSlide]?.id}>
       {/* Playlist natalina em loop */}
       <AmbientAudio isOn={isSoundOn} />
+      <a href="/christmas-music-credits.txt" target="_blank" rel="noreferrer" className="absolute bottom-2 right-4 z-30 text-xs text-muted-foreground">Música: Kevin MacLeod · CC BY 4.0</a>
       {/* Watermark Logo (hidden on hero slide) */}
       {showWatermark && <CornerLogo variant={currentSlide} />}
 
