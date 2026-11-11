@@ -1,5 +1,8 @@
 # Roadmap
 
+- [ ] Trocar todas as telas e imagens ativas para Natal, preservando rostos, logos e QR codes
+- [ ] Substituir a playlist por música natalina e verificar som e navegação na TV
+
 - [x] Aplicar contexto de Halloween às imagens da apresentação
 - [x] Aumentar tempo de leitura das telas com mais elementos
 - [x] Playlist de Halloween adicionada
